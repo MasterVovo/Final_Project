@@ -62,7 +62,8 @@ public final class DashboardForm extends javax.swing.JFrame {
         Component[] comps = jPanel_Menu.getComponents(); //Gets all components in sidebar
         for (Component comp: comps){
             if (comp instanceof JButton){ //Checks if the component is a button
-                 JButton button = (JButton) comp;
+                JButton button = (JButton) comp;
+                JButton button = (JButton) comp;
                 button.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent evt) {
