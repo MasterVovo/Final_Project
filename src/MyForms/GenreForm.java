@@ -31,17 +31,22 @@ public class GenreForm extends javax.swing.JFrame {
         
         
         //Custom the jtable
-        jTable_Genres.setSelectionBackground(new Color(248, 194, 145));
+        /*jTable_Genres.setSelectionBackground(new Color(248, 194, 145));
         jTable_Genres.setSelectionForeground(Color.white);
         jTable_Genres.setRowHeight(30);
         jTable_Genres.setShowGrid(false);
         jTable_Genres.setBackground(new Color (250,250,250));
+        */
+        
+        func.customTable(jTable_Genres);
         
         //Custom the jtable header ROW
-        jTable_Genres.getTableHeader().setBackground(Color.red);//Need to fix it 
+        /*jTable_Genres.getTableHeader().setBackground(Color.red);//Need to fix it 
         jTable_Genres.getTableHeader().setForeground(Color.white);
         jTable_Genres.getTableHeader().setFont (new Font("Verdana",Font.BOLD, 20));
-        jTable_Genres.getTableHeader().setOpaque(false);
+        jTable_Genres.getTableHeader().setOpaque(false); */
+        
+        func.customTableHeader(jTable_Genres, Color.red, 20);
         
         //hide the jlabel "empty name messege"
         jLabel_EmptyName.setVisible(false);
