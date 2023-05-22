@@ -128,13 +128,11 @@ public class Genre {
     {
         ArrayList<Genre> gList = new ArrayList<>();
         
-        String selectQuery = "SELECT * FROM `book_genres`";
-        PreparedStatement ps;
-        ResultSet rs;
+         MyClasses.Functions func = new Functions();
         
         try {
-            ps = DB.getConnection().prepareStatement(selectQuery);
-            rs= ps.executeQuery();
+           
+            ResultSet rs = func.getData("SELECT * FROM `book_genres`");
             
             Genre genre; 
             

@@ -1,7 +1,9 @@
 package MyClasses;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -157,6 +159,32 @@ public class Author {
         
     }
 
-    
+    //fucntion to populate the arraylist with authors
+    public ArrayList<Author> authorsList()
+    {
+        ArrayList<Author> aList = new ArrayList<>();
+        
+        
+        MyClasses.Functions func = new Functions();
+        
+        try {
+            
+            ResultSet rs = func.getData("SELECT * FROM `author`");
+            
+            Author author; 
+            
+            while (rs.next())
+            {
+                // ``, ``, `expertise`, `about`
+                author = new Author (rs.getInt("Id"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("expertise"), rs.getString("about"));
+                aList.add(author);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Author.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return aList;
+    }
     
 }
