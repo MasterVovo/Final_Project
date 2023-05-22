@@ -1,6 +1,7 @@
 package MyClasses;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ public class Member {
     private String email;
     private String gender;
     private byte[] picture;
+    private String phone;
     
     
     public Member () {}
@@ -29,6 +31,10 @@ public class Member {
         this.email = _email;
         this.gender = _gender;
         this.picture = _picture;
+    }
+
+    public Member(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setId(int id) {
@@ -163,11 +169,30 @@ public class Member {
             else
             {
                 JOptionPane.showMessageDialog(null , "Member Not Deleted", "Member remove", 2);
-            } 
+            }   
            
             
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // get member by ID
+    public  Member getMemberById(Integer _Id) throws SQLException
+    {
+        Functions func = new Functions();
+       
+        String query = "SELECT * FROM `members` WHERE 'id' = " + _Id;
+       
+        ResultSet rs = func.getData(query);
+        
+        if (rs.next())
+        {
+            return new Member(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getBytes(7));
+        }
+        else
+        {
+            return null;
         }
     }
 }

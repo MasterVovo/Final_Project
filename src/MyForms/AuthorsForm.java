@@ -23,6 +23,7 @@ public class AuthorsForm extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
+        //add boarder to the panel
         Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         genrePanel.setBorder(genreFormBorder);
         

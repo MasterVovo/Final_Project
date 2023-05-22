@@ -28,7 +28,7 @@ public class AddMemberForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        
+        //add boarder to the panel
         Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         genrePanel.setBorder(genreFormBorder);
         
