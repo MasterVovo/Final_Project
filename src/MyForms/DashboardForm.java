@@ -63,7 +63,6 @@ public final class DashboardForm extends javax.swing.JFrame {
         for (Component comp: comps){
             if (comp instanceof JButton){ //Checks if the component is a button
                 JButton button = (JButton) comp;
-                JButton button = (JButton) comp;
                 button.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent evt) {
@@ -82,7 +81,6 @@ public final class DashboardForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel_Menu = new javax.swing.JPanel();
         SideBarHeader = new javax.swing.JPanel();
@@ -107,17 +105,6 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         dashboardPanel4 = new javax.swing.JPanel();
         dashboardPanel4Header = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -500,7 +487,6 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel_Menu;
     // End of variables declaration//GEN-END:variables
 }

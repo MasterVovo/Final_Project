@@ -23,25 +23,26 @@ public class Functions {
     }
     
     
-    // create a unction to customize the jlabel
+    // create a function to customize the jlabel
     public void customTable(JTable table) 
     {
         table.setSelectionBackground(new Color(248, 194, 145));
-        table.setSelectionForeground(Color.white);
-        table.setRowHeight(35);
+        table.setSelectionForeground(new Color(243,236,236));
+        table.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        table.setRowHeight(30);
         table.setShowGrid(false);
-        table.setBackground(new Color (250,250,250));
+        table.setBackground(new Color(243,236,236));
         table.setShowHorizontalLines(true);
-        table.setGridColor(Color.BLACK); // choose other color
+        table.setGridColor(new Color(243,236,236)); // choose other color
     }
     
     
-    // create a unction to customize the jlabel
-    public void customTableHeader(JTable table, Color back_Color, Integer fontSize) 
+    // create a function to customize the jlabel
+    public void customTableHeader(JTable table) 
     {
-        table.getTableHeader().setBackground(back_Color);//Need to fix it 
+        table.getTableHeader().setBackground(new Color(164,106,106));//Need to fix it 
         table.getTableHeader().setForeground(Color.white);
-        table.getTableHeader().setFont (new Font("Verdana",Font.BOLD, fontSize));
+        table.getTableHeader().setFont (new Font("Tahoma",Font.BOLD, 20));
         table.getTableHeader().setOpaque(false);
     }
     
