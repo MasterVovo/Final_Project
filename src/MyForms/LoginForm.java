@@ -24,7 +24,7 @@ public class LoginForm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         //Displays the image
-        func.displayImage(LoginLogo.getWidth(), LoginLogo.getHeight(), "/MyImages/book_login_logo.png", LoginLogo);
+        func.displayImage(LoginLogo.getWidth(), LoginLogo.getHeight(), null, "/MyImages/book_login_logo.png", LoginLogo);
     }
     
     @SuppressWarnings("unchecked")

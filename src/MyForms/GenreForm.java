@@ -27,7 +27,7 @@ public class GenreForm extends javax.swing.JFrame {
         Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         genrePanel.setBorder(genreFormBorder);
         
-        func.displayImage(60, 60, "/MyImages/book_genres.png", genreLabel);
+        func.displayImage(60, 60,null, "/MyImages/book_genres.png", genreLabel);
         
         
         //Custom the jtable
