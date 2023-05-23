@@ -3,6 +3,7 @@ package MyClasses;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -194,4 +195,35 @@ public class Member {
             return null;
         }
     }
+    
+     //fucntion to populate the arraylist with members
+    public ArrayList<Member> membersList()
+    {
+        ArrayList<Member> mList = new ArrayList<>();
+        
+        
+        MyClasses.Functions func = new Functions();
+        
+        try {
+            
+            ResultSet rs = func.getData("SELECT * FROM `members`");
+            
+             Member member; 
+            
+            while (rs.next())
+            {
+                
+                member = new Member (rs.getInt("Id"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("phoneNumber"), rs.getString("email"), rs.getString("gender"), rs.getBytes("profile"));
+                mList.add(member);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return mList;
+    }
+
+  
+    
 }

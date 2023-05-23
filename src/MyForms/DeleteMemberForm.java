@@ -3,18 +3,10 @@ package MyForms;
 import MyClasses.Functions;
 import MyClasses.Member;
 import java.awt.Color;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 public class DeleteMemberForm extends javax.swing.JFrame {
     Functions func = new Functions();
