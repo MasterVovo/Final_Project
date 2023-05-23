@@ -197,7 +197,7 @@ public class Member {
     }
     
      //fucntion to populate the arraylist with members
-    public ArrayList<Member> membersList()
+    public ArrayList<Member> membersList(String query)
     {
         ArrayList<Member> mList = new ArrayList<>();
         
@@ -206,7 +206,12 @@ public class Member {
         
         try {
             
-            ResultSet rs = func.getData("SELECT * FROM `members`");
+            if (query.equals(""))// if the user entery empty string make this the default select
+                    {
+                        query = "SELECT * FROM `members`";
+                    }
+            
+            ResultSet rs = func.getData(query);
             
              Member member; 
             
