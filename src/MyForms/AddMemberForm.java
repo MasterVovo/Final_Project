@@ -28,19 +28,16 @@ public class AddMemberForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        
+        //add boarder to the panel
         Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         genrePanel.setBorder(genreFormBorder);
         
-        func.displayImage(45, 45, "/MyImages/add_user.png", genreLabel);
-        
-         
+        func.displayImage(45, 45, null, "/MyImages/add_user.png", genreLabel);
         
         //hide the jlabel "empty name messege"
         jLabel_EmptyFirstName.setVisible(false);
         jLabel_EmptyLastName.setVisible(false);
         jLabel_EmptyPhoneNumber.setVisible(false);
-        
     }
 
     /**
@@ -318,6 +315,11 @@ public class AddMemberForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_EmptyFirstNameMouseClicked
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
+        //hide the jlabel "empty name messege"
+        jLabel_EmptyFirstName.setVisible(false);
+        jLabel_EmptyLastName.setVisible(false);
+        jLabel_EmptyPhoneNumber.setVisible(false);
+
         // add a new member
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
@@ -362,7 +364,7 @@ public class AddMemberForm extends javax.swing.JFrame {
     }//GEN-LAST:event_genreExitMouseClicked
 
     private void jLabel_EmptyPhoneNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyPhoneNumberMouseClicked
-        jLabel_EmptyPhoneNumber.setVisible(false);
+        //jLabel_EmptyPhoneNumber.setVisible(false);
     }//GEN-LAST:event_jLabel_EmptyPhoneNumberMouseClicked
 
     private void jTextField_LastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_LastNameActionPerformed

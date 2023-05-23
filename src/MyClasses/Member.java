@@ -1,6 +1,7 @@
 package MyClasses;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,10 @@ public class Member {
         this.email = _email;
         this.gender = _gender;
         this.picture = _picture;
+    }
+
+    public Member(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setId(int id) {
@@ -122,7 +127,7 @@ public class Member {
     
     public void editMember(int _id, String _fname, String _lname, String _phoneNumber, String _email, String _gender, byte[] _picture)
     {
-     String editQuery = "UPDATE `members` SET `firstName`=?, `lastName`=?, `phoneNumber`=?, `email`=?, `gender`=?, `profile=?` WHERE `id` = ?";
+     String editQuery = "UPDATE `members` SET `firstName`=?, `lastName`=?, `phoneNumber`=?, `email`=?, `gender`=?, `profile`=? WHERE `id` = ?";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
             
@@ -163,11 +168,30 @@ public class Member {
             else
             {
                 JOptionPane.showMessageDialog(null , "Member Not Deleted", "Member remove", 2);
-            } 
+            }   
            
             
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // get member by ID
+    public Member getMemberById(int _id) throws SQLException
+    {
+        Functions func = new Functions();
+        
+        String query = "SELECT * FROM `members` WHERE `id` = " + _id;
+       
+        ResultSet rs = func.getData(query);
+            
+        if (rs.next())
+        {
+            return new Member(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getBytes(7));
+        }
+        else
+        {
+            return null;
         }
     }
 }

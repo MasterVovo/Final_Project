@@ -13,9 +13,21 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 
 public class Functions {
-    public void displayImage(int width, int height, String imagePath, JLabel label){ //Displays the logo in the dashboard
+    public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label){ //Displays the logo in the dashboard
         //Gets the image
-        ImageIcon imgIco = new ImageIcon(getClass().getResource(imagePath));
+        ImageIcon imgIco;
+        
+        if (imagebyte != null) {
+            imgIco = new ImageIcon(imagebyte);
+        } else {
+            try {
+                imgIco = new ImageIcon(getClass().getResource(imagePath));
+            } catch (Exception e) {
+                imgIco = new ImageIcon(imagePath);
+            }
+            
+        }
+        
         //Scales the image
         Image image = imgIco.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         //Sets the image to the container

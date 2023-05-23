@@ -23,10 +23,11 @@ public class AuthorsForm extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
+        //add boarder to the panel
         Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         genrePanel.setBorder(genreFormBorder);
         
-        func.displayImage(50, 50, "/MyImages/notepad.png", genreLabel);
+        func.displayImage(50, 50,null, "/MyImages/notepad.png", genreLabel);
         
         
         //Custom the jtable
