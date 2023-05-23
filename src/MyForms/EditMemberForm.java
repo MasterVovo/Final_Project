@@ -33,6 +33,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         genrePanel.setBorder(genreFormBorder);
         
+        // add black border to the jlabel image
         Border jLabelImageBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
         jLabel_Image.setBorder(jLabelImageBorder);
         

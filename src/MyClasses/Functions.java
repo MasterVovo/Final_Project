@@ -77,5 +77,13 @@ public class Functions {
         
         return rs;
     }        
+
+    public void customTableHeader(JTable jTable_Members, Color color, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void customTable(JTable jTable_Members, Color color, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
