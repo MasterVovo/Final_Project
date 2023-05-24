@@ -1,6 +1,5 @@
 
 package MyForms;
-import MyClasses.Member;
 import java.awt.Color;
 import java.io.File;
 import java.nio.file.Files;
@@ -21,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class AddBookForm extends javax.swing.JFrame {
 
-    
+    AuthorsListForm authors = new AuthorsListForm();
     MyClasses.Member member = new MyClasses.Member();
     MyClasses.Functions func = new MyClasses.Functions();
     
@@ -79,14 +78,15 @@ public class AddBookForm extends javax.swing.JFrame {
         jTextArea_Description = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         jLabel_Image = new javax.swing.JLabel();
-        jButton_BrowseProfilePic = new javax.swing.JButton();
         jButton_SelectPicture = new javax.swing.JButton();
         jButton_Add1 = new javax.swing.JButton();
         jButton_Cancel = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jDateChooser_Date = new com.toedter.calendar.JDateChooser();
         jSpinner_Quantity = new javax.swing.JSpinner();
         genreExit = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel_ImagePath = new javax.swing.JLabel();
+        jButton_SelectAuthor = new javax.swing.JButton();
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(6, 4, 6));
@@ -221,13 +221,6 @@ public class AddBookForm extends javax.swing.JFrame {
         jLabel_Image.setBackground(new java.awt.Color(153, 153, 255));
         jLabel_Image.setOpaque(true);
 
-        jButton_BrowseProfilePic.setText("Browse");
-        jButton_BrowseProfilePic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_BrowseProfilePicActionPerformed(evt);
-            }
-        });
-
         jButton_SelectPicture.setBackground(new java.awt.Color(153, 51, 0));
         jButton_SelectPicture.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton_SelectPicture.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,6 +274,17 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel_ImagePath.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel_ImagePath.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_ImagePath.setText("Choose");
+
+        jButton_SelectAuthor.setText("Select Author");
+        jButton_SelectAuthor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SelectAuthorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
         genrePanelLayout.setHorizontalGroup(
@@ -295,14 +299,6 @@ public class AddBookForm extends javax.swing.JFrame {
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(genrePanelLayout.createSequentialGroup()
                                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -321,7 +317,19 @@ public class AddBookForm extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jSpinner_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jSpinner_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_Author))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton_SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
@@ -333,8 +341,8 @@ public class AddBookForm extends javax.swing.JFrame {
                                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton_SelectPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_BrowseProfilePic))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addGap(238, 238, 238)
                         .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,8 +372,8 @@ public class AddBookForm extends javax.swing.JFrame {
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_BrowseProfilePic)
-                            .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_ImagePath))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_SelectPicture)
                         .addGap(93, 93, 93))
@@ -378,10 +386,11 @@ public class AddBookForm extends javax.swing.JFrame {
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Author, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_Author, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -401,7 +410,7 @@ public class AddBookForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -455,47 +464,15 @@ public class AddBookForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_ISBNActionPerformed
 
-    private void jButton_BrowseProfilePicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BrowseProfilePicActionPerformed
-       /* JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Select Profile Picture");
-
-        fileChooser.setCurrentDirectory(new File("C://Users"));
-
-        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", ".png", ".jpg", ".jpeg");
-        fileChooser.addChoosableFileFilter(extensionFilter);
-
-        int filestate = fileChooser.showSaveDialog(null);
-    
-        if (filestate == JFileChooser.APPROVE_OPTION){
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
-            //jLabel_ImagePath.setText(path);
-           //imagePath = path;
-
-            func.displayImage(175, 150, null, path, jLabel_Image);
-        } */
-    }//GEN-LAST:event_jButton_BrowseProfilePicActionPerformed
-
     private void jButton_SelectPictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectPictureActionPerformed
-      /*  GenreForm manageGenre = new GenreForm();
+        /*  GenreForm manageGenre = new GenreForm();
         manageGenre.setVisible(true); */
+        
+        String path = func.selectPicture();
+        jLabel_ImagePath.setText(path);
+        //imagePath = path;
       
-      JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Select Profile Picture");
-
-        fileChooser.setCurrentDirectory(new File("C://Users"));
-
-        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", ".png", ".jpg", ".jpeg");
-        fileChooser.addChoosableFileFilter(extensionFilter);
-
-        int filestate = fileChooser.showSaveDialog(null);
-    
-        if (filestate == JFileChooser.APPROVE_OPTION){
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
-            //jLabel_ImagePath.setText(path);
-           //imagePath = path;
-
-            func.displayImage(175, 150, null, path, jLabel_Image);
-        }
+        func.displayImage(100, 100, null, path, jLabel_Image);
         
     }//GEN-LAST:event_jButton_SelectPictureActionPerformed
 
@@ -519,8 +496,8 @@ public class AddBookForm extends javax.swing.JFrame {
         Double price = Double.parseDouble(jTextField_Price.getText());
         
         // get the image bytes
-        Path path = Paths.get(imagePath);  // Fix this problem
-        byte[] img = Files.readAllBytes(path);
+        //Path path = Paths.get(imagePath);  // Fix this problem
+        //byte[] img = Files.readAllBytes(path);
         
         
     }//GEN-LAST:event_jButton_Add1ActionPerformed
@@ -534,6 +511,28 @@ public class AddBookForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jButton_SelectAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectAuthorActionPerformed
+        // Show author form
+        
+        authors.setVisible(true);
+        
+        /* Kinomment ko kasi nag eerror, baka may baguhin din dito pero dito muna yan HAHAHA
+            AuthorsListForm authors = new AuthorsListForm();
+            authors.setVisible(true);
+            // get the selected row index
+            int index = authors.jTable_Authors.getSelectedRow();
+
+            String id = authors.jTable_Authors.getValueAt(index, 0).toString();
+            String firstName = authors.jTable_Authors.getValueAt(index,1).toString();
+            String lastName = authors.jTable_Authors.getValueAt(index, 2).toString();
+        */
+        
+    }//GEN-LAST:event_jButton_SelectAuthorActionPerformed
+
+    public static void displayAuthor(int id, String fullName){
+        jTextField_Author.setText(fullName);
+    }
+    
      
     
     /**
@@ -579,11 +578,11 @@ public class AddBookForm extends javax.swing.JFrame {
     private javax.swing.JPanel genrePanel;
     private javax.swing.JButton jButton_Add;
     private javax.swing.JButton jButton_Add1;
-    private javax.swing.JButton jButton_BrowseProfilePic;
     private javax.swing.JButton jButton_Cancel;
+    private javax.swing.JButton jButton_SelectAuthor;
     private javax.swing.JButton jButton_SelectPicture;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser_Date;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -599,10 +598,11 @@ public class AddBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Image;
+    private javax.swing.JLabel jLabel_ImagePath;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner_Quantity;
     private javax.swing.JTextArea jTextArea_Description;
-    private javax.swing.JTextField jTextField_Author;
+    private static javax.swing.JTextField jTextField_Author;
     private javax.swing.JTextField jTextField_ID2;
     private javax.swing.JTextField jTextField_ID5;
     private javax.swing.JTextField jTextField_ID6;

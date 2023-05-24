@@ -63,7 +63,7 @@ public class Functions {
     
     // create a function to select image
     // the function will return the image path
-    public String selectPicture ()
+    public String selectPicture()
     {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select Profile Picture");
