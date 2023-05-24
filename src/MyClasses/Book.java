@@ -18,14 +18,14 @@ public class Book {
     private Integer quantity;
     private String publisher;
     private double price;
-    private Date date_received;
+    private String date_received;
     private String description;
     private byte[] cover;
     
     public Book () {}
     
     public Book (String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, 
-                 String _publisher, double _price, Date _date_received, String _description, byte[] _cover) 
+                 String _publisher, double _price, String _date_received, String _description, byte[] _cover) 
     {
         this.isbn = _isbn;
         this.name = _name;
@@ -70,7 +70,7 @@ public class Book {
         this.price = price;
     }
 
-    public void setDate_received(Date date_received) {
+    public void setDate_received(String date_received) {
         this.date_received = date_received;
     }
 
@@ -110,7 +110,7 @@ public class Book {
         return price;
     }
 
-    public Date getDate_received() {
+    public String getDate_received() {
         return date_received;
     }
 
@@ -125,9 +125,9 @@ public class Book {
     
      //Insert a new book function
     public void addBook(String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, 
-                 String _publisher, double _price, Date _date_received, String _description, byte[] _cover)
+                 String _publisher, double _price, String _date_received, String _description, byte[] _cover)
     {
-     String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`, `price`, `date_received`, `description`, `cover_image`) VALUES (?,?,?,?,?,?,?,?,?)";
+     String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`, `price`, `date_received`, `description`, `cover_image`) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
             
@@ -138,7 +138,7 @@ public class Book {
             ps.setInt(5, _quantity);
             ps.setString(6, _publisher);
             ps.setDouble(7, _price);
-            ps.setDate(8, _date_received);
+            ps.setString(8, _date_received);
             ps.setString(9, _description);
             ps.setBytes(10, _cover);
             
@@ -156,6 +156,10 @@ public class Book {
         } catch (SQLException ex) {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void addBook(String bn, String name, Integer author_id, Integer genre_id, Integer quantity, String publisher, Double price, java.util.Date received_date, String description, byte[] img) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

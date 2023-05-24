@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import java.util.HashMap;
 /**
  *
  * @author User
@@ -43,6 +44,7 @@ public class Genre {
     }
     
     //Functions 
+    MyClasses.Functions func = new Functions();
     
     
     //Insert a new genre function
@@ -127,9 +129,7 @@ public class Genre {
     public ArrayList<Genre> genreList()
     {
         ArrayList<Genre> gList = new ArrayList<>();
-        
-         MyClasses.Functions func = new Functions();
-        
+
         try {
            
             ResultSet rs = func.getData("SELECT * FROM `book_genres`");
@@ -148,5 +148,32 @@ public class Genre {
         
         return gList;
     }
+    
+    // create a function to return a hashmap
+    // String is the key
+    // integer is the value 
+    public HashMap<String, Integer> getGenresMap()
+    {
+        HashMap<String, Integer> map = new HashMap <> ();
+        
+        try {
+           
+            ResultSet rs = func.getData("SELECT * FROM `book_genres`");
+            
+            Genre genre; 
+            
+            while (rs.next())
+            {
+                genre = new Genre (rs.getInt("Id"), rs.getString("name"));
+                map.put(genre.getName(), genre.getId());
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Genre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return map;
+    }
+    
+    
     
 }
