@@ -3,14 +3,17 @@ package MyClasses;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Functions {
     public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label){ //Displays the logo in the dashboard
@@ -56,6 +59,29 @@ public class Functions {
         table.getTableHeader().setForeground(Color.white);
         table.getTableHeader().setFont (new Font("Tahoma",Font.BOLD, 20));
         table.getTableHeader().setOpaque(false);
+    }
+    
+    // create a function to select image
+    // the function will return the image path
+    public String selectPicture ()
+    {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Profile Picture");
+
+        fileChooser.setCurrentDirectory(new File("C://Users"));
+
+        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image", ".png", ".jpg", ".jpeg");
+        fileChooser.addChoosableFileFilter(extensionFilter);
+
+        int filestate = fileChooser.showSaveDialog(null);
+        
+        String path = "";
+    
+        if (filestate == JFileChooser.APPROVE_OPTION){
+            path = fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        
+        return path;
     }
     
     // create a function to return a resultSet
