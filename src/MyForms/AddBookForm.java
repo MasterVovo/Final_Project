@@ -520,7 +520,7 @@ public class AddBookForm extends javax.swing.JFrame {
         
         // get the image bytes
         Path path = Paths.get(imagePath);  // Fix this problem
-        byte[] img = Files.readAllBytes(path); 
+        byte[] img = Files.readAllBytes(path);
         
         
     }//GEN-LAST:event_jButton_Add1ActionPerformed
