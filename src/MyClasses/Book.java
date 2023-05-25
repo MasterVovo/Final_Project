@@ -3,6 +3,7 @@ package MyClasses;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 
 public class Book {
     
+    private Integer id;
     private String isbn;
     private String name;
     private Integer author_id;
@@ -24,9 +26,10 @@ public class Book {
     
     public Book () {}
     
-    public Book (String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, 
+    public Book (Integer _id, String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, 
                  String _publisher, double _price, String _date_received, String _description, byte[] _cover) 
     {
+        this.id = _id;
         this.isbn = _isbn;
         this.name = _name;
         this.author_id = _author_id;
@@ -40,6 +43,9 @@ public class Book {
         
     }
     
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
     public void setIsbn(String isbn) {
@@ -80,6 +86,10 @@ public class Book {
 
     public void setCover(byte[] cover) {
         this.cover = cover;
+    }
+    
+    public Integer getId() {
+        return id;
     }
     
     public String getIsbn() {
@@ -157,6 +167,25 @@ public class Book {
             Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    // create a function to check if the isbn already exists
+    public boolean isISBNexists (String _isbn) {
+        String query = "SELECT * FROM `books` WHERE `isbn`= '"+_isbn+"'";
+        Functions func = new Functions();
+        ResultSet rs = func.getData(query);
+        try {
+            if (rs.next()) {
+                return true; // if this isbn exist return true
+            }else{
+                return false; // if not return flase
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
+    }
+    
 
     public void addBook(String bn, String name, Integer author_id, Integer genre_id, Integer quantity, String publisher, Double price, java.util.Date received_date, String description, byte[] img) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
