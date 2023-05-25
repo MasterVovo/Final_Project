@@ -132,6 +132,7 @@ public class Book {
         return cover;
     }
     
+    Functions func = new Functions();
     
      //Insert a new book function
     public void addBook(String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, 
@@ -171,7 +172,7 @@ public class Book {
     // create a function to check if the isbn already exists
     public boolean isISBNexists (String _isbn) {
         String query = "SELECT * FROM `books` WHERE `isbn`= '"+_isbn+"'";
-        Functions func = new Functions();
+        
         ResultSet rs = func.getData(query);
         try {
             if (rs.next()) {
@@ -191,4 +192,28 @@ public class Book {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public Book searchBookbyId_Isnb(int _id, String _isbn)
+    {
+        String query = "SELECT * FROM `books` WHERE `id`= "+_id +" or `isbn`= '"+_isbn+"'";  
+        
+        ResultSet rs = func.getData(query);
+        Book book = null;
+        try {
+            if (rs.next()) 
+            {
+                book = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                                rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
+                                 rs.getString(9),rs.getString(10),rs.getBytes(11));
+            }   
+            else
+            {   
+                return book;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return book;
+    }
+
 }
