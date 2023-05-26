@@ -11,6 +11,9 @@ import javax.swing.border.Border;
 import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.util.Date;
+import java.util.Map;
+import java.util.Objects;
 
 
 
@@ -22,6 +25,7 @@ public class EditBookForm extends javax.swing.JFrame {
     MyClasses.Book book = new MyClasses.Book();
     AuthorsListForm authors = new AuthorsListForm();
     MyClasses.Member member = new MyClasses.Member();
+    MyClasses.Author author = new MyClasses.Author();
     MyClasses.Functions func = new MyClasses.Functions();
     MyClasses.Genre genre = new MyClasses.Genre();
     HashMap <String, Integer> genresMap = genre.getGenresMap();
@@ -555,7 +559,8 @@ public class EditBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_AddActionPerformed
 
     private void jButton_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditActionPerformed
-        // add a new book
+        // edit the selected book
+        // we will not edit the isbn
        
         MyClasses.Book book  = new MyClasses.Book();
         String isbn = jTextField_ISBN.getText();
@@ -564,6 +569,8 @@ public class EditBookForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null , "one or more fields are empty", "Empty Data", 2);
             
         }
+        
+        //
         else if (book.isISBNexists(isbn)) {
              JOptionPane.showMessageDialog(null , "this ISBN already exists", "Wrong ISBN", 2);
         }
@@ -574,6 +581,7 @@ public class EditBookForm extends javax.swing.JFrame {
         try {
             
         // get values
+        int id = Integer.parseInt(jTextField_ID.getText());
         String name = jTextField_Name.getText();
         String publisher = jTextField_Publisher.getText();
         String description = jTextArea_Description.getText();
@@ -592,7 +600,7 @@ public class EditBookForm extends javax.swing.JFrame {
             
             byte[] img = Files.readAllBytes(path);
              
-            book.addBook(isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, img);
+            book.editBook(id, isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, img);
             
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null , "Make sure to Add a Cover Image", "No Cover Image Found", 2);
@@ -624,7 +632,8 @@ public class EditBookForm extends javax.swing.JFrame {
 
     private void jButton_SelectAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectAuthorActionPerformed
         // Show author form
-        
+        AuthorsListForm authorsForm = new AuthorsListForm();
+        authorsForm.formType = "edit";
         authors.setVisible(true);
         
         /* Kinomment ko kasi nag eerror, baka may baguhin din dito pero dito muna yan HAHAHA
@@ -642,6 +651,7 @@ public class EditBookForm extends javax.swing.JFrame {
 
     private void jButton_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearActionPerformed
         // clear all fields
+        jTextField_ID.setText("");
         jTextField_ISBN.setText("");
         jTextField_Name.setText("");
         jTextField_Author.setText("");
@@ -663,15 +673,63 @@ public class EditBookForm extends javax.swing.JFrame {
 
     private void jButton_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SearchActionPerformed
         // Search book by ID or ISNB 
-        int id = Integer.parseInt(jTextField_ID.getText());
-        String isbn = jTextField_ISBN.getText();
-        MyClasses.Book selectedBook = book.searchBookbyId_Isnb(id, isbn);
+        // check if the id fields or the isbn are empty
+        if (jTextField_ID.getText().equals("") && jTextField_ISBN.getText().equals("")) {
+            JOptionPane.showMessageDialog(null , "You Need To Enter The ID or The ISBN To Complete The Search", "Empty ID & ISBN", 2);
+        }
+        else {
+            
+            try{
+                int id = 0;
+                String isbn = jTextField_ISBN.getText();
+                MyClasses.Book selectedBook = null;
+                try {
+                     id = Integer.parseInt(jTextField_ID.getText());
+                     selectedBook = book.searchBookbyId_Isnb(id, isbn);
+            }     
+             catch(NumberFormatException ex) {
+                 selectedBook = book.searchBookbyId_Isnb(id, isbn);
+             }
+           
+                jTextField_ID.setText(String.valueOf(selectedBook.getId()));
+                jTextField_ISBN.setText(selectedBook.getIsbn());
+                jTextField_Name.setText(selectedBook.getName());
+                jTextField_Publisher.setText(selectedBook.getPublisher());
+                jTextField_Price.setText(Double.toString(selectedBook.getPrice()));
+                jTextArea_Description.setText(selectedBook.getDescription());
+                jLabel_Author_ID.setText(String.valueOf(selectedBook.getAuthor_id()));
+                
+                // display the author full name
+                // you can use the "displayAuthorData" if you want
+                String fullName = (author.getAuthorById(selectedBook.getAuthor_id())).getFirstName() + " " +
+                                  (author.getAuthorById(selectedBook.getAuthor_id())).getLastName();
+                jTextField_Author.setText(fullName);
+                
+                jLabel_Genre_ID.setText(String.valueOf(selectedBook.getGenre_id()));
+                
+                // display the selected book genre in the jcombobox
+                for(Map.Entry<String,Integer> entry : genresMap.entrySet()) {
+                    if (Objects.equals(selectedBook.getGenre_id(), entry.getValue())) {
+                        jComboBox_Genre.setSelectedItem(entry.getKey());
+                        System.out.println(entry.getKey());
+                    }
+                }
+                
+                // display the date
+                Date date_receive = new SimpleDateFormat("yyyy-MM-dd").parse(selectedBook.getDate_received());
+                jDateChooser_Date.setDate(date_receive);
+                
+                byte[] image = selectedBook.getCover();
+                func.displayImage(175, 150, image, "", jLabel_Image);
+            
+        }catch(Exception ex) {
+            JOptionPane.showMessageDialog(null , "This Book Does Not Exists" + ex.getMessage(), "Book Not Found", 2); // Have an error on ex.getMessage
+        }
+            
+        }
         
-        jTextField_ID.setText(String.valueOf(selectedBook.getId()));
-        jTextField_ISBN.setText(selectedBook.getIsbn());
-        jTextField_Name.setText(selectedBook.getName());
-        jTextField_Publisher.setText(selectedBook.getPublisher());
-        jTextField_Price.setText(Double.toString(selectedBook.getPrice()));
+        
+        
         
     }//GEN-LAST:event_jButton_SearchActionPerformed
     // display the selected author data
