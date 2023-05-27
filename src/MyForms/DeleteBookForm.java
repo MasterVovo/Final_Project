@@ -1,15 +1,10 @@
 
 package MyForms;
+
 import java.awt.Color;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.util.HashMap;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
@@ -55,10 +50,10 @@ public class DeleteBookForm extends javax.swing.JFrame {
         genrePanel = new javax.swing.JPanel();
         genreLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField_ID = new javax.swing.JTextField();
         jButton_Remove = new javax.swing.JButton();
         jButton_Cancel = new javax.swing.JButton();
         genreExit = new javax.swing.JLabel();
+        jSpinner_ID = new javax.swing.JSpinner();
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(6, 4, 6));
@@ -116,13 +111,6 @@ public class DeleteBookForm extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(6, 4, 6));
         jLabel5.setText("Enter The Book ID:");
 
-        jTextField_ID.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
-        jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_IDActionPerformed(evt);
-            }
-        });
-
         jButton_Remove.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jButton_Remove.setText("Remove Book");
         jButton_Remove.addActionListener(new java.awt.event.ActionListener() {
@@ -152,12 +140,14 @@ public class DeleteBookForm extends javax.swing.JFrame {
             }
         });
 
+        jSpinner_ID.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton_Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,8 +157,8 @@ public class DeleteBookForm extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_ID)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jSpinner_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(genrePanelLayout.createSequentialGroup()
                 .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,15 +170,15 @@ public class DeleteBookForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField_ID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,30 +207,28 @@ public class DeleteBookForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_ID5ActionPerformed
 
-    private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_IDActionPerformed
-
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
         
     }//GEN-LAST:event_jButton_AddActionPerformed
 
     private void jButton_RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RemoveActionPerformed
-        // add a new book
+        // delete book
        
         MyClasses.Book book  = new MyClasses.Book();
-        String isbn = jTextField_ID.getText();
-        
-        
-        
-       
-             // get the image bytes  
+        Integer id = (Integer) jSpinner_ID.getValue();
+         
         try 
         {
+
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this Book?", "Delete Book", JOptionPane.YES_NO_OPTION);
+            
+            if (confirmation == JOptionPane.YES_OPTION){
+                book.removeBook(id);
+            }
             
         
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null , "You Need To Select a Date", "Select Date", 2);
+            JOptionPane.showMessageDialog(null , ex.getMessage(), "Delete Error", 2);
         } 
       
     }//GEN-LAST:event_jButton_RemoveActionPerformed
@@ -303,7 +291,7 @@ public class DeleteBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField_ID;
+    private javax.swing.JSpinner jSpinner_ID;
     private javax.swing.JTextField jTextField_ID2;
     private javax.swing.JTextField jTextField_ID5;
     private javax.swing.JTextField jTextField_ID6;

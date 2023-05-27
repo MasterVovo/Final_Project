@@ -341,7 +341,7 @@
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Add a New Book"/>
+            <Property name="text" type="java.lang.String" value="Edit Book"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>

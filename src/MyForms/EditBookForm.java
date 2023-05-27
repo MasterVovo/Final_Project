@@ -153,7 +153,7 @@ public class EditBookForm extends javax.swing.JFrame {
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        genreLabel.setText("Add a New Book");
+        genreLabel.setText("Edit Book");
         genreLabel.setOpaque(true);
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
