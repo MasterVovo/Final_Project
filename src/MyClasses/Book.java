@@ -172,11 +172,16 @@ public class Book {
     //edit the selected book info function
     public void editBook(int _id, String _isbn, String _name, Integer _author_id, Integer _genre_id, Integer _quantity, 
                  String _publisher, double _price, String _date_received, String _description, byte[] _cover)
-    {
-     String updateQuery = "UPDATE `books` SET `name`=?,`author_id`=?,`genre_id`=?,`quantity`=?,`publisher`=?,`price`=?,`date_received`=?,`description`=?,`cover_image`=? WHERE `id` =?";
+        {
+        String updateQuery;
+        PreparedStatement ps;
         try {
-            PreparedStatement ps = DB.getConnection().prepareStatement(updateQuery);
             
+        if (_cover != null ) //if you want to update the book image
+        {
+            updateQuery = "UPDATE `books` SET `name`=?,`author_id`=?,`genre_id`=?,`quantity`=?,`publisher`=?,`price`=?,`date_received`=?,`description`=?,`cover_image`=? WHERE `id` =?";
+             ps = DB.getConnection().prepareStatement(updateQuery);
+
             //ps.setString(1, _isbn);
             ps.setString(1, _name);
             ps.setInt(2, _author_id);
@@ -188,8 +193,26 @@ public class Book {
             ps.setString(8, _description);
             ps.setBytes(9, _cover);
             ps.setInt(10, _id);
-            
-            
+        } 
+        else    // if not            
+        {
+                updateQuery = "UPDATE `books` SET `name`=?,`author_id`=?,`genre_id`=?,`quantity`=?,`publisher`=?,`price`=?,`date_received`=?,`description`=? WHERE `id` =?";
+                
+                ps = DB.getConnection().prepareStatement(updateQuery);
+
+            //ps.setString(1, _isbn);
+            ps.setString(1, _name);
+            ps.setInt(2, _author_id);
+            ps.setInt(3, _genre_id);
+            ps.setInt(4, _quantity);
+            ps.setString(5, _publisher);
+            ps.setDouble(6, _price);
+            ps.setString(7, _date_received);
+            ps.setString(8, _description);
+            //ps.setBytes(9, _cover);
+            ps.setInt(9, _id);
+        }
+
             if(ps.executeUpdate() != 0)
             {
                 JOptionPane.showMessageDialog(null , "Book Edited", "Edit book", 1);
