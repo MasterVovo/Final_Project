@@ -34,10 +34,14 @@ public class AddMemberForm extends javax.swing.JFrame {
         
         func.displayImage(45, 45, null, "/MyImages/add_user.png", genreLabel);
         
-        //hide the jlabel "empty name messege"
-        jLabel_EmptyFirstName.setVisible(false);
-        jLabel_EmptyLastName.setVisible(false);
-        jLabel_EmptyPhoneNumber.setVisible(false);
+        // <editor-fold defaultstate="collapsed" desc="Deleted Code">
+        /*
+            //hide the jlabel "empty name messege"
+            jLabel_EmptyFirstName.setVisible(false);
+            jLabel_EmptyLastName.setVisible(false);
+            jLabel_EmptyPhoneNumber.setVisible(false);
+         */
+        // </editor-fold>
     }
 
     /**
@@ -69,6 +73,7 @@ public class AddMemberForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel_ImagePath = new javax.swing.JLabel();
         jButton_BrowseProfilePic = new javax.swing.JButton();
+        MemberImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -95,7 +100,7 @@ public class AddMemberForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(6, 4, 6));
         jLabel4.setText("First Name:");
 
@@ -107,89 +112,85 @@ public class AddMemberForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel_EmptyFirstName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_EmptyFirstName.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabel_EmptyFirstName.setForeground(new java.awt.Color(250, 0, 0));
-        jLabel_EmptyFirstName.setText("*Enter the first name");
-        jLabel_EmptyFirstName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_EmptyFirstNameMouseClicked(evt);
-            }
-        });
+        jLabel_EmptyFirstName.setText("   ");
 
-        jTextField_FirstName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField_FirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_FirstNameActionPerformed(evt);
-            }
-        });
+        jTextField_FirstName.setBackground(new java.awt.Color(243, 236, 236));
+        jTextField_FirstName.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jTextField_FirstName.setForeground(new java.awt.Color(6, 4, 6));
 
-        jTextField_PhoneNumber.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_PhoneNumber.setBackground(new java.awt.Color(243, 236, 236));
+        jTextField_PhoneNumber.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jTextField_PhoneNumber.setForeground(new java.awt.Color(6, 4, 6));
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(6, 4, 6));
         jLabel6.setText("Phone Number:");
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(6, 4, 6));
         jLabel8.setText("Last Name:");
 
-        jLabel_EmptyLastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_EmptyLastName.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabel_EmptyLastName.setForeground(new java.awt.Color(250, 0, 0));
-        jLabel_EmptyLastName.setText("*Enter the last name");
-        jLabel_EmptyLastName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_EmptyLastNameMouseClicked(evt);
-            }
-        });
+        jLabel_EmptyLastName.setText("   ");
 
-        jTextField_LastName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_LastName.setBackground(new java.awt.Color(243, 236, 236));
+        jTextField_LastName.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jTextField_LastName.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_LastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_LastNameActionPerformed(evt);
             }
         });
 
-        jLabel_EmptyPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_EmptyPhoneNumber.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabel_EmptyPhoneNumber.setForeground(new java.awt.Color(250, 0, 0));
-        jLabel_EmptyPhoneNumber.setText("*Enter the phone number");
-        jLabel_EmptyPhoneNumber.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_EmptyPhoneNumberMouseClicked(evt);
-            }
-        });
+        jLabel_EmptyPhoneNumber.setText("   ");
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(6, 4, 6));
         jLabel9.setText("Email:");
 
-        jTextField_Email.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_Email.setBackground(new java.awt.Color(243, 236, 236));
+        jTextField_Email.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jTextField_Email.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_EmailActionPerformed(evt);
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(6, 4, 6));
         jLabel10.setText("Gender:");
 
-        jComboBox_Gender.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jComboBox_Gender.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jComboBox_Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(6, 4, 6));
         jLabel11.setText("Profile Picture:");
 
-        jLabel_ImagePath.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel_ImagePath.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabel_ImagePath.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel_ImagePath.setText(" ");
+        jLabel_ImagePath.setText("*Image Path");
 
+        jButton_BrowseProfilePic.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_BrowseProfilePic.setText("Browse");
         jButton_BrowseProfilePic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_BrowseProfilePicActionPerformed(evt);
             }
         });
+
+        MemberImage.setBackground(new java.awt.Color(153, 153, 255));
+        MemberImage.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        MemberImage.setForeground(new java.awt.Color(6, 4, 6));
+        MemberImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MemberImage.setText("No Image");
+        MemberImage.setOpaque(true);
 
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
@@ -201,37 +202,43 @@ public class AddMemberForm extends javax.swing.JFrame {
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_EmptyPhoneNumber)
+                        .addGap(19, 19, 19)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_EmptyLastName)
+                                    .addComponent(jLabel_EmptyFirstName)))
+                            .addComponent(jTextField_LastName)
+                            .addComponent(jTextField_FirstName)
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_EmptyPhoneNumber))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox_Gender, 0, 231, Short.MAX_VALUE))
+                            .addComponent(jTextField_Email)
+                            .addComponent(jTextField_PhoneNumber)
                             .addComponent(jLabel9)
                             .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(jButton_BrowseProfilePic)
+                                .addGap(30, 30, 30)
+                                .addComponent(MemberImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton_BrowseProfilePic))
-                            .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jComboBox_Gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jTextField_Email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel_EmptyLastName)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel_EmptyFirstName)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,27 +247,27 @@ public class AddMemberForm extends javax.swing.JFrame {
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel_EmptyFirstName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_FirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel_EmptyLastName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_EmptyFirstName)
+                .addComponent(jTextField_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel_EmptyPhoneNumber))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_LastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_EmptyLastName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel_EmptyPhoneNumber)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jComboBox_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,12 +275,14 @@ public class AddMemberForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jButton_BrowseProfilePic))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel_ImagePath)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                    .addComponent(jLabel_ImagePath))
+                .addGap(18, 18, 18)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_BrowseProfilePic)
+                    .addComponent(MemberImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,7 +292,7 @@ public class AddMemberForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(3, 3, 3))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,25 +305,14 @@ public class AddMemberForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel_EmptyLastNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyLastNameMouseClicked
-
-        jLabel_EmptyLastName.setVisible(false);
-    }//GEN-LAST:event_jLabel_EmptyLastNameMouseClicked
-
-    private void jTextField_FirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_FirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_FirstNameActionPerformed
-
-    private void jLabel_EmptyFirstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyFirstNameMouseClicked
-        // Hide this jlabel on click
-        jLabel_EmptyFirstName.setVisible(false);
-    }//GEN-LAST:event_jLabel_EmptyFirstNameMouseClicked
-
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
+        // <editor-fold defaultstate="collapsed" desc="Deleted Code">
+        /*
         //hide the jlabel "empty name messege"
         jLabel_EmptyFirstName.setVisible(false);
         jLabel_EmptyLastName.setVisible(false);
-        jLabel_EmptyPhoneNumber.setVisible(false);
+        jLabel_EmptyPhoneNumber.setVisible(false);*/
+        // </editor-fold>
 
         // add a new member
         String fname = jTextField_FirstName.getText();
@@ -325,20 +323,17 @@ public class AddMemberForm extends javax.swing.JFrame {
         
 
         // Check if the textField are empty
-        if(fname.isEmpty())
-        {
-            jLabel_EmptyFirstName.setVisible(true);
-        }
-        else if(lname.isEmpty())
-        {
-            jLabel_EmptyLastName.setVisible(true);
-        }
-        else if(phone.isEmpty())
-        {
-            jLabel_EmptyPhoneNumber.setVisible(true);
-        }
-        else //if the textField is not empty
-        {
+        if(fname.isEmpty()){
+            jLabel_EmptyFirstName.setText("*Enter first name");
+        } else if(lname.isEmpty()){
+            jLabel_EmptyFirstName.setText(" ");
+            jLabel_EmptyLastName.setText("*Enter last name");
+        } else if(phone.isEmpty()) {
+            jLabel_EmptyLastName.setText(" ");
+            jLabel_EmptyPhoneNumber.setText("*Enter phone number");
+        } else //if the textField is not empty
+            {
+            jLabel_EmptyPhoneNumber.setText(" ");
             byte[] img = null;
             
             if (imagePath != null) {    
@@ -359,10 +354,6 @@ public class AddMemberForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
 
-    private void jLabel_EmptyPhoneNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyPhoneNumberMouseClicked
-        //jLabel_EmptyPhoneNumber.setVisible(false);
-    }//GEN-LAST:event_jLabel_EmptyPhoneNumberMouseClicked
-
     private void jTextField_LastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_LastNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_LastNameActionPerformed
@@ -375,6 +366,8 @@ public class AddMemberForm extends javax.swing.JFrame {
         String path = func.selectPicture();
         jLabel_ImagePath.setText(path);
         imagePath = path;
+        
+        func.displayImage(100, 100, null, imagePath, MemberImage);
     }//GEN-LAST:event_jButton_BrowseProfilePicActionPerformed
 
     
@@ -406,9 +399,6 @@ public class AddMemberForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AddMemberForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -419,6 +409,7 @@ public class AddMemberForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MemberImage;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
@@ -441,3 +432,9 @@ public class AddMemberForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_PhoneNumber;
     // End of variables declaration//GEN-END:variables
 }
+
+// <editor-fold defaultstate="collapsed" desc="Deleted Code">
+/*
+    - Removed labels setVisible() functions
+ */
+// </editor-fold>

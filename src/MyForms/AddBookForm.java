@@ -83,7 +83,6 @@ public class AddBookForm extends javax.swing.JFrame {
         jTextArea_Description = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         jLabel_Image = new javax.swing.JLabel();
-        jButton_SelectPicture = new javax.swing.JButton();
         jButton_Add1 = new javax.swing.JButton();
         jButton_Cancel = new javax.swing.JButton();
         jComboBox_Genre = new javax.swing.JComboBox<>();
@@ -91,10 +90,11 @@ public class AddBookForm extends javax.swing.JFrame {
         genreExit = new javax.swing.JLabel();
         jDateChooser_Date = new com.toedter.calendar.JDateChooser();
         jLabel_ImagePath = new javax.swing.JLabel();
-        jButton_SelectAuthor = new javax.swing.JButton();
         jLabel_Author_ID = new javax.swing.JLabel();
         jLabel_Genre_ID = new javax.swing.JLabel();
         jButton_Clear = new javax.swing.JButton();
+        SelectAuthor = new javax.swing.JLabel();
+        SelectPicture = new javax.swing.JLabel();
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(6, 4, 6));
@@ -148,26 +148,26 @@ public class AddBookForm extends javax.swing.JFrame {
         genreLabel.setText("Add a New Book");
         genreLabel.setOpaque(true);
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(6, 4, 6));
         jLabel5.setText("ISBN:");
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(6, 4, 6));
         jLabel6.setText("Name:");
 
-        jTextField_Name.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_Name.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_NameActionPerformed(evt);
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(6, 4, 6));
         jLabel8.setText("Author:");
 
-        jTextField_Author.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_Author.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField_Author.setEnabled(false);
         jTextField_Author.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,77 +175,68 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(6, 4, 6));
         jLabel9.setText("Quantity:");
 
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(6, 4, 6));
         jLabel13.setText("Publisher:");
 
-        jTextField_Publisher.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_Publisher.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField_Publisher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_PublisherActionPerformed(evt);
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(6, 4, 6));
         jLabel14.setText("Price:");
 
-        jTextField_Price.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_Price.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField_Price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_PriceActionPerformed(evt);
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(6, 4, 6));
         jLabel15.setText("Date Received:");
 
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(6, 4, 6));
         jLabel16.setText("Genre:");
 
-        jTextField_ISBN.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_ISBN.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField_ISBN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_ISBNActionPerformed(evt);
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(6, 4, 6));
         jLabel17.setText("Book Cover:");
 
         jTextArea_Description.setColumns(20);
+        jTextArea_Description.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextArea_Description.setRows(5);
         jScrollPane1.setViewportView(jTextArea_Description);
 
-        jLabel18.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(6, 4, 6));
         jLabel18.setText("Book Description:");
 
         jLabel_Image.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel_Image.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image.setText("No Image");
         jLabel_Image.setOpaque(true);
 
-        jButton_SelectPicture.setBackground(new java.awt.Color(153, 51, 0));
-        jButton_SelectPicture.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton_SelectPicture.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_SelectPicture.setText("Select Picture");
-        jButton_SelectPicture.setContentAreaFilled(false);
-        jButton_SelectPicture.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_SelectPicture.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_SelectPicture.setOpaque(true);
-        jButton_SelectPicture.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SelectPictureActionPerformed(evt);
-            }
-        });
-
-        jButton_Add1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jButton_Add1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_Add1.setText("Add Book");
         jButton_Add1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,7 +244,7 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_Cancel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jButton_Cancel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_Cancel.setText("Cancel");
         jButton_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,7 +252,7 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
-        jComboBox_Genre.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jComboBox_Genre.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBox_Genre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox_Genre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,7 +260,7 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
-        jSpinner_Quantity.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jSpinner_Quantity.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         genreExit.setBackground(new java.awt.Color(253, 150, 68));
         genreExit.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -284,17 +275,11 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel_ImagePath.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel_ImagePath.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel_ImagePath.setText("Choose");
+        jDateChooser_Date.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jButton_SelectAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_SelectAuthor.setText("Select Author");
-        jButton_SelectAuthor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SelectAuthorActionPerformed(evt);
-            }
-        });
+        jLabel_ImagePath.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
+        jLabel_ImagePath.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_ImagePath.setText("Image Path");
 
         jLabel_Author_ID.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel_Author_ID.setText("ID");
@@ -302,11 +287,35 @@ public class AddBookForm extends javax.swing.JFrame {
         jLabel_Genre_ID.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel_Genre_ID.setText("ID");
 
-        jButton_Clear.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jButton_Clear.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_Clear.setText("Clear");
         jButton_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ClearActionPerformed(evt);
+            }
+        });
+
+        SelectAuthor.setBackground(new java.awt.Color(0, 117, 98));
+        SelectAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SelectAuthor.setForeground(new java.awt.Color(243, 236, 236));
+        SelectAuthor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SelectAuthor.setText("Select Author");
+        SelectAuthor.setOpaque(true);
+        SelectAuthor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SelectAuthorMouseClicked(evt);
+            }
+        });
+
+        SelectPicture.setBackground(new java.awt.Color(0, 117, 98));
+        SelectPicture.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SelectPicture.setForeground(new java.awt.Color(243, 236, 236));
+        SelectPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SelectPicture.setText("Browse");
+        SelectPicture.setOpaque(true);
+        SelectPicture.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SelectPictureMouseClicked(evt);
             }
         });
 
@@ -315,72 +324,64 @@ public class AddBookForm extends javax.swing.JFrame {
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
                             .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGap(76, 76, 76)
                                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(genrePanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField_Publisher, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jSpinner_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_Author_ID))))
                             .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(jComboBox_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel_Genre_ID))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(7, 7, 7)
-                                        .addComponent(jLabel_Author_ID))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton_SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSpinner_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextField_Price, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField_Publisher, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(257, 257, 257))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17)
                             .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_SelectPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SelectPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel18)))
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
+                        .addGap(134, 134, 134)
                         .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(60, 60, 60))
+                .addGap(30, 30, 30))
             .addGroup(genrePanelLayout.createSequentialGroup()
                 .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 889, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -393,45 +394,45 @@ public class AddBookForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_ISBN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_ImagePath))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_SelectPicture)
-                        .addGap(93, 93, 93))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField_Author, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel_Author_ID))))))
                         .addGap(18, 18, 18)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField_ISBN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_Author, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Author_ID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_Genre_ID))
-                        .addGap(25, 25, 25)
+                        .addGap(18, 18, 18)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinner_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(genrePanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -443,13 +444,25 @@ public class AddBookForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33))))
+                            .addComponent(jDateChooser_Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel_ImagePath)
+                                .addGap(49, 49, 49)
+                                .addComponent(SelectPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 30, Short.MAX_VALUE)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -497,18 +510,6 @@ public class AddBookForm extends javax.swing.JFrame {
     private void jTextField_ISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ISBNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_ISBNActionPerformed
-
-    private void jButton_SelectPictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectPictureActionPerformed
-        /*  GenreForm manageGenre = new GenreForm();
-        manageGenre.setVisible(true); */
-        
-        String path = func.selectPicture();
-        jLabel_ImagePath.setText(path);
-        imagePath = path;
-      
-        func.displayImage(175, 150, null, path, jLabel_Image);
-        
-    }//GEN-LAST:event_jButton_SelectPictureActionPerformed
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
         
@@ -582,23 +583,7 @@ public class AddBookForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jComboBox_GenreActionPerformed
 
-    private void jButton_SelectAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectAuthorActionPerformed
-        // Show author form
-        
-        authors.setVisible(true);
-        
-        /* Kinomment ko kasi nag eerror, baka may baguhin din dito pero dito muna yan HAHAHA
-            AuthorsListForm authors = new AuthorsListForm();
-            authors.setVisible(true);
-            // get the selected row index
-            int index = authors.jTable_Authors.getSelectedRow();
 
-            String id = authors.jTable_Authors.getValueAt(index, 0).toString();
-            String firstName = authors.jTable_Authors.getValueAt(index,1).toString();
-            String lastName = authors.jTable_Authors.getValueAt(index, 2).toString();
-        */
-        
-    }//GEN-LAST:event_jButton_SelectAuthorActionPerformed
 
     private void jButton_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearActionPerformed
         // clear all fields
@@ -616,6 +601,65 @@ public class AddBookForm extends javax.swing.JFrame {
         jLabel_Image.setIcon(null);
         jLabel_ImagePath.setText("Choose");
     }//GEN-LAST:event_jButton_ClearActionPerformed
+
+    // <editor-fold defaultstate="collapsed" desc="Old Select Author code">
+    /*
+        private void jButton_SelectAuthorActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+            // Show author form
+
+            authors.setVisible(true);
+
+            //Kinomment ko kasi nag eerror, baka may baguhin din dito pero dito muna yan HAHAHA
+                AuthorsListForm authors = new AuthorsListForm();
+                authors.setVisible(true);
+                // get the selected row index
+                int index = authors.jTable_Authors.getSelectedRow();
+
+                String id = authors.jTable_Authors.getValueAt(index, 0).toString();
+                String firstName = authors.jTable_Authors.getValueAt(index,1).toString();
+                String lastName = authors.jTable_Authors.getValueAt(index, 2).toString();
+        }  
+    */
+    // </editor-fold>
+    private void SelectAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectAuthorMouseClicked
+        // Show author form
+        
+        authors.setVisible(true);
+        
+       /*Kinomment ko kasi nag eerror, baka may baguhin din dito pero dito muna yan HAHAHA
+            AuthorsListForm authors = new AuthorsListForm();
+            authors.setVisible(true);
+            // get the selected row index
+            int index = authors.jTable_Authors.getSelectedRow();
+
+            String id = authors.jTable_Authors.getValueAt(index, 0).toString();
+            String firstName = authors.jTable_Authors.getValueAt(index,1).toString();
+            String lastName = authors.jTable_Authors.getValueAt(index, 2).toString();*/
+    }//GEN-LAST:event_SelectAuthorMouseClicked
+
+    // <editor-fold defaultstate="collapsed" desc="Old select image code">
+    /*
+        private void jButton_SelectPictureActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        //GenreForm manageGenre = new GenreForm();
+        //manageGenre.setVisible(true); 
+
+        String path = func.selectPicture();
+        jLabel_ImagePath.setText(path);
+        imagePath = path;
+
+        func.displayImage(175, 150, null, path, jLabel_Image);
+
+    } 
+    */
+    // </editor-fold>
+    private void SelectPictureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectPictureMouseClicked
+        String path = func.selectPicture();
+        jLabel_ImagePath.setText(path);
+        imagePath = path;
+
+        func.displayImage(175, 150, null, path, jLabel_Image);
+    }//GEN-LAST:event_SelectPictureMouseClicked
+    
     // display the selected author data
     public static void displayAuthor(int id, String fullName){
         jTextField_Author.setText(fullName);
@@ -682,6 +726,8 @@ public class AddBookForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SelectAuthor;
+    private javax.swing.JLabel SelectPicture;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
@@ -689,8 +735,6 @@ public class AddBookForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Add1;
     private javax.swing.JButton jButton_Cancel;
     private javax.swing.JButton jButton_Clear;
-    private javax.swing.JButton jButton_SelectAuthor;
-    private javax.swing.JButton jButton_SelectPicture;
     private javax.swing.JComboBox<String> jComboBox_Genre;
     private com.toedter.calendar.JDateChooser jDateChooser_Date;
     private javax.swing.JLabel jLabel10;

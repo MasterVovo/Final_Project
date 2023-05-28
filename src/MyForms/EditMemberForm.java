@@ -217,6 +217,10 @@ public class EditMemberForm extends javax.swing.JFrame {
         });
 
         jLabel_Image.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jLabel_Image.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image.setText("No Image");
         jLabel_Image.setOpaque(true);
 
         jLabel_ImagePath.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
