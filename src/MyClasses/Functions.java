@@ -111,5 +111,8 @@ public class Functions {
     public void customTable(JTable jTable_Members, Color color, int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    //create a function to count the member of data 
+    public int countData(String tableName)
+    {
+        
     
-}

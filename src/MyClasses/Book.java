@@ -306,7 +306,7 @@ public class Book {
     
     
      //fucntion to populate the arraylist with books
-    public ArrayList<Book> booksList()
+    public ArrayList<Book> booksList(String query)
     {
         ArrayList<Book> bList = new ArrayList<>();
         
@@ -315,7 +315,12 @@ public class Book {
         
         try {
             
-            ResultSet rs = func.getData("SELECT * FROM `books`");
+            if (query.equals(""))// if the user entery empty string make this the default select
+                    {
+                        query = "SELECT * FROM `books`";
+                    }
+            
+            ResultSet rs = func.getData(query);
             
             Book book; 
             
