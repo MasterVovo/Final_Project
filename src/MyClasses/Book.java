@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -229,6 +230,33 @@ public class Book {
     }
     
     
+        //Remove book by id 
+    public void removeBook (int _id)
+    {
+     String removeQuery = "DELETE FROM `books` WHERE `id` = ? ";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
+ 
+            ps.setInt(1, _id);
+
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null , "Book Deleted", "remove", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null , "Book Not Deleted", "remove", 2);
+            } 
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
+    
     // create a function to check if the isbn already exists
     public boolean isISBNexists (String _isbn) {
         String query = "SELECT * FROM `books` WHERE `isbn`= '"+_isbn+"'";
@@ -275,5 +303,60 @@ public class Book {
         
         return book;
     }
+    
+    
+     //fucntion to populate the arraylist with books
+    public ArrayList<Book> booksList()
+    {
+        ArrayList<Book> bList = new ArrayList<>();
+        
+        
+        MyClasses.Functions func = new Functions();
+        
+        try {
+            
+            ResultSet rs = func.getData("SELECT * FROM `books`");
+            
+            Book book; 
+            
+            while (rs.next())
+            {
+                
+                book = new Book (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                                rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
+                                 rs.getString(9),rs.getString(10),rs.getBytes(11));
+                bList.add(book);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bList;
+    }
+    
+        
+        // get book by ID
+    public Book getBookById(int _id) throws SQLException
+    {
+        
+        
+        String query = "SELECT * FROM `books` WHERE `id` = " + _id;
+       
+        ResultSet rs = func.getData(query);
+            
+        if (rs.next())
+        {
+            return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                                rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getDouble(8),
+                                 rs.getString(9),rs.getString(10),rs.getBytes(11));
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-}
+    
+    }
+

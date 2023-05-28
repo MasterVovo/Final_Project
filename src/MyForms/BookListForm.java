@@ -11,28 +11,30 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class MemberListForm extends javax.swing.JFrame {
+public class BookListForm extends javax.swing.JFrame {
 
     
-    MyClasses.Member member = new MyClasses.Member();
+    MyClasses.Book book = new MyClasses.Book();
     MyClasses.Functions func = new MyClasses.Functions();
+    MyClasses.Author author = new MyClasses.Author();
+    MyClasses.Genre genre = new MyClasses.Genre();
     
-    public MemberListForm() {
+    public BookListForm() {
         initComponents();
         
         this.setLocationRelativeTo(null);
         //add boarder to the panel
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
+        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(250,130,49));
         genrePanel.setBorder(genreFormBorder);
         
         
-        func.displayImage(45, 45, null, "/MyImages/add_user.png", genreLabel);
+        func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
         
         //Custom the jtable
-        func.customTable(jTable_Members);
+        func.customTable(jTable_Books);
         
         //Custom the jtable header ROW
-        func.customTableHeader(jTable_Members);
+        func.customTableHeader(jTable_Books);
         
         Border jLabelImageBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(47,54,64));
         jLabel_Image.setBorder(jLabelImageBorder);
@@ -41,7 +43,7 @@ public class MemberListForm extends javax.swing.JFrame {
         func.displayImage(100, 75, null, "/MyImages/blank-profile.png", jLabel_Image);
         
         // display members in the jtable  
-        populateJtableWithMembers("");
+        populateJtableWithBooks("");
     }
 
     
@@ -55,26 +57,28 @@ public class MemberListForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField_Search = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_Members = new javax.swing.JTable();
+        jTable_Books = new javax.swing.JTable();
         jButton_Search = new javax.swing.JButton();
         jLabel_Image = new javax.swing.JLabel();
-        jLabel_FullName = new javax.swing.JLabel();
-        jLabel_Phone = new javax.swing.JLabel();
-        jLabel_Email = new javax.swing.JLabel();
-        jLabel_Gender = new javax.swing.JLabel();
+        jLabel_ISBN = new javax.swing.JLabel();
+        jLabel_Name = new javax.swing.JLabel();
+        jLabel_Author = new javax.swing.JLabel();
+        jLabel_Genre = new javax.swing.JLabel();
+        jLabel_Publisher = new javax.swing.JLabel();
+        jLabel_Price = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
 
-        genreLabel.setBackground(new java.awt.Color(164, 106, 106));
+        genreLabel.setBackground(new java.awt.Color(253, 150, 68));
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        genreLabel.setText("Members List");
+        genreLabel.setText("Books List");
         genreLabel.setOpaque(true);
 
-        genreExit.setBackground(new java.awt.Color(164, 106, 106));
+        genreExit.setBackground(new java.awt.Color(253, 150, 68));
         genreExit.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         genreExit.setForeground(new java.awt.Color(243, 236, 236));
         genreExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,24 +102,32 @@ public class MemberListForm extends javax.swing.JFrame {
             }
         });
 
-        jTable_Members.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Books.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable_Books.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
-        jTable_Members.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_Books.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_MembersMouseClicked(evt);
+                jTable_BooksMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable_Members);
+        jScrollPane2.setViewportView(jTable_Books);
+        if (jTable_Books.getColumnModel().getColumnCount() > 0) {
+            jTable_Books.getColumnModel().getColumn(0).setHeaderValue("Title 1");
+            jTable_Books.getColumnModel().getColumn(1).setHeaderValue("Title 2");
+            jTable_Books.getColumnModel().getColumn(2).setHeaderValue("Title 3");
+            jTable_Books.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+            jTable_Books.getColumnModel().getColumn(4).setHeaderValue("Title 5");
+            jTable_Books.getColumnModel().getColumn(5).setHeaderValue("Title 6");
+            jTable_Books.getColumnModel().getColumn(6).setHeaderValue("Title 7");
+            jTable_Books.getColumnModel().getColumn(7).setHeaderValue("Title 8");
+            jTable_Books.getColumnModel().getColumn(8).setHeaderValue("Title 9");
+        }
 
         jButton_Search.setText("search");
         jButton_Search.addActionListener(new java.awt.event.ActionListener() {
@@ -127,28 +139,36 @@ public class MemberListForm extends javax.swing.JFrame {
         jLabel_Image.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_Image.setOpaque(true);
 
-        jLabel_FullName.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel_FullName.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_FullName.setText("Full Name");
+        jLabel_ISBN.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_ISBN.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_ISBN.setText("ISBN");
 
-        jLabel_Phone.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel_Phone.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Phone.setText("Phone");
+        jLabel_Name.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Name.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Name.setText("Name");
 
-        jLabel_Email.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel_Email.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Email.setText("Email");
+        jLabel_Author.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Author.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Author.setText("Author");
 
-        jLabel_Gender.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel_Gender.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Gender.setText("Gender");
+        jLabel_Genre.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Genre.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Genre.setText("Genre");
+
+        jLabel_Publisher.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Publisher.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Publisher.setText("Publisher");
+
+        jLabel_Price.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Price.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Price.setText("Price");
 
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,20 +179,21 @@ public class MemberListForm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(genrePanelLayout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel_Phone)
-                                            .addComponent(jLabel_FullName)
-                                            .addComponent(jLabel_Email)
-                                            .addComponent(jLabel_Gender)))
-                                    .addGroup(genrePanelLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel_Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_Author, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_Genre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_Publisher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_Price, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel_ISBN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         genrePanelLayout.setVerticalGroup(
@@ -189,17 +210,21 @@ public class MemberListForm extends javax.swing.JFrame {
                     .addComponent(jButton_Search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_ISBN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_FullName)
+                        .addComponent(jLabel_Name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Phone)
+                        .addComponent(jLabel_Author)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Email)
+                        .addComponent(jLabel_Genre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_Publisher)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Gender)))
+                        .addComponent(jLabel_Price)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,7 +232,7 @@ public class MemberListForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(genrePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,29 +246,33 @@ public class MemberListForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
 
-     //create a function to populate the jtable with members
-    public void populateJtableWithMembers(String query)
+     //create a function to populate the jtable with books
+    public void populateJtableWithBooks(String query)
     {
-        ArrayList <MyClasses.Member>  membersList = member.membersList(query);
+        ArrayList <MyClasses.Book>  booksList = book.booksList();
         
         // jtable columns
-        String[] colNames = {"ID", "F-Name", "L-Name", "Phone", "Email", "Gender"};
+        // we will not display the book description and cover
+        String[] colNames = {"ID","ISBN","Title","Author","Genre","Quantity","Publisher","Price","Date-RCV"};
         
         // Row
-        Object [][] rows = new Object [membersList.size()][colNames.length];
+        Object [][] rows = new Object [booksList.size()][colNames.length];
         
-        for (int i = 0; i < membersList.size(); i++)
+        for (int i = 0; i < booksList.size(); i++)
         {
-          rows[i][0] = membersList.get(i).getId();
-          rows[i][1] = membersList.get(i).getFirstName();
-          rows[i][2] = membersList.get(i).getLastName();
-          rows[i][3] = membersList.get(i).getPhoneNumber();
-          rows[i][4] = membersList.get(i).getEmail();
-          rows[i][5] = membersList.get(i).getGender();
+          rows[i][0] = booksList.get(i).getId();
+          rows[i][1] = booksList.get(i).getIsbn();
+          rows[i][2] = booksList.get(i).getName();
+          rows[i][3] = booksList.get(i).getAuthor_id();
+          rows[i][4] = booksList.get(i).getGenre_id();
+          rows[i][5] = booksList.get(i).getQuantity();
+          rows[i][6] = booksList.get(i).getPublisher();
+          rows[i][7] = booksList.get(i).getPrice();
+          rows[i][8] = booksList.get(i).getDate_received();
         }
         
         DefaultTableModel model = new DefaultTableModel (rows,colNames);
-        jTable_Members.setModel(model);
+        jTable_Books.setModel(model);
         
     }
     
@@ -254,41 +283,48 @@ public class MemberListForm extends javax.swing.JFrame {
     private void jButton_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SearchActionPerformed
         // search and display data in the jtable
         String value = jTextField_Search.getText();
-        // Search by first and last name
-        String query = "SELECT * FROM `members` WHERE `firstName` LIKE'%"+value+"%' or `lastName` LIKE '%"+value+"%'";
-        populateJtableWithMembers(query);
+        // Search by name, description
+        String query = "";
+        populateJtableWithBooks(query);
     }//GEN-LAST:event_jButton_SearchActionPerformed
 
-    private void jTable_MembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_MembersMouseClicked
-        // Display the selected member data 
-        Member SelectedMember;
+    private void jTable_BooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_BooksMouseClicked
+        // Display the selected book data 
+        
+         MyClasses.Book SelectedBook;
         try {
-            Integer rowIndex = jTable_Members.getSelectedRow(); // Get the selected jTable row index 
-            // get the member id from the Jtable (the id is the fist column [0] )
-            Integer id = Integer.parseInt(jTable_Members.getModel().getValueAt(rowIndex, 0).toString());  
+            Integer rowIndex = jTable_Books.getSelectedRow(); // Get the selected jTable row index 
+            // get the book id from the Jtable (the id is the fist column [0] )
+            Integer id = Integer.parseInt(jTable_Books.getModel().getValueAt(rowIndex, 0).toString());  
 
-            SelectedMember = member.getMemberById(id);
+            SelectedBook = book.getBookById(id);
             
-            if (SelectedMember != null)
+            if (SelectedBook != null)
             {
-                jLabel_FullName.setText(SelectedMember.getFirstName() + " " + SelectedMember.getLastName());
-                jLabel_Phone.setText(SelectedMember.getPhoneNumber());
-                jLabel_Email.setText(SelectedMember.getEmail());
-                jLabel_Gender.setText(SelectedMember.getGender());
+                jLabel_ISBN.setText(SelectedBook.getIsbn());
+                jLabel_Name.setText(SelectedBook.getName());
+                // we need to display the author name
+                jLabel_Author.setText(author.getAuthorById(SelectedBook.getAuthor_id()).getFirstName() + " " + author.getAuthorById(SelectedBook.getAuthor_id()).getLastName());
+                // we need to display the genre name
+                jLabel_Genre.setText(genre.getGenreById(SelectedBook.getGenre_id()).getName());
+                jLabel_Publisher.setText(SelectedBook.getPublisher());
+                jLabel_Price.setText(String.valueOf(SelectedBook.getPrice()));
                 
                 
-                byte[] image = SelectedMember.getPicture();
-                func.displayImage(100, 75,  image, "", jLabel_Image);
+                
+                byte[] image = SelectedBook.getCover();
+                func.displayImage(100, 100,  image, "", jLabel_Image);
                 
             } else {
                 JOptionPane.showMessageDialog(null , "Member not found with the given ID", "Invalid ID", 3);
             }
             
-        } catch (SQLException | NumberFormatException ex) {
+        } catch (SQLException ex) {
             //Logger.getLogger(EditMemberForm.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null , "Enter a valid member ID", "Invalid ID", 3);
         }
-    }//GEN-LAST:event_jTable_MembersMouseClicked
+    
+    }//GEN-LAST:event_jTable_BooksMouseClicked
 
     /**
      * @param args the command line arguments
@@ -308,20 +344,21 @@ public class MemberListForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MemberListForm().setVisible(true);
+                new BookListForm().setVisible(true);
             }
         });
     }
@@ -332,13 +369,15 @@ public class MemberListForm extends javax.swing.JFrame {
     private javax.swing.JPanel genrePanel;
     private javax.swing.JButton jButton_Search;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel_Email;
-    private javax.swing.JLabel jLabel_FullName;
-    private javax.swing.JLabel jLabel_Gender;
+    private javax.swing.JLabel jLabel_Author;
+    private javax.swing.JLabel jLabel_Genre;
+    private javax.swing.JLabel jLabel_ISBN;
     private javax.swing.JLabel jLabel_Image;
-    private javax.swing.JLabel jLabel_Phone;
+    private javax.swing.JLabel jLabel_Name;
+    private javax.swing.JLabel jLabel_Price;
+    private javax.swing.JLabel jLabel_Publisher;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable_Members;
+    private javax.swing.JTable jTable_Books;
     private javax.swing.JTextField jTextField_Search;
     // End of variables declaration//GEN-END:variables
 }

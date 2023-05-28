@@ -175,5 +175,27 @@ public class Genre {
     }
     
     
+     // create a function to get genre by id
+    public Genre getGenreById(Integer id) {
+        
+         MyClasses.Functions func = new Functions();
+        
+            ResultSet rs = func.getData("SELECT * FROM `book_genres` where id = "+id);
+            
+            Genre genre = null;
+            
+            try {
+            
+            if (rs.next())
+            {
+                genre = new Genre (rs.getInt("Id"), rs.getString("name"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Genre.class.getName()).log(Level.SEVERE, null, ex);;
+        }
+        
+            return genre;
+    }
+    
     
 }
