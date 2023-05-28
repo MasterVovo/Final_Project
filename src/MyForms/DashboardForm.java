@@ -36,6 +36,10 @@ public final class DashboardForm extends javax.swing.JFrame {
         
         // display the count data 
         displayCount();
+        
+        // display the latest 5 books cover in the bottom
+        
+        
     }
     
     public void addHeaderBorders() { //Add borders to some panel headers
@@ -86,13 +90,12 @@ public final class DashboardForm extends javax.swing.JFrame {
     
     public void displayCount()
     {
-        try {
-            ResultSet rs;
-            rs = func.getData("SELECT COUNT (*) FROM `books`");
-            jLabel_BooksCount.setText(rs.getString(0).toString());
-        } catch (SQLException ex) {
-            Logger.getLogger(DashboardForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+            jLabel_BooksCount.setText(String.valueOf(func.countData("books")));
+            jLabel_MembersCount.setText(String.valueOf(func.countData("members")));
+            jLabel_AuthorsCount.setText(String.valueOf(func.countData("author")));
+            
+       
     }
             
     @SuppressWarnings("unchecked")
@@ -127,6 +130,12 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel_BooksCount = new javax.swing.JLabel();
         dashboardPanel4 = new javax.swing.JPanel();
         dashboardPanel4Header = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel_Image_2 = new javax.swing.JLabel();
+        jLabel_Image_4 = new javax.swing.JLabel();
+        jLabel_Image_1 = new javax.swing.JLabel();
+        jLabel_Image_5 = new javax.swing.JLabel();
+        jLabel_Image_3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -414,7 +423,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             dashboardPanel1HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPanel1HeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addContainerGap())
         );
         dashboardPanel1HeaderLayout.setVerticalGroup(
@@ -453,28 +462,88 @@ public final class DashboardForm extends javax.swing.JFrame {
 
         dashboardPanel4Header.setBackground(new java.awt.Color(41, 128, 185));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(243, 236, 236));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Latest Book Added");
+
         javax.swing.GroupLayout dashboardPanel4HeaderLayout = new javax.swing.GroupLayout(dashboardPanel4Header);
         dashboardPanel4Header.setLayout(dashboardPanel4HeaderLayout);
         dashboardPanel4HeaderLayout.setHorizontalGroup(
             dashboardPanel4HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1112, Short.MAX_VALUE)
+            .addGroup(dashboardPanel4HeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dashboardPanel4HeaderLayout.setVerticalGroup(
             dashboardPanel4HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPanel4HeaderLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jLabel_Image_2.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image_2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel_Image_2.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image_2.setOpaque(true);
+
+        jLabel_Image_4.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image_4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel_Image_4.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image_4.setOpaque(true);
+
+        jLabel_Image_1.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image_1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel_Image_1.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image_1.setOpaque(true);
+
+        jLabel_Image_5.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image_5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel_Image_5.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image_5.setOpaque(true);
+
+        jLabel_Image_3.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel_Image_3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel_Image_3.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image_3.setOpaque(true);
 
         javax.swing.GroupLayout dashboardPanel4Layout = new javax.swing.GroupLayout(dashboardPanel4);
         dashboardPanel4.setLayout(dashboardPanel4Layout);
         dashboardPanel4Layout.setHorizontalGroup(
             dashboardPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(dashboardPanel4Header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dashboardPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_Image_1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_Image_2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_Image_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_Image_4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_Image_5, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         dashboardPanel4Layout.setVerticalGroup(
             dashboardPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardPanel4Layout.createSequentialGroup()
                 .addComponent(dashboardPanel4Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(dashboardPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel_Image_1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(jLabel_Image_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Image_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Image_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Image_5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -484,14 +553,14 @@ public final class DashboardForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(dashboardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dashboardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dashboardPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(dashboardPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dashboardPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -612,8 +681,14 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_AuthorsCount;
     private javax.swing.JLabel jLabel_BooksCount;
+    private javax.swing.JLabel jLabel_Image_1;
+    private javax.swing.JLabel jLabel_Image_2;
+    private javax.swing.JLabel jLabel_Image_3;
+    private javax.swing.JLabel jLabel_Image_4;
+    private javax.swing.JLabel jLabel_Image_5;
     private javax.swing.JLabel jLabel_MembersCount;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Menu;
