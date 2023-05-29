@@ -1,5 +1,6 @@
 package MyClasses;
 
+//import com.mysql.cj.xdevapi.Statement;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.sql.Statement;
 
 public class Functions {
     public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label){ //Displays the logo in the dashboard
@@ -112,7 +114,24 @@ public class Functions {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     //create a function to count the member of data 
-    public int countData(String tableName)
-    {
+    public int countData(String tableName) {
+        int total = 0;
+        ResultSet rs;
+        Statement st;
         
-    
+        try {
+            st = DB.getConnection().createStatement();
+             rs = st.executeQuery("SELECT COUNT(*) as total FROM `"+tableName+"`");
+        if(rs.next()) {
+            total = rs.getInt("total");
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(Functions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+       
+        }
+    }
+
+        
+        
