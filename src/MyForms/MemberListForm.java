@@ -64,6 +64,7 @@ public class MemberListForm extends javax.swing.JFrame {
         jLabel_Gender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
 

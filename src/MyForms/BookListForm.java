@@ -133,6 +133,7 @@ public class BookListForm extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
 
@@ -312,9 +313,8 @@ public class BookListForm extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
@@ -549,17 +549,14 @@ public class BookListForm extends javax.swing.JFrame {
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
-    private javax.swing.JButton jButton_Search1;
     private javax.swing.JButton jButton_Search2;
     private javax.swing.JButton jButton_SearchBetweenTwoDates;
     private javax.swing.JButton jButton_SearchByNameOrDescription;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -572,13 +569,11 @@ public class BookListForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Price;
     private javax.swing.JLabel jLabel_Publisher;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable_Books;
     private javax.swing.JTextField jTextField_Search;
-    private javax.swing.JTextField jTextField_Search1;
     private javax.swing.JTextField jTextField_Search2;
     // End of variables declaration//GEN-END:variables
 }

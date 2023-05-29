@@ -109,7 +109,7 @@
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="  Add Member"/>
+            <Property name="text" type="java.lang.String" value="  Delete Member"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>

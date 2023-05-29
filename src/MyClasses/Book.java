@@ -2,12 +2,13 @@ package MyClasses;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.sql.Statement;
 
 
 
@@ -362,6 +363,26 @@ public class Book {
         }
     }
 
-    
+    // Function that displays the latest 5 books added
+    public void displayBooksCover(JLabel[] labels_tab){
+        ResultSet rs;
+        Statement st;
+        
+        try {
+            st = DB.getConnection().createStatement();
+            rs = st.executeQuery("SELECT `cover_image` FROM `books` ORDER BY `id` DESC LIMIT 5");
+            byte[] image;
+            int i = 0; //Populates the labels_tab with image
+            while(rs.next()) { // Goes through all of the data
+                image = rs.getBytes("cover_image");
+                func.displayImage(labels_tab[i].getWidth(), labels_tab[i].getHeight(), image, name, labels_tab[i]);
+                i++;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
+    
+}
 

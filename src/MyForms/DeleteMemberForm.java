@@ -57,7 +57,7 @@ public class DeleteMemberForm extends javax.swing.JFrame {
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        genreLabel.setText("  Add Member");
+        genreLabel.setText("  Delete Member");
         genreLabel.setOpaque(true);
 
         genreExit.setBackground(new java.awt.Color(164, 106, 106));

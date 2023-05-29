@@ -137,6 +137,7 @@ public class AddBookForm extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
         genrePanel.setEnabled(false);
