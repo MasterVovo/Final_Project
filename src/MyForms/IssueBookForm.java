@@ -50,8 +50,8 @@ public class IssueBookForm extends javax.swing.JFrame {
         func.displayImage(45, 45, null, "/MyImages/organizer.png", genreLabel);
         
         
-        // add a default image to the jlabel 
-        //func.displayImage(100, 75, null, "/MyImages/blank-profile.png", jLabel_Image);
+        // add a white border in the bottom of the book name jlabel
+        setBorderToJlabel(jLabel_BookName,Color.white);
         
         
     }
@@ -199,6 +199,18 @@ public class IssueBookForm extends javax.swing.JFrame {
         jLabel_BookName.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel_BookName.setForeground(new java.awt.Color(6, 4, 6));
         jLabel_BookName.setText("Book Name");
+        jLabel_BookName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel_BookName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_BookNameMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_BookNameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_BookNameMouseExited(evt);
+            }
+        });
 
         SearchMember.setBackground(new java.awt.Color(0, 117, 98));
         SearchMember.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -219,6 +231,11 @@ public class IssueBookForm extends javax.swing.JFrame {
         jLabel_MemberName.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel_MemberName.setForeground(new java.awt.Color(6, 4, 6));
         jLabel_MemberName.setText("Member Name");
+        jLabel_MemberName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_MemberNameMouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(6, 4, 6));
@@ -262,17 +279,15 @@ public class IssueBookForm extends javax.swing.JFrame {
                         .addComponent(jLabel_Availability, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(318, Short.MAX_VALUE))
                     .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSpinner_BookID)
+                            .addComponent(jLabel_MemberName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jSpinner_MemberID, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_BookName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jSpinner_BookID)
-                                    .addComponent(jLabel_MemberName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(jSpinner_MemberID, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(47, 47, 47)
-                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SearchBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel_BookName, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SearchBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
                 .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -423,6 +438,17 @@ public class IssueBookForm extends javax.swing.JFrame {
          else 
          {
               issue.addIssue (_book_id, _member_id, "issued", _issue_date, _return_date, _note);
+              // reset fields
+              
+              jSpinner_BookID.setValue(0);
+              jSpinner_MemberID.setValue(0);
+              jLabel_BookName.setText("Book Name");
+              jLabel_MemberName.setText("Member Full-Name");
+              jLabel_Availability.setText("YES/NO");
+              jLabel_Availability.setForeground(new Color (0,102,255));
+              jDateChooser_Return_Date.setDate(new Date());
+              book_Exist = false;
+              member_Exist = false;
             }
          }
          catch (HeadlessException | NullPointerException | ParseException ex) {
@@ -522,11 +548,33 @@ public class IssueBookForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SearchMemberMouseClicked
 
-   
-  
-    // create a function to verify the required fields
-    public boolean verif() {
-        return true;
+    private void jLabel_BookNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookNameMouseClicked
+        // display the book info card
+        int book_id = (int) jSpinner_BookID.getValue();
+        BookInfoCardForm bookCardF = new BookInfoCardForm(book_id);
+        bookCardF.setVisible(true);
+    }//GEN-LAST:event_jLabel_BookNameMouseClicked
+
+    private void jLabel_MemberNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MemberNameMouseClicked
+        // display the member info card
+        
+    }//GEN-LAST:event_jLabel_MemberNameMouseClicked
+
+    private void jLabel_BookNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookNameMouseEntered
+        // add a border in the bottom of the book name jlabel
+        setBorderToJlabel(jLabel_BookName,new Color(250,130,49));
+    }//GEN-LAST:event_jLabel_BookNameMouseEntered
+
+    private void jLabel_BookNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_BookNameMouseExited
+        // add a white border in the bottom of the book name jlabel
+        setBorderToJlabel(jLabel_BookName,Color.white);
+    }//GEN-LAST:event_jLabel_BookNameMouseExited
+
+    
+    // create a little function to set border
+    public void setBorderToJlabel(JLabel label, Color color) {
+        Border genreFormBorder = BorderFactory.createMatteBorder(0,0,1,0,  color);
+        label.setBorder(genreFormBorder);
     }
     
     /**
