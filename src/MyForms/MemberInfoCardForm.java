@@ -9,16 +9,16 @@ import java.util.logging.Logger;
 
 
 
-public class BookInfoCardForm extends javax.swing.JFrame {
+public class MemberInfoCardForm extends javax.swing.JFrame {
 
     
-    MyClasses.Book book = new MyClasses.Book();
+    MyClasses.Member member = new MyClasses.Member();
     MyClasses.Functions func = new MyClasses.Functions();
     MyClasses.Author author = new MyClasses.Author();
     MyClasses.Genre genre = new MyClasses.Genre();
     
     
-    public BookInfoCardForm(int book_id) {
+    public MemberInfoCardForm(int member_id) {
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -36,42 +36,32 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         // add a default image to the jlabel 
         func.displayImage(120, 120, null, "/MyImages/blank-profile.png", jLabel_Image);
         
-        displayBookInfo(book_id);
+        displayMemberInfo(member_id);
         
     }
     
-    // create a function to display the book info
-    public void displayBookInfo(int _book_id) {
+    // create a function to display the member info
+    public void displayMemberInfo(int member_id) {
         try {
             
-            MyClasses.Book SelectedBook = book.getBookById(_book_id);
+            MyClasses.Member SelectedMember = member.getMemberById(member_id);
             
             
-            if (SelectedBook != null)
+            if (SelectedMember != null)
             {
-                jLabel_ISBN.setText(SelectedBook.getIsbn());
-                jLabel_Name.setText(SelectedBook.getName());
-                
-                // we need to display the author name
-                jLabel_Author.setText(author.getAuthorById(SelectedBook.getAuthor_id()).getFirstName() + " " + author.getAuthorById(SelectedBook.getAuthor_id()).getLastName());
-                
-                // we need to display the genre name
-                jLabel_Genre.setText(genre.getGenreById(SelectedBook.getGenre_id()).getName());
-                
-                jLabel_Publisher.setText(SelectedBook.getPublisher());
-                jLabel_Price.setText(String.valueOf(SelectedBook.getPrice()));
-                jLabel_Quantity.setText(String.valueOf(SelectedBook.getQuantity()));
-                jLabel_DateReceived.setText(SelectedBook.getDate_received());
-                jTextArea_Description.setText(SelectedBook.getDescription());
+                jLabel_ID.setText(String.valueOf(SelectedMember.getId()));
+                jLabel_Name.setText(SelectedMember.getFirstName() + " " + SelectedMember.getLastName());
+                jLabel_Email.setText(SelectedMember.getEmail());
+                jLabel_Phone.setText(SelectedMember.getPhoneNumber());
+                jLabel_Gender.setText(SelectedMember.getGender());
                 
                 
-                
-                byte[] image = SelectedBook.getCover();
-                func.displayImage(140, 230,  image, "", jLabel_Image);
+                byte[] image = SelectedMember.getPicture();
+                func.displayImage(150, 150,  image, "", jLabel_Image);
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(BookInfoCardForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MemberInfoCardForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -90,16 +80,11 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         genreLabel = new javax.swing.JLabel();
         genreExit = new javax.swing.JLabel();
         jLabel_Image = new javax.swing.JLabel();
-        jLabel_ISBN = new javax.swing.JLabel();
+        jLabel_ID = new javax.swing.JLabel();
         jLabel_Name = new javax.swing.JLabel();
-        jLabel_Author = new javax.swing.JLabel();
-        jLabel_Genre = new javax.swing.JLabel();
-        jLabel_Publisher = new javax.swing.JLabel();
-        jLabel_Price = new javax.swing.JLabel();
-        jLabel_Quantity = new javax.swing.JLabel();
-        jLabel_DateReceived = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea_Description = new javax.swing.JTextArea();
+        jLabel_Phone = new javax.swing.JLabel();
+        jLabel_Email = new javax.swing.JLabel();
+        jLabel_Gender = new javax.swing.JLabel();
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(6, 4, 6));
@@ -161,7 +146,7 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        genreLabel.setText("Book Info Card");
+        genreLabel.setText("Member Info Card");
         genreLabel.setOpaque(true);
 
         genreExit.setBackground(new java.awt.Color(253, 150, 68));
@@ -180,71 +165,49 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         jLabel_Image.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_Image.setOpaque(true);
 
-        jLabel_ISBN.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_ISBN.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_ISBN.setText("ISBN");
+        jLabel_ID.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_ID.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_ID.setText("ID:");
 
         jLabel_Name.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel_Name.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Name.setText("Name");
+        jLabel_Name.setText("Name:");
 
-        jLabel_Author.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Author.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Author.setText("Author");
+        jLabel_Phone.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Phone.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Phone.setText("Phone:");
 
-        jLabel_Genre.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Genre.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Genre.setText("Genre");
+        jLabel_Email.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Email.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Email.setText("Email:");
 
-        jLabel_Publisher.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Publisher.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Publisher.setText("Publisher");
-
-        jLabel_Price.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Price.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Price.setText("Price");
-
-        jLabel_Quantity.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Quantity.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Quantity.setText("Quantity");
-
-        jLabel_DateReceived.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_DateReceived.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_DateReceived.setText("Date Received");
-
-        jTextArea_Description.setColumns(20);
-        jTextArea_Description.setRows(5);
-        jTextArea_Description.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea_Description);
+        jLabel_Gender.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel_Gender.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel_Gender.setText("Gender:");
 
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_DateReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel_Author, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel_Genre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel_Publisher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel_ISBN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel_Email)
+                            .addComponent(jLabel_Phone)
+                            .addComponent(jLabel_Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_ID))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel_Gender)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,38 +216,30 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jLabel_ISBN)
+                        .addComponent(jLabel_ID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel_Name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Author)
+                        .addComponent(jLabel_Phone)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Genre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Publisher)
+                        .addComponent(jLabel_Email)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Price)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Quantity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_DateReceived))
-                    .addComponent(jLabel_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(jLabel_Gender))
+                    .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(genrePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+            .addComponent(genrePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -321,14 +276,18 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberInfoCardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -337,7 +296,7 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookInfoCardForm(0).setVisible(true);
+                new MemberInfoCardForm(0).setVisible(true);
             }
         });
     }
@@ -349,18 +308,13 @@ public class BookInfoCardForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Search2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel_Author;
-    private javax.swing.JLabel jLabel_DateReceived;
-    private javax.swing.JLabel jLabel_Genre;
-    private javax.swing.JLabel jLabel_ISBN;
+    private javax.swing.JLabel jLabel_Email;
+    private javax.swing.JLabel jLabel_Gender;
+    private javax.swing.JLabel jLabel_ID;
     private javax.swing.JLabel jLabel_Image;
     private javax.swing.JLabel jLabel_Name;
-    private javax.swing.JLabel jLabel_Price;
-    private javax.swing.JLabel jLabel_Publisher;
-    private javax.swing.JLabel jLabel_Quantity;
+    private javax.swing.JLabel jLabel_Phone;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea_Description;
     private javax.swing.JTextField jTextField_Search2;
     // End of variables declaration//GEN-END:variables
 }

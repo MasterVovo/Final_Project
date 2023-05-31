@@ -306,7 +306,7 @@ public class Book {
     }
     
     
-     //fucntion to populate the arraylist with books
+    //fucntion to populate the arraylist with books
     public ArrayList<Book> booksList(String query)
     {
         ArrayList<Book> bList = new ArrayList<>();

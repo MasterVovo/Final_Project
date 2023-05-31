@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +26,76 @@ public class Issue_Book {
     private String issue_date;
     private String Return_date;
     private String note;
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
+    }
+
+    public void setMember_id(int member_id) {
+        this.member_id = member_id;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setIssue_date(String issue_date) {
+        this.issue_date = issue_date;
+    }
+
+    public void setReturn_date(String Return_date) {
+        this.Return_date = Return_date;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public int getBook_id() {
+        return book_id;
+    }
+
+    public int getMember_id() {
+        return member_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getIssue_date() {
+        return issue_date;
+    }
+
+    public String getReturn_date() {
+        return Return_date;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public Issue_Book() {
+    }
+
+    public Issue_Book(int book_id, int member_id, String status, String issue_date, String Return_date, String note) {
+        this.book_id = book_id;
+        this.member_id = member_id;
+        this.status = status;
+        this.issue_date = issue_date;
+        this.Return_date = Return_date;
+        this.note = note;
+    }
+    
+    Functions func = new Functions();
     
     Book book = new Book();
     
@@ -120,4 +191,36 @@ public class Issue_Book {
        
         }
     
+    //fucntion to populate the arraylist with issued/returned/lost books
+    public ArrayList<Issue_Book> issuedBookList(String status)
+    {
+        //Create a list
+        ArrayList<Issue_Book> iList = new ArrayList<>();
+        String query;
+        
+        if(status.equals("")){ //If  the status is empty, show all data
+            query = "SELECT * FROM `issue_book`";
+        } else { //Show data depending on the status
+            query = "SELECT * FROM `issue_book` WHERE `status` = '" + status + "'";
+        }
+        
+        try {
+            ResultSet rs = func.getData(query);
+            
+            Issue_Book issbook; 
+            
+            while (rs.next())
+            {
+                
+                issbook = new Issue_Book(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
+                                rs.getString(5), rs.getString(6));
+                iList.add(issbook);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return iList;
+    }
 }
