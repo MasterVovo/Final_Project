@@ -400,7 +400,10 @@ public class ReturnBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_AddActionPerformed
 
     private void jButton_ReturnedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ReturnedActionPerformed
-          // issue a book 
+          // return a book 
+          // update the return date 
+          // the note
+          // and the status to returned 
          int _book_id = (int)jSpinner_BookID.getValue();
          int _member_id = (int)jSpinner_MemberID.getValue();
          String _note = jTextArea_Note.getText();
@@ -409,49 +412,26 @@ public class ReturnBookForm extends javax.swing.JFrame {
          
          try 
          {
-         String _issue_date = dateFormat.format (jDateChooser_IssueDate.getDate());
          String _return_date = dateFormat.format (jDateChooser_Return_Date.getDate());
-         
-         // before issuing a book we need to check 
-         // if the return date came the issue date 
-         // We need to check if the book and member exist
-         
-         Date issDate = dateFormat.parse(_issue_date);
          Date rtnDate = dateFormat.parse(_return_date);
          
-       
-         if (!book_Exist) // if the member doen't exist
-         {
-             JOptionPane.showMessageDialog(null , "You Need To Check If The Book Exist First By Clicking The Search Book Button", "Check If The Book Exist", 2);
-         }
-         else if(!member_Exist)  //if the book doen't exist
-         {
-             JOptionPane.showMessageDialog(null , "You Need To Check If The Member Exist First By Clicking The Search Member Button", "Check If The Member Exist", 2);
-         }
+         String _issue_date = dateFormat.format (jDateChooser_IssueDate.getDate());
          
-        
-         // We need to check if this book is available          
-         else if (!issue.checkBookAvailability(_book_id))
-         {
-             JOptionPane.showMessageDialog(null , "This Book Is Not Available Right Now", "Book Not Available", 2);
-         }
-         
-         else if (rtnDate.before(issDate)) // if the return date is higher than the issue date 
+         Date issDate = dateFormat.parse(_issue_date);
+
+         if (rtnDate.before(issDate)) // if the return date is higher than the issue date 
          {
               JOptionPane.showMessageDialog(null , "The Return Date Must Be After The Issue Date", "Wrong Return Date", 2);
          }
          else 
          {
-              issue.addIssue (_book_id, _member_id, "issued", _issue_date, _return_date, _note);
+              issue.updateIssue (_book_id, _member_id, "returned", _issue_date, _return_date, _note);
               // reset fields
               
               jSpinner_BookID.setValue(0);
               jSpinner_MemberID.setValue(0);
               jLabel_BookName.setText("Book Name");
               jLabel_MemberName.setText("Member Full-Name");
-              jDateChooser_Return_Date.setDate(new Date());
-              book_Exist = false;
-              member_Exist = false;
             }
          }
          catch (HeadlessException | NullPointerException | ParseException ex) {
@@ -511,20 +491,44 @@ public class ReturnBookForm extends javax.swing.JFrame {
         
         MyClasses.Book selectedBook;
         MyClasses.Member selectedMember;
+        
         try {
+            // There's no member with id '1'
+            // Fix it Later (Error Part)
             selectedBook = book.getBookById(bookId);
+            // display the book title/ name and ID
+            jSpinner_BookID.setValue(selectedBook.getId());
             selectedMember = member.getMemberById(memberId);
             
             jLabel_BookName.setText(selectedBook.getName());
+            // display the member full-name and ID
+            jSpinner_MemberID.setValue(selectedMember.getId());
             jLabel_MemberName.setText(selectedMember.getFirstName() + " " + selectedMember.getLastName());
-        } catch (SQLException ex) {
-            Logger.getLogger(ReturnBookForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String status = jTable_Books.getValueAt(index, 2).toString();
+            
+        //String status = jTable_Books.getValueAt(index, 2).toString();
         String issueDate = jTable_Books.getValueAt(index, 3).toString();
         String returnDate = jTable_Books.getValueAt(index,4).toString();
         String note = jTable_Books.getValueAt(index, 5).toString();
+            
+            
+         // display the date
+                Date issDate = new SimpleDateFormat("yyyy-MM-dd").parse(issueDate);
+                jDateChooser_IssueDate.setDate(issDate);   
+                
+                Date rtnDate = new SimpleDateFormat("yyyy-MM-dd").parse(returnDate);
+                jDateChooser_Return_Date.setDate(rtnDate);
+                
+                
+                jTextArea_Note.setText(note);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ReturnBookForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ReturnBookForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_jTable_BooksMouseClicked
 
     private void jButton_LostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LostActionPerformed

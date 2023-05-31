@@ -129,6 +129,37 @@ public class Issue_Book {
             Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+    // update issue 
+    public void updateIssue (int _book_id, int _member_id, String _status, String _issue_date,String _return_date, String _note)
+    {
+        String updateQuery = "UPDATE `issue_book` SET `status`= ?,`return_date`= ?,`note`=? WHERE `book_id`=? AND`member_id`=? AND`issue_date` = ?";
+         try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(updateQuery);
+            
+            
+            ps.setString(1, _status);
+            ps.setString(2, _return_date);
+            ps.setString(3, _note);
+             ps.setInt(4, _book_id);
+            ps.setInt(5, _member_id);
+            ps.setString(6, _issue_date);
+            
+            
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null , "Status Updated ", "Book issue", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null , "Status Not Added", "Book  issue", 2);
+            } 
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
     // check if the this book is available 
