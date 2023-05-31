@@ -254,4 +254,34 @@ public class Issue_Book {
         
         return iList;
     }
+    
+        //Remove issued book using the book_id - member_id and issued date
+        // you can add a column id (make it as the key) to the table
+        // like we did in the book
+    public void removeFromIssuedTable (int _book_id, int _member_id, String _issued_date)
+    {
+     String removeQuery = "DELETE FROM `issue_book` WHERE `book_id`=? AND `member_id`=? AND `issue_date`=?";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
+ 
+            ps.setInt(1, _book_id);
+            ps.setInt(2, _member_id);
+            ps.setString(3, _issued_date);
+
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null , "Deleted Successfully", "remove", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null , "Not Deleted", "remove", 2);
+            } 
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    } 
+    
 }
