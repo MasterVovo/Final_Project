@@ -329,11 +329,11 @@ public class AuthorsForm extends javax.swing.JFrame {
         String about = jTextArea_About.getText();
         
         // Check if the textField are empty
-        if(fname.isEmpty())
+        if(fname.trim().isEmpty())
         {
            jLabel_EmptyFirstName.setVisible(true);
         }
-        else if(lname.isEmpty())
+        else if(lname.trim().isEmpty())
         {
            jLabel_EmptyLastName.setVisible(true);
         }
