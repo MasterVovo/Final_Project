@@ -360,7 +360,14 @@ public class AuthorsForm extends javax.swing.JFrame {
          try
             {
                 int id = Integer.parseInt(jTextField_ID.getText());
-                author.removeAuthor(id);
+                
+                //Confirmation message
+                int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this author?", "Delete Author", JOptionPane.YES_NO_OPTION);
+            
+                if (confirmation == JOptionPane.YES_OPTION){
+                    author.removeAuthor(id);
+                }
+                
                 
                 // refresh the Jtable Genres
                 //populateJtableWithGenres();

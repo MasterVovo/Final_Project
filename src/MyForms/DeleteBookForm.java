@@ -220,7 +220,7 @@ public class DeleteBookForm extends javax.swing.JFrame {
          
         try 
         {
-
+            //Confirmation message
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this Book?", "Delete Book", JOptionPane.YES_NO_OPTION);
             
             if (confirmation == JOptionPane.YES_OPTION){

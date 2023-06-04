@@ -131,6 +131,9 @@ public final class DashboardForm extends javax.swing.JFrame {
         jButton_EditBook = new javax.swing.JButton();
         jButton_DeleteBook = new javax.swing.JButton();
         jButton_BooksList = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jButton_IssueBook = new javax.swing.JButton();
+        jButton_ReturnBook = new javax.swing.JButton();
         dashboardPanel2 = new javax.swing.JPanel();
         dashboardPanel2Header = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -329,6 +332,36 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(243, 236, 236));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Circulation");
+        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jButton_IssueBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_IssueBook.setForeground(new java.awt.Color(243, 236, 236));
+        jButton_IssueBook.setText("Issue");
+        jButton_IssueBook.setContentAreaFilled(false);
+        jButton_IssueBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_IssueBook.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_IssueBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IssueBookActionPerformed(evt);
+            }
+        });
+
+        jButton_ReturnBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_ReturnBook.setForeground(new java.awt.Color(243, 236, 236));
+        jButton_ReturnBook.setText("Return");
+        jButton_ReturnBook.setContentAreaFilled(false);
+        jButton_ReturnBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_ReturnBook.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_ReturnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ReturnBookActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
         jPanel_Menu.setLayout(jPanel_MenuLayout);
         jPanel_MenuLayout.setHorizontalGroup(
@@ -350,7 +383,10 @@ public final class DashboardForm extends javax.swing.JFrame {
                     .addComponent(jButton_AddMember, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_EditMember, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_DeleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_MembersList, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_MembersList, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_IssueBook, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_ReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_MenuLayout.setVerticalGroup(
@@ -385,6 +421,12 @@ public final class DashboardForm extends javax.swing.JFrame {
                 .addComponent(jButton_DeleteBook)
                 .addGap(5, 5, 5)
                 .addComponent(jButton_BooksList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jButton_IssueBook)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_ReturnBook)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -722,6 +764,16 @@ public final class DashboardForm extends javax.swing.JFrame {
         booksList.setVisible(true);
     }//GEN-LAST:event_jButton_BooksListActionPerformed
 
+    private void jButton_IssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IssueBookActionPerformed
+        IssueBookForm issueBook = new IssueBookForm();
+        issueBook.setVisible(true);
+    }//GEN-LAST:event_jButton_IssueBookActionPerformed
+
+    private void jButton_ReturnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ReturnBookActionPerformed
+        ReturnBookForm returnBook = new ReturnBookForm();
+        returnBook.setVisible(true);
+    }//GEN-LAST:event_jButton_ReturnBookActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -775,9 +827,11 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DeleteMember;
     private javax.swing.JButton jButton_EditBook;
     private javax.swing.JButton jButton_EditMember;
+    private javax.swing.JButton jButton_IssueBook;
     private javax.swing.JButton jButton_ManageAuthors;
     private javax.swing.JButton jButton_ManageGenre;
     private javax.swing.JButton jButton_MembersList;
+    private javax.swing.JButton jButton_ReturnBook;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -787,6 +841,7 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_AuthorsCount;
     private javax.swing.JLabel jLabel_BooksCount;
     private javax.swing.JLabel jLabel_Image_1;

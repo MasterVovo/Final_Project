@@ -111,12 +111,12 @@ public class Users {
     }
     
     // create a function to check if the username is already exists
-    public boolean checkUsernameExists(String _username) 
+    public boolean checkUsernameExists(int _id, String _username) 
     {
         
          MyClasses.Functions func = new Functions();
         
-         ResultSet rs = func.getData("SELECT * FROM `users_table` WHERE `userName` = '"+ _username +"'");
+         ResultSet rs = func.getData("SELECT * FROM `users_table` WHERE `userName` = '"+ _username +"' AND `id` <> " + _id);
          boolean exists = false;
             
             try {
@@ -173,6 +173,31 @@ public class Users {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void removeUser(int _id)
+    {
+        String removeQuery = "DELETE FROM `users_table` WHERE `id` = ? ";
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(removeQuery);
+ 
+            ps.setInt(1, _id);
+
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null , "User Deleted", "remove", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null , "User Not Deleted", "remove", 2);
+            } 
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     //fucntion to populate the arraylist with user
     public ArrayList<Users> usersList()
     {

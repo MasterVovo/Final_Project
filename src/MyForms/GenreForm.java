@@ -362,7 +362,14 @@ public class GenreForm extends javax.swing.JFrame {
         try
         {
             int id = Integer.parseInt(ID.getText());
-            genre.removeGenre(id);
+            
+            //Confirmation message
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this genre?", "Delete Genre", JOptionPane.YES_NO_OPTION);
+            
+            if (confirmation == JOptionPane.YES_OPTION){
+                genre.removeGenre(id);
+            }
+            
 
             // refresh the Jtable Genres
             populateJtableWithGenres();

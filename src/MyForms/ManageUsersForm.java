@@ -415,19 +415,31 @@ public class ManageUsersForm extends javax.swing.JFrame {
         {
            JOptionPane.showMessageDialog(null , "Retype The Correct Password", "Password Error!", 0);    
         }
-        
-        // We need to check of this username already exist
-        else if (user.checkUsernameExists(username))
-        {
-            JOptionPane.showMessageDialog(null , "This Username Already Exists Try Another One", "Username Error", 0);    
-        }
         else //if the textField is not empty
         {
             
             try 
             {
-            int id = Integer.parseInt(jTextField_ID.getText());
-            user.editUser(id, fname, lname, username, password_1, userType);
+                int id = Integer.parseInt(jTextField_ID.getText());
+                // We need to check of this username already exist
+                if (user.checkUsernameExists(id,username))
+                {
+                    JOptionPane.showMessageDialog(null , "This Username Already Exists Try Another One", "Username Error", 0);    
+                } else {
+                    user.editUsers(id, fname, lname, username, password_1, userType);
+                
+                    //refresh the Jtable Users
+                    populateJtableWithUsers();
+                    
+                    // clear text form the textfields
+                    jTextField_ID.setText("");
+                    jTextField_FirstName.setText("");
+                    jTextField_LastName.setText("");
+                    jTextField_Username.setText("");
+                    jPasswordField1.setText("");
+                    jPasswordField2.setText("");
+                    jCheckBox_SetAdmin.setSelected(false);
+                }
             }
             catch(NumberFormatException ex)
             {
@@ -439,24 +451,33 @@ public class ManageUsersForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_EditActionPerformed
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
-        // Delete the selected author
+        // Delete the selected user
          try
             {
                 int id = Integer.parseInt(jTextField_ID.getText());
-                //author.removeAuthor(id);
                 
-                // refresh the Jtable Genres
-                //populateJtableWithGenres();
+                //Confirmation message
+                int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this user?", "Delete User", JOptionPane.YES_NO_OPTION);
+            
+                if (confirmation == JOptionPane.YES_OPTION){
+                    user.removeUser(id);
+                }
+                
+                //refresh the Jtable Users
+                populateJtableWithUsers();
                 
                 // clear text form the textfields
                 jTextField_ID.setText("");
                 jTextField_FirstName.setText("");
                 jTextField_LastName.setText("");
                 jTextField_Username.setText("");
+                jPasswordField1.setText("");
+                jPasswordField2.setText("");
+                jCheckBox_SetAdmin.setSelected(false);
             }
             catch(NumberFormatException ex)
             {    
-            JOptionPane.showMessageDialog(null , "Invalid Author ID - " + ex.getMessage(), "Error!", 0);
+            JOptionPane.showMessageDialog(null , "Invalid User ID - " + ex.getMessage(), "Error!", 0);
             }
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
@@ -495,16 +516,24 @@ public class ManageUsersForm extends javax.swing.JFrame {
         }
         
         // We need to check of this username already exist
-        else if (user.checkUsernameExists(username))
+        else if (user.checkUsernameExists(0, username))
         {
             JOptionPane.showMessageDialog(null , "This Username Already Exists Try Another One", "Username Error", 0);    
         }
         else //if the textField is not empty
         {
             user.addUser(fname, lname, username, password_1, userType);
+            //refresh the Jtable Users
+            populateJtableWithUsers();
             
-            // refresh the Jtable Genres
-            //populateJtableWithUsers();
+            // clear text form the textfields
+            jTextField_ID.setText("");
+            jTextField_FirstName.setText("");
+            jTextField_LastName.setText("");
+            jTextField_Username.setText("");
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
+            jCheckBox_SetAdmin.setSelected(false);
         }
     }//GEN-LAST:event_jButton_AddActionPerformed
 
