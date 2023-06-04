@@ -323,12 +323,15 @@ public class AddMemberForm extends javax.swing.JFrame {
         
 
         // Check if the textField are empty
-        if(fname.isEmpty()){
+        if(fname.trim().isEmpty())
+        {
             jLabel_EmptyFirstName.setText("*Enter first name");
-        } else if(lname.isEmpty()){
+        } else if(lname.trim().isEmpty())
+        {
             jLabel_EmptyFirstName.setText(" ");
             jLabel_EmptyLastName.setText("*Enter last name");
-        } else if(phone.isEmpty()) {
+        } else if(phone.trim().isEmpty()) 
+        {
             jLabel_EmptyLastName.setText(" ");
             jLabel_EmptyPhoneNumber.setText("*Enter phone number");
         } else //if the textField is not empty

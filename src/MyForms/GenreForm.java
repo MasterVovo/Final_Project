@@ -317,7 +317,7 @@ public class GenreForm extends javax.swing.JFrame {
         String name = Genre.getText();
 
         // Check if the textField is empty
-        if(name.isEmpty())
+        if(name.trim().isEmpty())
         {
             jLabel_EmptyGenre.setText("*Enter genre");
         }
@@ -335,7 +335,7 @@ public class GenreForm extends javax.swing.JFrame {
         String name = Genre.getText();
         
         // Check if the textField is empty
-        if(name.isEmpty())
+        if(name.trim().isEmpty())
         {
            jLabel_EmptyGenre.setVisible(true);
         }

@@ -42,8 +42,8 @@ public class ManageUsersForm extends javax.swing.JFrame {
         jLabel_EmptyUserName.setVisible(false);
         jLabel_EmptyPassword.setVisible(false);
         
-        //Populate Jtable With Authors
-        //populateJtableWithAuthors();
+        //Populate Jtable With User
+        populateJtableWithUsers();
     }
 
     /**
@@ -79,6 +79,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel_EmptyUserName = new javax.swing.JLabel();
         jLabel_EmptyPassword = new javax.swing.JLabel();
+        jCheckBox_SetAdmin = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -114,6 +115,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
         jLabel5.setText("ID:");
 
         jTextField_ID.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_ID.setEnabled(false);
         jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_IDActionPerformed(evt);
@@ -236,6 +238,9 @@ public class ManageUsersForm extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_SetAdmin.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jCheckBox_SetAdmin.setText("Make This user An Admin");
+
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
         genrePanelLayout.setHorizontalGroup(
@@ -277,7 +282,10 @@ public class ManageUsersForm extends javax.swing.JFrame {
                                                 .addComponent(jLabel_EmptyPassword))
                                             .addComponent(jLabel10))
                                         .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(66, 66, 66))))
+                                .addGap(60, 60, 60))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(jCheckBox_SetAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -339,6 +347,8 @@ public class ManageUsersForm extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox_SetAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,35 +383,58 @@ public class ManageUsersForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_IDActionPerformed
 
     private void jButton_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditActionPerformed
-        //edit the selected author 
+         // edit user info
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
-        String expertise = jTextField_Username.getText();
+        String username = jTextField_Username.getText();
+        String password_1 = String.valueOf(jPasswordField1.getPassword());
+        String password_2 = String.valueOf(jPasswordField2.getPassword());
+        String userType = "user";
+        
+        if(jCheckBox_SetAdmin.isSelected()) { userType = "admin"; }
+        
         
         // Check if the textField are empty
-        if(fname.isEmpty())
+        if(fname.trim().isEmpty())
         {
            jLabel_EmptyFirstName.setVisible(true);
         }
-        else if(lname.isEmpty())
+        else if(lname.trim().isEmpty())
         {
            jLabel_EmptyLastName.setVisible(true);
         }
+        else if(username.trim().isEmpty())
+        {
+           jLabel_EmptyUserName.setVisible(true);
+        }
+        else if(password_1.trim().isEmpty())
+        {
+           jLabel_EmptyPassword.setVisible(true);
+        }
+        else if(!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
+        {
+           JOptionPane.showMessageDialog(null , "Retype The Correct Password", "Password Error!", 0);    
+        }
+        
+        // We need to check of this username already exist
+        else if (user.checkUsernameExists(username))
+        {
+            JOptionPane.showMessageDialog(null , "This Username Already Exists Try Another One", "Username Error", 0);    
+        }
         else //if the textField is not empty
         {
-            try
+            
+            try 
             {
-                int id = Integer.parseInt(jTextField_ID.getText());
-                //author.EditAuthor(id, fname, lname, expertise, about);
-                
-                // refresh the Jtable Genres
-                //populateJtableWithGenres();
+            int id = Integer.parseInt(jTextField_ID.getText());
+            user.editUser(id, fname, lname, username, password_1, userType);
             }
             catch(NumberFormatException ex)
-            {    
-            JOptionPane.showMessageDialog(null , "Invalid Author ID - " + ex.getMessage(), "Error!", 0);
+            {
+                JOptionPane.showMessageDialog(null , "Select The User you Want To Edit From The Table", "No ID Selected", 0);    
             }
-        
+            // refresh the Jtable Genres
+            //populateJtableWithUsers();
         }
     }//GEN-LAST:event_jButton_EditActionPerformed
 
@@ -432,8 +465,12 @@ public class ManageUsersForm extends javax.swing.JFrame {
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String username = jTextField_Username.getText();
-        String password = String.valueOf(jPasswordField1.getPassword());
-        String retypedPass = String.valueOf(jPasswordField2.getPassword());
+        String password_1 = String.valueOf(jPasswordField1.getPassword());
+        String password_2 = String.valueOf(jPasswordField2.getPassword());
+        String userType = "user";
+        
+        if(jCheckBox_SetAdmin.isSelected()) { userType = "admin"; }
+        
         
         // Check if the textField are empty
         if(fname.trim().isEmpty())
@@ -448,16 +485,26 @@ public class ManageUsersForm extends javax.swing.JFrame {
         {
            jLabel_EmptyUserName.setVisible(true);
         }
-        else if(password.trim().isEmpty())
+        else if(password_1.trim().isEmpty())
         {
            jLabel_EmptyPassword.setVisible(true);
         }
+        else if(!password_1.equals(password_2)) // check the password_1 doesn't equal the password_2
+        {
+           JOptionPane.showMessageDialog(null , "Retype The Correct Password", "Password Error!", 0);    
+        }
+        
+        // We need to check of this username already exist
+        else if (user.checkUsernameExists(username))
+        {
+            JOptionPane.showMessageDialog(null , "This Username Already Exists Try Another One", "Username Error", 0);    
+        }
         else //if the textField is not empty
         {
-            user.addUser(fname, lname, username, password, "user");
+            user.addUser(fname, lname, username, password_1, userType);
             
             // refresh the Jtable Genres
-            //populateJtableWithGenres();
+            //populateJtableWithUsers();
         }
     }//GEN-LAST:event_jButton_AddActionPerformed
 
@@ -470,45 +517,58 @@ public class ManageUsersForm extends javax.swing.JFrame {
         String id = jTable_Users.getValueAt(index, 0).toString();
         String firstName = jTable_Users.getValueAt(index,1).toString();
         String lastName = jTable_Users.getValueAt(index, 2).toString();
-        String expertise = jTable_Users.getValueAt(index,3).toString();
-        String about = jTable_Users.getValueAt(index, 4).toString();
-        
+        String userName = jTable_Users.getValueAt(index,3).toString();
+        String password = jTable_Users.getValueAt(index, 4).toString();
+        String UserType = jTable_Users.getValueAt(index, 5).toString();
+
         
         // show data in textfields
         jTextField_ID.setText(id);
         jTextField_FirstName.setText(firstName);
         jTextField_LastName.setText(lastName);
-        jTextField_Username.setText(expertise);
-                
+        jTextField_Username.setText(userName);
+        jPasswordField1.setText(password);
+        jPasswordField2.setText(password);
+
         
+        if(UserType.equals("admin"))
+        {
+            jCheckBox_SetAdmin.setSelected(true);
+        }
+        else
+        {
+            jCheckBox_SetAdmin.setSelected(false);
+        }
         
     }//GEN-LAST:event_jTable_UsersMouseClicked
-/*
-    //create a function to populate the jtable with authors
-    public void populateJtableWithAuthors()
+
+    //create a function to populate the jtable with users
+    public void populateJtableWithUsers()
     {
         
-        ArrayList <MyClasses.Author>  authorsList = author.authorsList();
+        ArrayList <MyClasses.Users>  usersList = user.usersList();
         
         // jtable columns
-        String[] colNames = {"ID", "F-Name", "L-Name", "Expertise", "About"};
+        String[] colNames = {"ID", "F-Name", "L-Name", "UserName", "Password", "UserType"};
         
         // Row
-        Object [][] rows = new Object [authorsList.size()][colNames.length];
+        Object [][] rows = new Object [usersList.size()][colNames.length];
         
-        for (int i = 0; i < authorsList.size(); i++)
+        for (int i = 0; i < usersList.size(); i++)
         {
-          rows[i][0] = authorsList.get(i).getId();
-          rows[i][1] = authorsList.get(i).getFirstName();
-          rows[i][2] = authorsList.get(i).getLastName();
-          rows[i][3] = authorsList.get(i).getField_Of_Expertise();
-          rows[i][4] = authorsList.get(i).getAbout();
+          rows[i][0] = usersList.get(i).getID();
+          rows[i][1] = usersList.get(i).getFirstName();
+          rows[i][2] = usersList.get(i).getLastName();
+          rows[i][3] = usersList.get(i).getUserName();
+          rows[i][4] = usersList.get(i).getPassword();
+          rows[i][5] = usersList.get(i).getUserType();
+
         }
         
         DefaultTableModel model = new DefaultTableModel (rows,colNames);
         jTable_Users.setModel(model);
         
-    }*/
+    } 
     
     
     private void jTextField_FirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_FirstNameActionPerformed
@@ -521,12 +581,12 @@ public class ManageUsersForm extends javax.swing.JFrame {
 
     private void jLabel_EmptyLastNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyLastNameMouseClicked
         
-        jLabel_EmptyLastName.setVisible(false);
+        jLabel_EmptyLastName.setForeground(Color.white);
     }//GEN-LAST:event_jLabel_EmptyLastNameMouseClicked
 
     private void jLabel_EmptyFirstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyFirstNameMouseClicked
         // Hide this jlabel on click
-        jLabel_EmptyFirstName.setVisible(false);
+        jLabel_EmptyFirstName.setForeground(Color.white);
     }//GEN-LAST:event_jLabel_EmptyFirstNameMouseClicked
 
     private void jTextField_LastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_LastNameActionPerformed
@@ -534,11 +594,12 @@ public class ManageUsersForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_LastNameActionPerformed
 
     private void jLabel_EmptyUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyUserNameMouseClicked
-        // TODO add your handling code here:
+        jLabel_EmptyUserName.setForeground(Color.white);
+
     }//GEN-LAST:event_jLabel_EmptyUserNameMouseClicked
 
     private void jLabel_EmptyPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EmptyPasswordMouseClicked
-        // TODO add your handling code here:
+        jLabel_EmptyPassword.setForeground(Color.white);
     }//GEN-LAST:event_jLabel_EmptyPasswordMouseClicked
 
     /**
@@ -587,6 +648,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Add;
     private javax.swing.JButton jButton_Delete;
     private javax.swing.JButton jButton_Edit;
+    private javax.swing.JCheckBox jCheckBox_SetAdmin;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

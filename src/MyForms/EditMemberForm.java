@@ -390,15 +390,15 @@ public class EditMemberForm extends javax.swing.JFrame {
         
 
         // Check if the textField are empty
-        if(fname.isEmpty())
+        if(fname.trim().isEmpty())
         {
             jLabel_EmptyFirstName.setVisible(true);
         }
-        else if(lname.isEmpty())
+        else if(lname.trim().isEmpty())
         {
             jLabel_EmptyLastName.setVisible(true);
         }
-        else if(phone.isEmpty())
+        else if(phone.trim().isEmpty())
         {
             jLabel_EmptyPhoneNumber.setVisible(true);
         }
