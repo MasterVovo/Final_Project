@@ -192,7 +192,7 @@ public class Author {
         
          MyClasses.Functions func = new Functions();
         
-         ResultSet rs = func.getData("SELECT * FROM `author` where id = "+id);
+        ResultSet rs = func.getData("SELECT * FROM `author` where id = "+id);
             
             Author author = null;
             

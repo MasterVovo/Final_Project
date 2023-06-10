@@ -131,9 +131,10 @@ public final class DashboardForm extends javax.swing.JFrame {
         jButton_EditBook = new javax.swing.JButton();
         jButton_DeleteBook = new javax.swing.JButton();
         jButton_BooksList = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel_Circulation = new javax.swing.JLabel();
         jButton_IssueBook = new javax.swing.JButton();
         jButton_ReturnBook = new javax.swing.JButton();
+        jButton_ManageUsers = new javax.swing.JButton();
         dashboardPanel2 = new javax.swing.JPanel();
         dashboardPanel2Header = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -154,6 +155,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel_Image_1 = new javax.swing.JLabel();
         jLabel_Image_5 = new javax.swing.JLabel();
         jLabel_Image_3 = new javax.swing.JLabel();
+        jLabel_Welcome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -332,11 +334,11 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(243, 236, 236));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Circulation");
-        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel_Circulation.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel_Circulation.setForeground(new java.awt.Color(243, 236, 236));
+        jLabel_Circulation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Circulation.setText("Circulation");
+        jLabel_Circulation.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButton_IssueBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton_IssueBook.setForeground(new java.awt.Color(243, 236, 236));
@@ -362,6 +364,18 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
+        jButton_ManageUsers.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jButton_ManageUsers.setForeground(new java.awt.Color(243, 236, 236));
+        jButton_ManageUsers.setText("Manage Users");
+        jButton_ManageUsers.setContentAreaFilled(false);
+        jButton_ManageUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_ManageUsers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_ManageUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ManageUsersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
         jPanel_Menu.setLayout(jPanel_MenuLayout);
         jPanel_MenuLayout.setHorizontalGroup(
@@ -384,9 +398,10 @@ public final class DashboardForm extends javax.swing.JFrame {
                     .addComponent(jButton_EditMember, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_DeleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_MembersList, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Circulation, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_IssueBook, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_ReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_ReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_ManageUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_MenuLayout.setVerticalGroup(
@@ -422,11 +437,13 @@ public final class DashboardForm extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jButton_BooksList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_Circulation, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jButton_IssueBook)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_ReturnBook)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_ManageUsers)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -668,32 +685,43 @@ public final class DashboardForm extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
+        jLabel_Welcome.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel_Welcome.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Welcome.setText("Welcome back, Owner");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dashboardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dashboardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dashboardPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(dashboardPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(dashboardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dashboardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dashboardPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dashboardPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel_Welcome)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dashboardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dashboardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dashboardPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dashboardPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -774,40 +802,10 @@ public final class DashboardForm extends javax.swing.JFrame {
         returnBook.setVisible(true);
     }//GEN-LAST:event_jButton_ReturnBookActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DashboardForm().setVisible(true);
-            }
-        });
-    }
+    private void jButton_ManageUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ManageUsersActionPerformed
+        ManageUsersForm manageUser = new ManageUsersForm();
+        manageUser.setVisible(true);
+    }//GEN-LAST:event_jButton_ManageUsersActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DashboardLogo;
@@ -827,11 +825,12 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DeleteMember;
     private javax.swing.JButton jButton_EditBook;
     private javax.swing.JButton jButton_EditMember;
-    private javax.swing.JButton jButton_IssueBook;
+    public javax.swing.JButton jButton_IssueBook;
     private javax.swing.JButton jButton_ManageAuthors;
     private javax.swing.JButton jButton_ManageGenre;
+    public javax.swing.JButton jButton_ManageUsers;
     private javax.swing.JButton jButton_MembersList;
-    private javax.swing.JButton jButton_ReturnBook;
+    public javax.swing.JButton jButton_ReturnBook;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -841,15 +840,16 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_AuthorsCount;
     private javax.swing.JLabel jLabel_BooksCount;
+    public javax.swing.JLabel jLabel_Circulation;
     private javax.swing.JLabel jLabel_Image_1;
     private javax.swing.JLabel jLabel_Image_2;
     private javax.swing.JLabel jLabel_Image_3;
     private javax.swing.JLabel jLabel_Image_4;
     private javax.swing.JLabel jLabel_Image_5;
     private javax.swing.JLabel jLabel_MembersCount;
+    public javax.swing.JLabel jLabel_Welcome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Menu;
     // End of variables declaration//GEN-END:variables

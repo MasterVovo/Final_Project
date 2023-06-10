@@ -208,7 +208,7 @@ public class Users {
         
         try {
             
-            ResultSet rs = func.getData("SELECT * FROM `users_table`");
+            ResultSet rs = func.getData("SELECT * FROM `users_table` where userType <> 'owner'");
             
             Users user; 
             
@@ -225,10 +225,23 @@ public class Users {
         
         return uList;
     }
-
-    public void editUser(int id, String fname, String lname, String username, String password_1, String userType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    public Users tryLogin(String _username, String _password){
+        MyClasses.Functions func = new Functions();
+        ResultSet rs = func.getData("SELECT * FROM `users_table` where username = '"+_username+"' and password = '" + _password + "'");
+            
+        Users user = null;
+
+        try {
+            if (rs.next())
+            {
+                user = new Users(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("userName"), rs.getString("password"), rs.getString("userType"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Author.class.getName()).log(Level.SEVERE, null, ex);;
+        }
+        
+        return user;
+    }
     
 }
