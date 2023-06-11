@@ -172,6 +172,13 @@ public class DeleteMemberForm extends javax.swing.JFrame {
             
             if (confirmation == JOptionPane.YES_OPTION){
                 member.removeMember(id);
+                
+            // clear textfields
+            jTextField_ID.setText("");
+            
+            // hide jLabel (empty messege)
+            jLabel_EmptyID.setForeground(Color.white);
+                
             }
         } catch (Exception e) {
             jLabel_EmptyID.setForeground(Color.red);
