@@ -439,6 +439,10 @@ public class ManageUsersForm extends javax.swing.JFrame {
                     jPasswordField1.setText("");
                     jPasswordField2.setText("");
                     jCheckBox_SetAdmin.setSelected(false);
+                    
+                    //hide jlabels
+                    hideLabels();
+                    
                 }
             }
             catch(NumberFormatException ex)
@@ -474,6 +478,9 @@ public class ManageUsersForm extends javax.swing.JFrame {
                 jPasswordField1.setText("");
                 jPasswordField2.setText("");
                 jCheckBox_SetAdmin.setSelected(false);
+                
+                //hide jlabels
+                hideLabels();
             }
             catch(NumberFormatException ex)
             {    
@@ -534,6 +541,9 @@ public class ManageUsersForm extends javax.swing.JFrame {
             jPasswordField1.setText("");
             jPasswordField2.setText("");
             jCheckBox_SetAdmin.setSelected(false);
+            
+            // hide jlabels
+            hideLabels();
         }
     }//GEN-LAST:event_jButton_AddActionPerformed
 
@@ -631,6 +641,14 @@ public class ManageUsersForm extends javax.swing.JFrame {
         jLabel_EmptyPassword.setForeground(Color.white);
     }//GEN-LAST:event_jLabel_EmptyPasswordMouseClicked
 
+    // create a method to hide all jlabels (red messages)
+    public void hideLabels() {
+        jLabel_EmptyFirstName.setForeground(Color.red);
+        jLabel_EmptyLastName.setForeground(Color.red);
+        jLabel_EmptyPassword.setForeground(Color.red);
+        jLabel_EmptyUserName.setForeground(Color.red);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;

@@ -415,6 +415,8 @@ public class ReturnBookForm extends javax.swing.JFrame {
           // update the return date 
           // the note
           // and the status to returned 
+          // NOTE: if you change a book status from LOST to RETURNED you need to update the quantity
+          // or you can prevent the user from changing the status when it's set tot lost
          int _book_id = (int)jSpinner_BookID.getValue();
          int _member_id = (int)jSpinner_MemberID.getValue();
          String _note = jTextArea_Note.getText();
@@ -611,6 +613,15 @@ public class ReturnBookForm extends javax.swing.JFrame {
         String _issued_date = jTable_Books.getValueAt(index, 3).toString();;
         
         issue.removeFromIssuedTable(_book_id, _member_id, _issued_date);
+        
+        // clear fields
+        jSpinner_BookID.setValue(0);
+        jSpinner_MemberID.setValue(0);
+        jLabel_BookName.setText("Book Name");
+        jLabel_MemberName.setText("Member Full-Name");
+        jDateChooser_IssueDate.setDate(new Date());
+        jDateChooser_Return_Date.setDate(new Date());
+        jTextArea_Note.setText("");
             
         }catch (Exception ex) {
             JOptionPane.showMessageDialog(null ,"Select the Element You Want To Delete From The Table" + ex.getMessage(), "Delete Error", 2);

@@ -324,6 +324,9 @@ public class GenreForm extends javax.swing.JFrame {
         else //if the textField is not empty
         {
             genre.addGenre(name);
+            
+            // hide jlabel
+            jLabel_EmptyGenre.setVisible(false);
 
             // refresh the Jtable Genres
             populateJtableWithGenres();
@@ -345,6 +348,9 @@ public class GenreForm extends javax.swing.JFrame {
             {
                 int id = Integer.parseInt(ID.getText());
                 genre.EditGenre(id, name);
+                
+                // hide jlabel
+                jLabel_EmptyGenre.setVisible(false);
                 
                 // refresh the Jtable Genres
                 populateJtableWithGenres();
