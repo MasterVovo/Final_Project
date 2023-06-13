@@ -135,6 +135,11 @@ public class EditMemberForm extends javax.swing.JFrame {
         });
 
         jTextField_PhoneNumber.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_PhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_PhoneNumberKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(6, 4, 6));
@@ -412,8 +417,9 @@ public class EditMemberForm extends javax.swing.JFrame {
                     Path path = Paths.get(imagePath);
                     img = Files.readAllBytes(path);
                     member.editMember(id, fname, lname, phone, email, gender, img);
-                } catch (IOException ex) {
-                    Logger.getLogger(EditMemberForm.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                } catch (IOException | NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null , "Make sure to Enter The Member ID & Select a Profile For This Member", "No ID or Picture Selected", 2);
                 }
             } else {
                 JOptionPane.showMessageDialog(null , "No Image Selected", "Add member", 2);
@@ -478,6 +484,14 @@ public class EditMemberForm extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton_SearchActionPerformed
+
+    private void jTextField_PhoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberKeyTyped
+         // Allow only numbers on phone jtextfields
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField_PhoneNumberKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel genreExit;

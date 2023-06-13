@@ -344,8 +344,13 @@ public class AuthorsForm extends javax.swing.JFrame {
                 int id = Integer.parseInt(jTextField_ID.getText());
                 author.EditAuthor(id, fname, lname, expertise, about);
                 
-                // refresh the Jtable Genres
-                //populateJtableWithGenres();
+            // refresh the Jtable Authors
+                populateJtableWithAuthors();
+
+            // Hide the Jlabels 
+                jLabel_EmptyLastName.setVisible(false);
+                jLabel_EmptyFirstName.setVisible(false);
+                
             }
             catch(NumberFormatException ex)
             {    
@@ -369,9 +374,13 @@ public class AuthorsForm extends javax.swing.JFrame {
                 }
                 
                 
-                // refresh the Jtable Genres
-                //populateJtableWithGenres();
-                
+                // refresh the Jtable Authors
+                populateJtableWithAuthors();
+
+                 // Hide the Jlabels 
+                 jLabel_EmptyLastName.setVisible(false);
+                 jLabel_EmptyFirstName.setVisible(false);
+                 
                 // clear text form the textfields
                 jTextField_ID.setText("");
                 jTextField_FirstName.setText("");
@@ -405,8 +414,15 @@ public class AuthorsForm extends javax.swing.JFrame {
         {
             author.addAuthor(fname, lname, expertise, about);
             
-            // refresh the Jtable Genres
-            //populateJtableWithGenres();
+            // refresh the Jtable Authors
+            populateJtableWithAuthors();
+            
+            // Hide the Jlabels 
+            jLabel_EmptyLastName.setVisible(false);
+            jLabel_EmptyFirstName.setVisible(false);
+
+
+            
         }
     }//GEN-LAST:event_jButton_AddActionPerformed
 

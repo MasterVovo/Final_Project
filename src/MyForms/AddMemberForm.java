@@ -123,6 +123,14 @@ public class AddMemberForm extends javax.swing.JFrame {
         jTextField_PhoneNumber.setBackground(new java.awt.Color(243, 236, 236));
         jTextField_PhoneNumber.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jTextField_PhoneNumber.setForeground(new java.awt.Color(6, 4, 6));
+        jTextField_PhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField_PhoneNumberKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_PhoneNumberKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(6, 4, 6));
@@ -367,11 +375,25 @@ public class AddMemberForm extends javax.swing.JFrame {
 
     private void jButton_BrowseProfilePicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BrowseProfilePicActionPerformed
         String path = func.selectPicture();
-        jLabel_ImagePath.setText(path);
-        imagePath = path;
-        
+        if(!path.equals(""))
+        {
+            jLabel_ImagePath.setText(path);
+            imagePath = path;
+        }
         func.displayImage(100, 100, null, imagePath, MemberImage);
     }//GEN-LAST:event_jButton_BrowseProfilePicActionPerformed
+
+    private void jTextField_PhoneNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberKeyPressed
+        
+    }//GEN-LAST:event_jTextField_PhoneNumberKeyPressed
+
+    private void jTextField_PhoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_PhoneNumberKeyTyped
+        // Allow only numbers on phone jtextfields
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField_PhoneNumberKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MemberImage;
