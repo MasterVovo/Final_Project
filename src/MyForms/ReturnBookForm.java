@@ -425,11 +425,11 @@ public class ReturnBookForm extends javax.swing.JFrame {
          
          try 
          {
-         String _return_date = dateFormat.format (jDateChooser_Return_Date.getDate());
-         Date rtnDate = dateFormat.parse(_return_date);
-         
-         String _issue_date = dateFormat.format (jDateChooser_IssueDate.getDate());
-         Date issDate = dateFormat.parse(_issue_date);
+            String _return_date = dateFormat.format (jDateChooser_Return_Date.getDate());
+            Date rtnDate = dateFormat.parse(_return_date);
+
+            String _issue_date = dateFormat.format (jDateChooser_IssueDate.getDate());
+            Date issDate = dateFormat.parse(_issue_date);
 
          if (rtnDate.before(issDate)) // if the return date is higher than the issue date 
          {

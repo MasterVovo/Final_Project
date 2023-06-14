@@ -141,7 +141,7 @@ public class Issue_Book {
             ps.setString(1, _status);
             ps.setString(2, _return_date);
             ps.setString(3, _note);
-             ps.setInt(4, _book_id);
+            ps.setInt(4, _book_id);
             ps.setInt(5, _member_id);
             ps.setString(6, _issue_date);
             
@@ -165,7 +165,7 @@ public class Issue_Book {
     // check if the this book is available 
     // how to do that 
     // get the book quantity from the table books and compare it to 
-    //the number of books issued in the table isse_book
+    // the number of books issued in the table isse_book
     public boolean checkBookAvailability(int _book_id)
     {
         boolean availability = false;
