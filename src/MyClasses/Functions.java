@@ -2,6 +2,7 @@ package MyClasses;
 
 //import com.mysql.cj.xdevapi.Statement;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
@@ -16,6 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.sql.Statement;
+import javax.swing.BorderFactory;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class Functions {
     public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label){ //Displays the logo in the dashboard
@@ -57,8 +61,9 @@ public class Functions {
     // create a function to customize the jlabel
     public void customTableHeader(JTable table) 
     {
-        table.getTableHeader().setBackground(new Color(164,106,106));//Need to fix it 
-        table.getTableHeader().setForeground(Color.white);
+        ((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        table.getTableHeader().setBackground(new Color(164,106,106));
+        table.getTableHeader().setForeground(new Color(243,236,236));
         table.getTableHeader().setFont (new Font("Tahoma",Font.BOLD, 20));
         table.getTableHeader().setOpaque(false);
     }
@@ -106,14 +111,14 @@ public class Functions {
         
         return rs;
     }        
-
+/*
     public void customTableHeader(JTable jTable_Members, Color color, int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void customTable(JTable jTable_Members, Color color, int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
     //create a function to count the member of data 
     public int countData(String tableName) {
         int total = 0;
@@ -131,8 +136,36 @@ public class Functions {
         }
         return total;
        
+    }
+    
+    public static class CenterTableCellRenderer extends DefaultTableCellRenderer{
+        public CenterTableCellRenderer(){
+            setHorizontalAlignment(SwingConstants.CENTER);
+        }
+        
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         }
     }
+    
+    public static class TableHeaderRenderer extends DefaultTableCellRenderer{
+        public TableHeaderRenderer(){
+            setHorizontalAlignment(SwingConstants.CENTER);
+            setBackground(new Color(164,106,106));
+            setForeground(Color.white);
+            setFont (new Font("Tahoma",Font.BOLD, 20));
+            setOpaque(false);
+        }
+        
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
+            setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
+    }
+    
+}
 
         
         

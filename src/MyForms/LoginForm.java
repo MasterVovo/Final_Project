@@ -1,22 +1,17 @@
 package MyForms;
 
-import MyClasses.DB;
 import MyClasses.Functions;
 import java.awt.Color;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BorderFactory;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class LoginForm extends javax.swing.JFrame {
 
     MyClasses.Functions func = new Functions();
-    
+    ImageIcon logo = new ImageIcon("/MyImages/book_login_logo.png");
     /**
      * Creates new form LoginForm
      */
@@ -25,6 +20,9 @@ public class LoginForm extends javax.swing.JFrame {
         
         //Center the form
         this.setLocationRelativeTo(null);
+        loginPassword.setEchoChar('*');
+        
+        
         
         //Displays the image
         func.displayImage(LoginLogo.getWidth(), LoginLogo.getHeight(), null, "/MyImages/book_login_logo.png", LoginLogo);
@@ -44,8 +42,11 @@ public class LoginForm extends javax.swing.JFrame {
         Login = new javax.swing.JLabel();
         loginNoUsername = new javax.swing.JLabel();
         loginNoPassword = new javax.swing.JLabel();
+        ShowPass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/MyImages/book_login_logo.png")));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(218, 186, 151));
 
@@ -62,10 +63,26 @@ public class LoginForm extends javax.swing.JFrame {
         loginUsername.setBackground(new java.awt.Color(243, 236, 236));
         loginUsername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         loginUsername.setForeground(new java.awt.Color(6, 4, 6));
+        loginUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                loginUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                loginUsernameFocusLost(evt);
+            }
+        });
 
         loginPassword.setBackground(new java.awt.Color(243, 236, 236));
         loginPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         loginPassword.setForeground(new java.awt.Color(6, 4, 6));
+        loginPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                loginPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                loginPasswordFocusLost(evt);
+            }
+        });
 
         Login.setBackground(new java.awt.Color(0, 117, 98));
         Login.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -93,27 +110,39 @@ public class LoginForm extends javax.swing.JFrame {
         loginNoPassword.setForeground(new java.awt.Color(255, 0, 0));
         loginNoPassword.setText("  ");
 
+        ShowPass.setBackground(new java.awt.Color(218, 186, 151));
+        ShowPass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        ShowPass.setForeground(new java.awt.Color(6, 4, 6));
+        ShowPass.setText("Show Pass");
+        ShowPass.setOpaque(true);
+        ShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginNoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(loginUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                                .addComponent(loginPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
-                            .addComponent(loginNoUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(13, 13, 13)
+                        .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginNoUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(loginNoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ShowPass, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(loginUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                        .addComponent(loginPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -130,7 +159,9 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
-                .addComponent(loginNoPassword)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginNoPassword)
+                    .addComponent(ShowPass))
                 .addGap(18, 18, 18)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -171,45 +202,6 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
-        // <editor-fold defaultstate="collapsed" desc="Deleted Code">
-        /* 
-            Jbutton and yung event - 
-                String username = loginUsername.getText();
-                String password = String.valueOf(loginPassword.getPassword());
-
-                ResultSet rs;
-                PreparedStatement ps;
-
-                String query = "SELECT * FROM `user` WHERE `username` = ? AND `password` = ?";
-
-                if (username.trim().equals("") || password.trim().equals("")) {
-                    JOptionPane.showMessageDialog(null, "The username or password can't be empty", "Empty Fields", 2);
-                } else {
-                    try {
-                        ps = DB.getConnection().prepareStatement(query);
-                        ps.setString(1, username);
-                        ps.setString(2, password);
-                        rs = ps.executeQuery();
-
-                        if (rs.next()) {
-                            JOptionPane.showMessageDialog(null, "Login success", "Logged in", 1);
-
-                            DashboardForm DForm = new DashboardForm();
-                            DForm.setVisible(true);
-                            DForm.pack();
-                            DForm.setLocationRelativeTo(null);
-                            DForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            this.dispose();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Invalid username or password", "Invalid Input", 0);
-                        }
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-         */
-        // </editor-fold>
         String username = loginUsername.getText();
         String password = String.valueOf(loginPassword.getPassword());
         
@@ -234,7 +226,6 @@ public class LoginForm extends javax.swing.JFrame {
                     DForm.jLabel_Circulation.setVisible(false);
                     DForm.jLabel_Welcome.setText("Good day, " + user.getUserName());
                 }
-                
                 DForm.setVisible(true);
                 DForm.pack();
                 DForm.setLocationRelativeTo(null);
@@ -253,6 +244,30 @@ public class LoginForm extends javax.swing.JFrame {
     private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
         Login.setBackground(new Color(0, 92, 77));
     }//GEN-LAST:event_LoginMouseEntered
+
+    private void loginUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginUsernameFocusGained
+        loginUsername.setBorder(new LineBorder(new Color(86,76,62), 2));
+    }//GEN-LAST:event_loginUsernameFocusGained
+
+    private void loginPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswordFocusGained
+        loginPassword.setBorder(new LineBorder(new Color(86,76,62), 2));
+    }//GEN-LAST:event_loginPasswordFocusGained
+
+    private void loginUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginUsernameFocusLost
+        loginUsername.setBorder(new LineBorder(new Color(218,186,151), 2));
+    }//GEN-LAST:event_loginUsernameFocusLost
+
+    private void loginPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswordFocusLost
+        loginPassword.setBorder(new LineBorder(new Color(218,186,151), 2));
+    }//GEN-LAST:event_loginPasswordFocusLost
+
+    private void ShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPassActionPerformed
+        if (ShowPass.isSelected()) {
+            loginPassword.setEchoChar((char)0);
+        } else {
+            loginPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_ShowPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,6 +302,7 @@ public class LoginForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Login;
     private javax.swing.JLabel LoginLogo;
+    private javax.swing.JCheckBox ShowPass;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

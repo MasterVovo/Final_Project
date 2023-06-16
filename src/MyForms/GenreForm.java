@@ -5,8 +5,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.Border;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class GenreForm extends javax.swing.JFrame {
@@ -24,17 +25,13 @@ public class GenreForm extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
-        genrePanel.setBorder(genreFormBorder);
-        
         func.displayImage(60, 60,null, "/MyImages/book_genres.png", genreLabel);
         
-        
         //Custom the jtable
-        func.customTable(jTable_Genres);
+        func.customTable(GenresTable);
         
         //Custom the jtable header ROW
-        func.customTableHeader(jTable_Genres);
+        func.customTableHeader(GenresTable);
         
         //Populate Jtable With Genres
         populateJtableWithGenres();
@@ -57,16 +54,17 @@ public class GenreForm extends javax.swing.JFrame {
         ID = new javax.swing.JTextField();
         Genre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_Genres = new javax.swing.JTable();
+        GenresTable = new javax.swing.JTable();
         jLabel_EmptyGenre = new javax.swing.JLabel();
-        addGenre = new javax.swing.JLabel();
+        AddGenre = new javax.swing.JLabel();
         EditGenre = new javax.swing.JLabel();
-        deleteGenre = new javax.swing.JLabel();
+        DeleteGenre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
+        genrePanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(164,106,106)));
 
         genreLabel.setBackground(new java.awt.Color(164, 106, 106));
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -99,14 +97,25 @@ public class GenreForm extends javax.swing.JFrame {
         ID.setBackground(new java.awt.Color(243, 236, 236));
         ID.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         ID.setForeground(new java.awt.Color(6, 4, 6));
+        ID.setEnabled(false);
 
         Genre.setBackground(new java.awt.Color(243, 236, 236));
         Genre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Genre.setForeground(new java.awt.Color(6, 4, 6));
+        Genre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                GenreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                GenreFocusLost(evt);
+            }
+        });
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setHorizontalScrollBar(null);
 
-        jTable_Genres.setModel(new javax.swing.table.DefaultTableModel(
+        GenresTable.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        GenresTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,26 +123,33 @@ public class GenreForm extends javax.swing.JFrame {
 
             }
         ));
-        jTable_Genres.addMouseListener(new java.awt.event.MouseAdapter() {
+        GenresTable.setToolTipText("");
+        GenresTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_GenresMouseClicked(evt);
+                GenresTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable_Genres);
+        jScrollPane1.setViewportView(GenresTable);
 
         jLabel_EmptyGenre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_EmptyGenre.setForeground(new java.awt.Color(250, 0, 0));
-        jLabel_EmptyGenre.setText("    ");
+        jLabel_EmptyGenre.setText(" ");
 
-        addGenre.setBackground(new java.awt.Color(0, 117, 98));
-        addGenre.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        addGenre.setForeground(new java.awt.Color(243, 236, 236));
-        addGenre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        addGenre.setText("Add");
-        addGenre.setOpaque(true);
-        addGenre.addMouseListener(new java.awt.event.MouseAdapter() {
+        AddGenre.setBackground(new java.awt.Color(0, 117, 98));
+        AddGenre.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        AddGenre.setForeground(new java.awt.Color(243, 236, 236));
+        AddGenre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AddGenre.setText("Add");
+        AddGenre.setOpaque(true);
+        AddGenre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addGenreMouseClicked(evt);
+                AddGenreMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AddGenreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AddGenreMouseExited(evt);
             }
         });
 
@@ -147,17 +163,29 @@ public class GenreForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EditGenreMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditGenreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditGenreMouseExited(evt);
+            }
         });
 
-        deleteGenre.setBackground(new java.awt.Color(0, 117, 98));
-        deleteGenre.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        deleteGenre.setForeground(new java.awt.Color(243, 236, 236));
-        deleteGenre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        deleteGenre.setText("Delete");
-        deleteGenre.setOpaque(true);
-        deleteGenre.addMouseListener(new java.awt.event.MouseAdapter() {
+        DeleteGenre.setBackground(new java.awt.Color(0, 117, 98));
+        DeleteGenre.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        DeleteGenre.setForeground(new java.awt.Color(243, 236, 236));
+        DeleteGenre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DeleteGenre.setText("Delete");
+        DeleteGenre.setOpaque(true);
+        DeleteGenre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteGenreMouseClicked(evt);
+                DeleteGenreMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DeleteGenreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                DeleteGenreMouseExited(evt);
             }
         });
 
@@ -166,32 +194,30 @@ public class GenreForm extends javax.swing.JFrame {
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(addGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(EditGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(genrePanelLayout.createSequentialGroup()
                 .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(24, 24, 24)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_EmptyGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                        .addComponent(Genre)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addComponent(AddGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(EditGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DeleteGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_EmptyGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,24 +225,28 @@ public class GenreForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(genreLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_EmptyGenre)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EditGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_EmptyGenre)
+                        .addGap(27, 27, 27)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EditGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DeleteGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(82, 82, 82))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(30, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,13 +254,15 @@ public class GenreForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -239,80 +271,52 @@ public class GenreForm extends javax.swing.JFrame {
     private void genreExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genreExitMouseClicked
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
-
     
-    private void jTable_GenresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_GenresMouseClicked
+    private void GenresTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenresTableMouseClicked
         // Display the selected genre
         // get the selected row index
-        int index = jTable_Genres.getSelectedRow();
+        int index = GenresTable.getSelectedRow();
         
         //get values
-        String id = jTable_Genres.getValueAt(index, 0).toString();
-        String name = jTable_Genres.getValueAt(index,1).toString();
+        String id = GenresTable.getValueAt(index, 0).toString();
+        String name = GenresTable.getValueAt(index,1).toString();
         
         // show data in textfields
         ID.setText(id);
         Genre.setText(name);
-    }//GEN-LAST:event_jTable_GenresMouseClicked
+    }//GEN-LAST:event_GenresTableMouseClicked
 
     //create a function to populate the jtable with genres
     public void populateJtableWithGenres(){
         ArrayList <MyClasses.Genre>  genresList = genre.genreList();
-        
         // jtable columns
         String[] colNames = {"ID","Genre"};
-        //String[] colNames = {"Genre"};
         
         // Row
         Object [][] rows = new Object [genresList.size()][colNames.length];
         
         for (int i = 0; i < genresList.size(); i++)
         {
-          rows[i][0] = genresList.get(i).getId();
-          rows[i][1] = genresList.get(i).getName();
+            rows[i][0] = genresList.get(i).getId();
+            rows[i][1] = genresList.get(i).getName();
+        }
+        DefaultTableModel model = new DefaultTableModel (rows,colNames);
+        GenresTable.setModel(model);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < GenresTable.getColumnCount(); i++) {
+            GenresTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
         
-        DefaultTableModel model = new DefaultTableModel (rows,colNames);
-        jTable_Genres.setModel(model);
+        GenresTable.getColumnModel().getColumn(0).setMinWidth(0);
+        GenresTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        GenresTable.getColumnModel().getColumn(0).setWidth(0);
+        
     }
-    /* Some debugging happening, don't touch HAHAHA
-    public void populateJtableWithGenres() {
-        ArrayList<MyClasses.Genre> genresList = genre.genreList();
-
-        // JTable column name
-        String[] colNames = {"Genre"};
-
-        // Rows
-        Object[][] rows = new Object[genresList.size()][colNames.length];
-
-        for (int i = 0; i < genresList.size(); i++) {
-            rows[i][0] = genresList.get(i).getName();
-        }
-
-        DefaultTableModel model = new DefaultTableModel(rows, colNames) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-
-        jTable_Genres.setModel(model);
-
-        // Get ID value when a row is selected
-        jTable_Genres.getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                int selectedRow = jTable_Genres.getSelectedRow();
-                if (selectedRow != -1) {
-                    String id = genresList.get(selectedRow).getId();
-                    System.out.println(id);
-                }
-            }
-        });
-    }*/
-
     
-    
-    private void addGenreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGenreMouseClicked
+    private void AddGenreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddGenreMouseClicked
         // add a new genre
         String name = Genre.getText();
 
@@ -326,12 +330,12 @@ public class GenreForm extends javax.swing.JFrame {
             genre.addGenre(name);
             
             // hide jlabel
-            jLabel_EmptyGenre.setVisible(false);
+            jLabel_EmptyGenre.setText(" ");
 
             // refresh the Jtable Genres
             populateJtableWithGenres();
         }
-    }//GEN-LAST:event_addGenreMouseClicked
+    }//GEN-LAST:event_AddGenreMouseClicked
 
     private void EditGenreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditGenreMouseClicked
         //edit the selected genre 
@@ -340,7 +344,7 @@ public class GenreForm extends javax.swing.JFrame {
         // Check if the textField is empty
         if(name.trim().isEmpty())
         {
-           jLabel_EmptyGenre.setVisible(true);
+           jLabel_EmptyGenre.setText("*Enter genre");
         }
         else //if the textField is not empty
         {
@@ -350,20 +354,20 @@ public class GenreForm extends javax.swing.JFrame {
                 genre.EditGenre(id, name);
                 
                 // hide jlabel
-                jLabel_EmptyGenre.setVisible(false);
+                jLabel_EmptyGenre.setText(" ");
                 
                 // refresh the Jtable Genres
                 populateJtableWithGenres();
             }
             catch(NumberFormatException ex)
             {    
-            JOptionPane.showMessageDialog(null , "Invalid Genre, check your input and try again", "Error!", 0);
+                JOptionPane.showMessageDialog(null , "Invalid Genre, check your input and try again", "Error!", 0);
             }
         
         }
     }//GEN-LAST:event_EditGenreMouseClicked
 
-    private void deleteGenreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteGenreMouseClicked
+    private void DeleteGenreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteGenreMouseClicked
         // Delete the selected genre
         try
         {
@@ -388,14 +392,74 @@ public class GenreForm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null , "Invalid Genre, check your input and try again", "Error!", 0);
         }
-    }//GEN-LAST:event_deleteGenreMouseClicked
+    }//GEN-LAST:event_DeleteGenreMouseClicked
 
+    private void AddGenreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddGenreMouseEntered
+        AddGenre.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_AddGenreMouseEntered
+
+    private void AddGenreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddGenreMouseExited
+        AddGenre.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_AddGenreMouseExited
+
+    private void EditGenreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditGenreMouseEntered
+        EditGenre.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_EditGenreMouseEntered
+
+    private void EditGenreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditGenreMouseExited
+        EditGenre.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_EditGenreMouseExited
+
+    private void DeleteGenreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteGenreMouseEntered
+        DeleteGenre.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_DeleteGenreMouseEntered
+
+    private void DeleteGenreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteGenreMouseExited
+        DeleteGenre.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_DeleteGenreMouseExited
+
+    private void GenreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_GenreFocusGained
+        Genre.setBorder(new LineBorder(new Color(86,76,62), 2));
+    }//GEN-LAST:event_GenreFocusGained
+
+    private void GenreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_GenreFocusLost
+        Genre.setBorder(new LineBorder(new Color(218,186,151), 2));
+    }//GEN-LAST:event_GenreFocusLost
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GenreForm().setVisible(true);
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AddGenre;
+    private javax.swing.JLabel DeleteGenre;
     private javax.swing.JLabel EditGenre;
     private javax.swing.JTextField Genre;
+    private javax.swing.JTable GenresTable;
     private javax.swing.JTextField ID;
-    private javax.swing.JLabel addGenre;
-    private javax.swing.JLabel deleteGenre;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
@@ -403,6 +467,5 @@ public class GenreForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_EmptyGenre;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_Genres;
     // End of variables declaration//GEN-END:variables
 }
