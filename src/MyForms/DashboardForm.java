@@ -2,32 +2,37 @@ package MyForms;
 
 import MyClasses.Book;
 import MyClasses.Functions;
+import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.Border;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public final class DashboardForm extends javax.swing.JFrame {
-    
     MyClasses.Functions func = new Functions();
     MyClasses.Book books = new Book();
+    private String userType;
     
     // JLabel array to display the lates 5 books
     JLabel[] labels_tab = new JLabel[5];
     
     /**
      * Creates new form DashboardForm
+     * @param userType
      */
-    public DashboardForm() {
+    public DashboardForm(String userType) {
         initComponents();
+        this.userType = userType;
+        handleUsers();
         
         //Center the form
         this.setLocationRelativeTo(null);
@@ -50,6 +55,28 @@ public final class DashboardForm extends javax.swing.JFrame {
         labels_tab[3] = jLabel_Image_4;
         labels_tab[4] = jLabel_Image_5;
         books.displayBooksCover(labels_tab);
+    }
+    
+    public void handleUsers(){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader("session.txt"));
+            String sessionInfo = br.readLine();
+            String[] parts = sessionInfo.split(",");
+            String username = parts[0];
+            
+            if(userType.equals("admin")){
+                jButton_ManageUsers.setVisible(false);  
+                jLabel_Welcome.setText("Good day, " + username);
+            } else if (userType.equals("user")){
+                jButton_ManageUsers.setVisible(false);
+                jButton_IssueBook.setVisible(false);
+                jButton_ReturnBook.setVisible(false);
+                jLabel_Circulation.setVisible(false);
+                jLabel_Welcome.setText("Good day, " + username);
+            }
+            
+        } catch (IOException e) {
+        }
     }
     
     public void addHeaderBorders() { //Add borders to some panel headers
@@ -156,8 +183,12 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel_Image_5 = new javax.swing.JLabel();
         jLabel_Image_3 = new javax.swing.JLabel();
         jLabel_Welcome = new javax.swing.JLabel();
+        logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LIbrary Management System");
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/MyImages/book_login_logo.png")));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(218, 186, 151));
 
@@ -196,7 +227,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel3.setText("Members");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton_AddMember.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_AddMember.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_AddMember.setForeground(new java.awt.Color(243, 236, 236));
         jButton_AddMember.setText("Add member");
         jButton_AddMember.setContentAreaFilled(false);
@@ -208,7 +239,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_EditMember.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_EditMember.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_EditMember.setForeground(new java.awt.Color(243, 236, 236));
         jButton_EditMember.setText("Edit member");
         jButton_EditMember.setContentAreaFilled(false);
@@ -220,7 +251,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_DeleteMember.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_DeleteMember.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_DeleteMember.setForeground(new java.awt.Color(243, 236, 236));
         jButton_DeleteMember.setText("Delete member");
         jButton_DeleteMember.setContentAreaFilled(false);
@@ -232,7 +263,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_MembersList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_MembersList.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_MembersList.setForeground(new java.awt.Color(243, 236, 236));
         jButton_MembersList.setText("Member list");
         jButton_MembersList.setContentAreaFilled(false);
@@ -250,7 +281,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel4.setText("Genres");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton_ManageGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_ManageGenre.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_ManageGenre.setForeground(new java.awt.Color(243, 236, 236));
         jButton_ManageGenre.setText("Manage Genres");
         jButton_ManageGenre.setContentAreaFilled(false);
@@ -268,7 +299,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel10.setText("Authors");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton_ManageAuthors.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_ManageAuthors.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_ManageAuthors.setForeground(new java.awt.Color(243, 236, 236));
         jButton_ManageAuthors.setText("Manage Authors");
         jButton_ManageAuthors.setContentAreaFilled(false);
@@ -286,7 +317,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel8.setText("Books");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton_AddBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_AddBook.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_AddBook.setForeground(new java.awt.Color(243, 236, 236));
         jButton_AddBook.setText("Add book");
         jButton_AddBook.setContentAreaFilled(false);
@@ -298,7 +329,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_EditBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_EditBook.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_EditBook.setForeground(new java.awt.Color(243, 236, 236));
         jButton_EditBook.setText("Edit book");
         jButton_EditBook.setContentAreaFilled(false);
@@ -310,7 +341,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_DeleteBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_DeleteBook.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_DeleteBook.setForeground(new java.awt.Color(243, 236, 236));
         jButton_DeleteBook.setText("Delete book");
         jButton_DeleteBook.setContentAreaFilled(false);
@@ -322,7 +353,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_BooksList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_BooksList.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_BooksList.setForeground(new java.awt.Color(243, 236, 236));
         jButton_BooksList.setText("Books list");
         jButton_BooksList.setContentAreaFilled(false);
@@ -340,7 +371,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel_Circulation.setText("Circulation");
         jLabel_Circulation.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton_IssueBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_IssueBook.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_IssueBook.setForeground(new java.awt.Color(243, 236, 236));
         jButton_IssueBook.setText("Issue");
         jButton_IssueBook.setContentAreaFilled(false);
@@ -352,7 +383,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_ReturnBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_ReturnBook.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton_ReturnBook.setForeground(new java.awt.Color(243, 236, 236));
         jButton_ReturnBook.setText("Return");
         jButton_ReturnBook.setContentAreaFilled(false);
@@ -364,7 +395,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         });
 
-        jButton_ManageUsers.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jButton_ManageUsers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton_ManageUsers.setForeground(new java.awt.Color(243, 236, 236));
         jButton_ManageUsers.setText("Manage Users");
         jButton_ManageUsers.setContentAreaFilled(false);
@@ -444,7 +475,7 @@ public final class DashboardForm extends javax.swing.JFrame {
                 .addComponent(jButton_ReturnBook)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_ManageUsers)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         dashboardPanel2.setBackground(new java.awt.Color(180, 100, 179));
@@ -682,12 +713,23 @@ public final class DashboardForm extends javax.swing.JFrame {
                     .addComponent(jLabel_Image_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_Image_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_Image_5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jLabel_Welcome.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel_Welcome.setForeground(new java.awt.Color(6, 4, 6));
         jLabel_Welcome.setText("Welcome back, Owner");
+
+        logout.setFont(new java.awt.Font("Tahoma", 2, 20)); // NOI18N
+        logout.setForeground(new java.awt.Color(6, 4, 6));
+        logout.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        logout.setText("Logout");
+        logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -695,7 +737,7 @@ public final class DashboardForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -708,14 +750,18 @@ public final class DashboardForm extends javax.swing.JFrame {
                             .addComponent(dashboardPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logout)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel_Welcome)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_Welcome)
+                    .addComponent(logout))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dashboardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -807,6 +853,18 @@ public final class DashboardForm extends javax.swing.JFrame {
         manageUser.setVisible(true);
     }//GEN-LAST:event_jButton_ManageUsersActionPerformed
 
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out?", "Logout", JOptionPane.YES_NO_OPTION);
+        
+        if(confirmation == JOptionPane.YES_OPTION){
+            File sessionFile = new File("session.txt");
+            if(sessionFile.exists()){
+                sessionFile.delete();
+            }
+            System.exit(0);
+        }
+    }//GEN-LAST:event_logoutMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DashboardLogo;
     private javax.swing.JPanel SideBarHeader;
@@ -852,5 +910,6 @@ public final class DashboardForm extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel_Welcome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Menu;
+    public javax.swing.JLabel logout;
     // End of variables declaration//GEN-END:variables
 }

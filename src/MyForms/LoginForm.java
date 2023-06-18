@@ -7,6 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.UUID;
 
 public class LoginForm extends javax.swing.JFrame {
 
@@ -21,8 +25,6 @@ public class LoginForm extends javax.swing.JFrame {
         //Center the form
         this.setLocationRelativeTo(null);
         loginPassword.setEchoChar('*');
-        
-        
         
         //Displays the image
         func.displayImage(LoginLogo.getWidth(), LoginLogo.getHeight(), null, "/MyImages/book_login_logo.png", LoginLogo);
@@ -45,6 +47,7 @@ public class LoginForm extends javax.swing.JFrame {
         ShowPass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Library Management System");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/MyImages/book_login_logo.png")));
         setResizable(false);
 
@@ -201,6 +204,28 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String loadSession() {
+        try (BufferedReader br = new BufferedReader(new FileReader("session.txt"))) {
+            String sessionInfo = br.readLine();
+            String[] parts = sessionInfo.split(",");
+            if (parts.length < 3) {
+                // Invalid session file format
+                return null;
+            }
+            String username = parts[0];
+            String password = parts[1];
+            UUID sessionId = UUID.fromString(parts[2]);
+            boolean isValidSession = func.checkSessionID(username, sessionId);
+            if (isValidSession) {
+                MyClasses.Users user = new MyClasses.Users().tryLogin(username, password);
+                return user.getUserType();
+            }
+        } catch (IOException e) {
+        }
+        return null;
+    }
+
+    
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
         String username = loginUsername.getText();
         String password = String.valueOf(loginPassword.getPassword());
@@ -215,21 +240,9 @@ public class LoginForm extends javax.swing.JFrame {
             MyClasses.Users user = new MyClasses.Users().tryLogin(username, password);
             if (user != null) {
                 JOptionPane.showMessageDialog(null, "Login success", "Logged in", 1);
-                DashboardForm DForm = new DashboardForm();
                 
-                if(user.getUserType().equals("admin")){
-                    DForm.jButton_ManageUsers.setVisible(false);
-                } else if(user.getUserType().equals("user")){
-                    DForm.jButton_ManageUsers.setVisible(false);
-                    DForm.jButton_IssueBook.setVisible(false);
-                    DForm.jButton_ReturnBook.setVisible(false);
-                    DForm.jLabel_Circulation.setVisible(false);
-                    DForm.jLabel_Welcome.setText("Good day, " + user.getUserName());
-                }
-                DForm.setVisible(true);
-                DForm.pack();
-                DForm.setLocationRelativeTo(null);
-                DForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                func.saveSession(username, password);
+                new DashboardForm(user.getUserType()).setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Invalid Input", 0);
@@ -294,7 +307,12 @@ public class LoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                String usertype = new LoginForm().loadSession();
+                if(usertype != null){
+                    new DashboardForm(usertype).setVisible(true);
+                } else {
+                    new LoginForm().setVisible(true);
+                }
             }
         });
     }

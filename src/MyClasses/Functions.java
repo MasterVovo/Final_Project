@@ -1,8 +1,6 @@
 package MyClasses;
 
-//import com.mysql.cj.xdevapi.Statement;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
@@ -17,9 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.sql.Statement;
-import javax.swing.BorderFactory;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import java.io.FileWriter;
+import java.util.UUID;
+import java.sql.Connection;
 
 public class Functions {
     public void displayImage(int width, int height, byte[] imagebyte, String imagePath, JLabel label){ //Displays the logo in the dashboard
@@ -53,8 +52,9 @@ public class Functions {
         table.setRowHeight(30);
         table.setShowGrid(false);
         table.setBackground(new Color(243,236,236));
+        table.setForeground(new Color(6, 4, 6));
         table.setShowHorizontalLines(true);
-        table.setGridColor(new Color(243,236,236)); // choose other color
+        table.setGridColor(new Color(179,173,173)); // choose other color
     }
     
     
@@ -95,8 +95,6 @@ public class Functions {
     // we will use this function to reduce the code when populating the arraylist
     public ResultSet getData(String query) 
     {
-        
-        
         PreparedStatement ps;
         ResultSet rs = null;
         
@@ -110,15 +108,8 @@ public class Functions {
         }
         
         return rs;
-    }        
-/*
-    public void customTableHeader(JTable jTable_Members, Color color, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void customTable(JTable jTable_Members, Color color, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+    }     
+    
     //create a function to count the member of data 
     public int countData(String tableName) {
         int total = 0;
@@ -138,31 +129,52 @@ public class Functions {
        
     }
     
-    public static class CenterTableCellRenderer extends DefaultTableCellRenderer{
-        public CenterTableCellRenderer(){
-            setHorizontalAlignment(SwingConstants.CENTER);
-        }
-        
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
-            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+    public void saveSession(String username, String password){
+        UUID sessionId = UUID.randomUUID();
+        try (FileWriter fileWriter = new FileWriter("session.txt")){
+            fileWriter.write(username + "," + password + "," +sessionId.toString());
+            updateSessionID(username, sessionId);
+        } catch (Exception e) {
         }
     }
     
-    public static class TableHeaderRenderer extends DefaultTableCellRenderer{
-        public TableHeaderRenderer(){
-            setHorizontalAlignment(SwingConstants.CENTER);
-            setBackground(new Color(164,106,106));
-            setForeground(Color.white);
-            setFont (new Font("Tahoma",Font.BOLD, 20));
-            setOpaque(false);
+    public void updateSessionID(String username, UUID sessionId){
+        Connection con = DB.getConnection();
+        
+        if (con == null){
+            System.out.println("Failed to connect to the database");
         }
         
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
-            setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        String query = "UPDATE `users_table` SET `session_id` = ? WHERE `userName` = ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, sessionId.toString());
+            ps.setString(2, username);
+            ps.executeUpdate();
+        } catch (SQLException e) {
         }
+    }
+    
+    public boolean checkSessionID(String username, UUID sessionId){
+        Connection con = DB.getConnection();
+        
+        if (con == null){
+            System.out.println("Failed to connect to the database");
+        }
+        
+        String query = "SELECT `session_id` FROM users_table WHERE `userName` = ?";
+        
+        try(PreparedStatement ps = con.prepareStatement(query)){
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                String storedSessionId = rs.getString("session_id");
+                return sessionId.toString().equals(storedSessionId);
+            }
+        } catch (SQLException e){
+        }
+        
+        return false;
     }
     
 }

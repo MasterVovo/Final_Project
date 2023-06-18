@@ -198,7 +198,7 @@ public class GenreForm extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(20, 20, 20)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addComponent(AddGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +215,7 @@ public class GenreForm extends javax.swing.JFrame {
                             .addComponent(jLabel_EmptyGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -225,10 +225,13 @@ public class GenreForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(genreLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(30, Short.MAX_VALUE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -243,10 +246,7 @@ public class GenreForm extends javax.swing.JFrame {
                             .addComponent(EditGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DeleteGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(82, 82, 82))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(30, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,7 +312,6 @@ public class GenreForm extends javax.swing.JFrame {
         
         GenresTable.getColumnModel().getColumn(0).setMinWidth(0);
         GenresTable.getColumnModel().getColumn(0).setMaxWidth(0);
-        GenresTable.getColumnModel().getColumn(0).setWidth(0);
         
     }
     
@@ -361,36 +360,46 @@ public class GenreForm extends javax.swing.JFrame {
             }
             catch(NumberFormatException ex)
             {    
-                JOptionPane.showMessageDialog(null , "Invalid Genre, check your input and try again", "Error!", 0);
+                JOptionPane.showMessageDialog(null , "Genre doesn't exist", "Error", 0);
             }
         
         }
     }//GEN-LAST:event_EditGenreMouseClicked
 
     private void DeleteGenreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteGenreMouseClicked
-        // Delete the selected genre
-        try
+        String name = Genre.getText();
+        
+        // Check if the textField is empty
+        if(name.trim().isEmpty())
         {
-            int id = Integer.parseInt(ID.getText());
-            
-            //Confirmation message
-            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this genre?", "Delete Genre", JOptionPane.YES_NO_OPTION);
-            
-            if (confirmation == JOptionPane.YES_OPTION){
-                genre.removeGenre(id);
-            }
-            
-
-            // refresh the Jtable Genres
-            populateJtableWithGenres();
-
-            // clear text form the textfields
-            ID.setText("");
-            Genre.setText("");
+           jLabel_EmptyGenre.setText("*Enter genre");
         }
-        catch(NumberFormatException ex)
+        else //if the textField is not empty
         {
-            JOptionPane.showMessageDialog(null , "Invalid Genre, check your input and try again", "Error!", 0);
+            // Delete the selected genre
+            try
+            {
+                int id = Integer.parseInt(ID.getText());
+
+                //Confirmation message
+                int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this genre?", "Delete Genre", JOptionPane.YES_NO_OPTION);
+
+                if (confirmation == JOptionPane.YES_OPTION){
+                    genre.removeGenre(id);
+                }
+
+
+                // refresh the Jtable Genres
+                populateJtableWithGenres();
+
+                // clear text form the textfields
+                ID.setText("");
+                Genre.setText("");
+            }
+            catch(NumberFormatException ex)
+            {
+                JOptionPane.showMessageDialog(null , "Genre doesn't exist", "Error", 0);
+            }
         }
     }//GEN-LAST:event_DeleteGenreMouseClicked
 
