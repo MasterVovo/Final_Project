@@ -46,8 +46,8 @@ public class Functions {
     // create a function to customize the jlabel
     public void customTable(JTable table) 
     {
-        table.setSelectionBackground(new Color(248, 194, 145));
-        table.setSelectionForeground(new Color(243,236,236));
+        table.setSelectionBackground(new Color(72, 197, 243));
+        table.setSelectionForeground(new Color(6, 4, 6));
         table.setFont(new Font("Tahoma", Font.PLAIN, 15));
         table.setRowHeight(30);
         table.setShowGrid(false);

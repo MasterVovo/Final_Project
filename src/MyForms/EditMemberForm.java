@@ -467,8 +467,8 @@ public class EditMemberForm extends javax.swing.JFrame {
         String path = func.selectPicture();
         jLabel_ImagePath.setText(path);
         imagePath = path;
-
         func.displayImage(100, 100, null, path, Member_Image);
+        Member_Image.setText("");
     }//GEN-LAST:event_Browse_ImageMouseClicked
 
     private void Browse_ImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Browse_ImageMouseEntered
@@ -496,6 +496,7 @@ public class EditMemberForm extends javax.swing.JFrame {
                 
                 byte[] image = SelectedMember.getPicture();
                 func.displayImage(100, 100, image, "", Member_Image);
+                Member_Image.setText("");
             } else {
                 JOptionPane.showMessageDialog(null , "Member not found with the given ID", "Invalid ID", 3);
             }
