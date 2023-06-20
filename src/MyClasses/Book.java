@@ -242,11 +242,11 @@ public class Book {
 
             if(ps.executeUpdate() != 0)
             {
-                JOptionPane.showMessageDialog(null , "Book Deleted", "remove", 1);
+                JOptionPane.showMessageDialog(null , "Book Deleted", "Remove Book", 1);
             }
             else
             {
-                JOptionPane.showMessageDialog(null , "Book Not Deleted", "remove", 2);
+                JOptionPane.showMessageDialog(null , "Book doesn't exist", "Remove Book", 2);
             } 
            
             

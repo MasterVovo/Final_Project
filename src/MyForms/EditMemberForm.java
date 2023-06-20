@@ -78,7 +78,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        genreLabel.setText("  Edit Member");
+        genreLabel.setText(" Edit Member");
         genreLabel.setOpaque(true);
 
         genreExit.setBackground(new java.awt.Color(164, 106, 106));
@@ -103,7 +103,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel_EmptyFirstName.setText("   ");
 
         Member_Firstname.setBackground(new java.awt.Color(243, 236, 236));
-        Member_Firstname.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Member_Firstname.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Member_Firstname.setForeground(new java.awt.Color(6, 4, 6));
         Member_Firstname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -120,7 +120,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         });
 
         Member_PhoneNumber.setBackground(new java.awt.Color(243, 236, 236));
-        Member_PhoneNumber.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Member_PhoneNumber.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Member_PhoneNumber.setForeground(new java.awt.Color(6, 4, 6));
         Member_PhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -149,7 +149,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel_EmptyLastName.setText("   ");
 
         Member_Lastname.setBackground(new java.awt.Color(243, 236, 236));
-        Member_Lastname.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Member_Lastname.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Member_Lastname.setForeground(new java.awt.Color(6, 4, 6));
         Member_Lastname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -174,7 +174,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel9.setText("Email:");
 
         Member_Email.setBackground(new java.awt.Color(243, 236, 236));
-        Member_Email.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Member_Email.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Member_Email.setForeground(new java.awt.Color(6, 4, 6));
         Member_Email.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -195,7 +195,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel10.setText("Gender:");
 
         Member_Gender.setBackground(new java.awt.Color(243, 236, 236));
-        Member_Gender.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Member_Gender.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Member_Gender.setForeground(new java.awt.Color(6, 4, 6));
         Member_Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         Member_Gender.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -216,7 +216,7 @@ public class EditMemberForm extends javax.swing.JFrame {
         jLabel5.setText("Enter Member ID:");
 
         Member_Id.setBackground(new java.awt.Color(243, 236, 236));
-        Member_Id.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Member_Id.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Member_Id.setForeground(new java.awt.Color(6, 4, 6));
         Member_Id.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -307,35 +307,36 @@ public class EditMemberForm extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(genrePanelLayout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel_EmptyFirstName))
-                        .addComponent(Member_Lastname, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                        .addGroup(genrePanelLayout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel_EmptyLastName))
-                        .addGroup(genrePanelLayout.createSequentialGroup()
-                            .addComponent(Member_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(SearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel5)
-                        .addComponent(Member_Firstname))
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(Browse_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(Member_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_EmptyFirstName))
+                            .addComponent(Member_Lastname, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_EmptyLastName))
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addComponent(Member_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5)
+                            .addComponent(Member_Firstname))
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Browse_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(genrePanelLayout.createSequentialGroup()
+                    .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Member_PhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(genrePanelLayout.createSequentialGroup()
@@ -343,15 +344,16 @@ public class EditMemberForm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel_EmptyPhoneNumber))
                             .addComponent(jLabel9)
-                            .addComponent(Member_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(genrePanelLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(26, 26, 26)
-                                .addComponent(Member_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(Member_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(genrePanelLayout.createSequentialGroup()
+                            .addComponent(Member_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(39, 39, 39)
+                            .addComponent(Edit_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(Edit_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel10)
+                        .addGap(26, 26, 26)
+                        .addComponent(Member_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,9 +366,9 @@ public class EditMemberForm extends javax.swing.JFrame {
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(Member_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(SearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -385,34 +387,29 @@ public class EditMemberForm extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Member_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(11, 11, 11)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(Member_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(Member_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Edit_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel_EmptyLastName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Member_Lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Member_Lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(Member_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel_ImagePath))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(Member_Image, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addGap(21, 21, 21))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Browse_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Edit_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel_ImagePath))
+                        .addGap(18, 18, 18)
+                        .addComponent(Browse_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

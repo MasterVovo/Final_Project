@@ -90,7 +90,7 @@ public class MemberListForm extends javax.swing.JFrame {
         jLabel4.setText("Search by ID/First Name/Last Name: ");
 
         SearchBar.setBackground(new java.awt.Color(243, 236, 236));
-        SearchBar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        SearchBar.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         SearchBar.setForeground(new java.awt.Color(6, 4, 6));
         SearchBar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

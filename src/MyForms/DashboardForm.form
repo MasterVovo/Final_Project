@@ -823,20 +823,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="dashboardPanel4Header" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel_Image_1" min="-2" pref="205" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel_Image_1" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel_Image_2" min="-2" pref="205" max="-2" attributes="0"/>
+                      <Component id="jLabel_Image_2" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel_Image_3" max="32767" attributes="0"/>
+                      <Component id="jLabel_Image_3" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel_Image_4" min="-2" pref="205" max="-2" attributes="0"/>
+                      <Component id="jLabel_Image_4" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel_Image_5" min="-2" pref="205" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel_Image_5" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="dashboardPanel4Header" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -846,10 +846,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel_Image_1" alignment="0" pref="250" max="32767" attributes="0"/>
-                          <Component id="jLabel_Image_2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel_Image_3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel_Image_4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel_Image_5" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel_Image_2" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="jLabel_Image_3" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="jLabel_Image_4" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="jLabel_Image_5" alignment="0" pref="250" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="31" max="32767" attributes="0"/>
                   </Group>
@@ -869,8 +869,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel7" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -895,6 +895,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Latest Book Added"/>
+                    <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
                 </Component>
               </SubComponents>

@@ -6,11 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-
-
-
-
-
+import javax.swing.border.LineBorder;
 
 public class DeleteBookForm extends javax.swing.JFrame {
 
@@ -26,9 +22,6 @@ public class DeleteBookForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        //add boarder to the panel
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(250, 130, 49));
-        genrePanel.setBorder(genreFormBorder);
        
         func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
    
@@ -50,10 +43,10 @@ public class DeleteBookForm extends javax.swing.JFrame {
         genrePanel = new javax.swing.JPanel();
         genreLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton_Remove = new javax.swing.JButton();
-        jButton_Cancel = new javax.swing.JButton();
         genreExit = new javax.swing.JLabel();
-        jSpinner_ID = new javax.swing.JSpinner();
+        Book_Id = new javax.swing.JTextField();
+        Remove_Book = new javax.swing.JLabel();
+        jLabel_EmptyID = new javax.swing.JLabel();
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(6, 4, 6));
@@ -99,36 +92,21 @@ public class DeleteBookForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
+        genrePanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(164,106,106)));
         genrePanel.setEnabled(false);
 
-        genreLabel.setBackground(new java.awt.Color(253, 150, 68));
+        genreLabel.setBackground(new java.awt.Color(164, 106, 106));
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         genreLabel.setText("Remove Book");
         genreLabel.setOpaque(true);
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel5.setText("Enter The Book ID:");
+        jLabel5.setText("Enter Book ID:");
 
-        jButton_Remove.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jButton_Remove.setText("Remove Book");
-        jButton_Remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_RemoveActionPerformed(evt);
-            }
-        });
-
-        jButton_Cancel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jButton_Cancel.setText("Cancel");
-        jButton_Cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_CancelActionPerformed(evt);
-            }
-        });
-
-        genreExit.setBackground(new java.awt.Color(253, 150, 68));
+        genreExit.setBackground(new java.awt.Color(164, 106, 106));
         genreExit.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         genreExit.setForeground(new java.awt.Color(243, 236, 236));
         genreExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -141,29 +119,70 @@ public class DeleteBookForm extends javax.swing.JFrame {
             }
         });
 
-        jSpinner_ID.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Book_Id.setBackground(new java.awt.Color(243, 236, 236));
+        Book_Id.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        Book_Id.setForeground(new java.awt.Color(6, 4, 6));
+        Book_Id.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Book_IdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Book_IdFocusLost(evt);
+            }
+        });
+        Book_Id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Book_IdActionPerformed(evt);
+            }
+        });
+        Book_Id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Book_IdKeyTyped(evt);
+            }
+        });
+
+        Remove_Book.setBackground(new java.awt.Color(0, 117, 98));
+        Remove_Book.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        Remove_Book.setForeground(new java.awt.Color(243, 236, 236));
+        Remove_Book.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Remove_Book.setText("Remove Book");
+        Remove_Book.setOpaque(true);
+        Remove_Book.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Remove_BookMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Remove_BookMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Remove_BookMouseExited(evt);
+            }
+        });
+
+        jLabel_EmptyID.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel_EmptyID.setForeground(new java.awt.Color(250, 0, 0));
+        jLabel_EmptyID.setText("    ");
 
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton_Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(genrePanelLayout.createSequentialGroup()
                 .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Remove_Book, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
+            .addGroup(genrePanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_EmptyID)
+                    .addComponent(Book_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,22 +190,24 @@ public class DeleteBookForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(30, 30, 30)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(Book_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_EmptyID)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(Remove_Book, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,46 +233,68 @@ public class DeleteBookForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton_AddActionPerformed
 
-    private void jButton_RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RemoveActionPerformed
+    private void Book_IdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Book_IdFocusGained
+        Book_Id.setBorder(new LineBorder(new Color(86,76,62), 2));
+    }//GEN-LAST:event_Book_IdFocusGained
+
+    private void Book_IdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Book_IdFocusLost
+        Book_Id.setBorder(new LineBorder(new Color(218,186,151), 2));
+    }//GEN-LAST:event_Book_IdFocusLost
+
+    private void Book_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Book_IdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Book_IdActionPerformed
+
+    private void Remove_BookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Remove_BookMouseClicked
         // delete book
        
         MyClasses.Book book  = new MyClasses.Book();
-        Integer id = (Integer) jSpinner_ID.getValue();
-         
         try 
         {
+            Integer id = Integer.parseInt(Book_Id.getText());
+            
             //Confirmation message
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this Book?", "Delete Book", JOptionPane.YES_NO_OPTION);
             
             if (confirmation == JOptionPane.YES_OPTION){
                 book.removeBook(id);
+                jLabel_EmptyID.setText(" ");
             }
             
         
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null , ex.getMessage(), "Delete Error", 2);
+            jLabel_EmptyID.setText("*Enter Book ID");
         } 
-      
-    }//GEN-LAST:event_jButton_RemoveActionPerformed
+    }//GEN-LAST:event_Remove_BookMouseClicked
 
-    private void jButton_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CancelActionPerformed
-        // close the window
-        this.dispose();
-    }//GEN-LAST:event_jButton_CancelActionPerformed
+    private void Remove_BookMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Remove_BookMouseEntered
+        Remove_Book.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_Remove_BookMouseEntered
+
+    private void Remove_BookMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Remove_BookMouseExited
+        Remove_Book.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_Remove_BookMouseExited
+
+    private void Book_IdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Book_IdKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Book_IdKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Book_Id;
+    private javax.swing.JLabel Remove_Book;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
     private javax.swing.JButton jButton_Add;
-    private javax.swing.JButton jButton_Cancel;
-    private javax.swing.JButton jButton_Remove;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JSpinner jSpinner_ID;
+    private javax.swing.JLabel jLabel_EmptyID;
     private javax.swing.JTextField jTextField_ID2;
     private javax.swing.JTextField jTextField_ID5;
     private javax.swing.JTextField jTextField_ID6;
