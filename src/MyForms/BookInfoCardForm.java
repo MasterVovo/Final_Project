@@ -22,20 +22,9 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        //add boarder to the panel
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(250,130,49));
-        genrePanel.setBorder(genreFormBorder);
         
         
         func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
-     
-        
-        Border jLabelImageBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(47,54,64));
-        jLabel_Image.setBorder(jLabelImageBorder);
-        
-        // add a default image to the jlabel 
-        func.displayImage(120, 120, null, "/MyImages/blank-profile.png", jLabel_Image);
-        
         displayBookInfo(book_id);
         
     }
@@ -67,7 +56,7 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                 
                 
                 byte[] image = SelectedBook.getCover();
-                func.displayImage(140, 230,  image, "", jLabel_Image);
+                func.displayImage(160, 200,  image, "", jLabel_Image);
             }
             
         } catch (SQLException ex) {
@@ -155,16 +144,17 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
+        genrePanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(164,106,106)));
         genrePanel.setPreferredSize(new java.awt.Dimension(420, 520));
 
-        genreLabel.setBackground(new java.awt.Color(253, 150, 68));
+        genreLabel.setBackground(new java.awt.Color(164, 106, 106));
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         genreLabel.setText("Book Info Card");
         genreLabel.setOpaque(true);
 
-        genreExit.setBackground(new java.awt.Color(253, 150, 68));
+        genreExit.setBackground(new java.awt.Color(164, 106, 106));
         genreExit.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         genreExit.setForeground(new java.awt.Color(243, 236, 236));
         genreExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -222,8 +212,8 @@ public class BookInfoCardForm extends javax.swing.JFrame {
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(genrePanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -232,7 +222,8 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_DateReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +244,7 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addComponent(jLabel_ISBN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -270,10 +261,12 @@ public class BookInfoCardForm extends javax.swing.JFrame {
                         .addComponent(jLabel_Quantity)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel_DateReceived))
-                    .addComponent(jLabel_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

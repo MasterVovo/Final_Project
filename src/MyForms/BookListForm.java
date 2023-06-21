@@ -1,19 +1,17 @@
 
 package MyForms;
-import MyClasses.Member;
 import java.awt.Color;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
 
 public class BookListForm extends javax.swing.JFrame {
-
     
     MyClasses.Book book = new MyClasses.Book();
     MyClasses.Functions func = new MyClasses.Functions();
@@ -24,11 +22,6 @@ public class BookListForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        //add boarder to the panel
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(250,130,49));
-        genrePanel.setBorder(genreFormBorder);
-        
-        
         func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
         
         //Custom the jtable
@@ -36,12 +29,6 @@ public class BookListForm extends javax.swing.JFrame {
         
         //Custom the jtable header ROW
         func.customTableHeader(jTable_Books);
-        
-        Border jLabelImageBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(47,54,64));
-        jLabel_Image.setBorder(jLabelImageBorder);
-        
-        // add a default image to the jlabel 
-        func.displayImage(120, 120, null, "/MyImages/blank-profile.png", jLabel_Image);
         
         // display members in the jtable  
         populateJtableWithBooks("");
@@ -69,18 +56,21 @@ public class BookListForm extends javax.swing.JFrame {
         jLabel_Genre = new javax.swing.JLabel();
         jLabel_Publisher = new javax.swing.JLabel();
         jLabel_Price = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField_Search = new javax.swing.JTextField();
-        jButton_SearchByNameOrDescription = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton_SearchBetweenTwoDates = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel9 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        Title_Search = new javax.swing.JLabel();
+        Author_Search = new javax.swing.JLabel();
+        Genre_Search = new javax.swing.JLabel();
+        JLabel1 = new javax.swing.JLabel();
+        JLabel2 = new javax.swing.JLabel();
+        JLabel3 = new javax.swing.JLabel();
+        JLabel4 = new javax.swing.JLabel();
+        JLabel5 = new javax.swing.JLabel();
+        JLabel6 = new javax.swing.JLabel();
+        JLabel7 = new javax.swing.JLabel();
+        Book_ID = new javax.swing.JLabel();
+        JLabel8 = new javax.swing.JLabel();
+        Book_Description = new javax.swing.JLabel();
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(6, 4, 6));
@@ -136,15 +126,16 @@ public class BookListForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
+        genrePanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(164,106,106)));
 
-        genreLabel.setBackground(new java.awt.Color(253, 150, 68));
+        genreLabel.setBackground(new java.awt.Color(164, 106, 106));
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         genreLabel.setText("Books List");
         genreLabel.setOpaque(true);
 
-        genreExit.setBackground(new java.awt.Color(253, 150, 68));
+        genreExit.setBackground(new java.awt.Color(164, 106, 106));
         genreExit.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         genreExit.setForeground(new java.awt.Color(243, 236, 236));
         genreExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,14 +149,6 @@ public class BookListForm extends javax.swing.JFrame {
         });
 
         jTable_Books.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable_Books.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
-            }
-        ));
         jTable_Books.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable_BooksMouseClicked(evt);
@@ -184,141 +167,150 @@ public class BookListForm extends javax.swing.JFrame {
             jTable_Books.getColumnModel().getColumn(8).setHeaderValue("Title 9");
         }
 
-        jLabel_Image.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Image.setBackground(new java.awt.Color(218, 186, 151));
+        jLabel_Image.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel_Image.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Image.setText("Book Cover");
+        jLabel_Image.setBorder(BorderFactory.createMatteBorder(1,1,1,1, new Color(6,4,6)));
         jLabel_Image.setOpaque(true);
 
         jLabel_ISBN.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_ISBN.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_ISBN.setText("ISBN");
+        jLabel_ISBN.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_ISBN.setText(" ");
 
         jLabel_Name.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Name.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Name.setText("Name");
+        jLabel_Name.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Name.setText("  ");
 
         jLabel_Author.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Author.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Author.setText("Author");
+        jLabel_Author.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Author.setText("  ");
 
         jLabel_Genre.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Genre.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Genre.setText("Genre");
+        jLabel_Genre.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Genre.setText("  ");
 
         jLabel_Publisher.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Publisher.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Publisher.setText("Publisher");
+        jLabel_Publisher.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Publisher.setText("  ");
 
         jLabel_Price.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel_Price.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel_Price.setText("Price");
+        jLabel_Price.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel_Price.setText("   ");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel4.setText("Value to Search:");
+        jLabel4.setText("Search:");
 
-        jTextField_Search.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jTextField_Search.setBackground(new java.awt.Color(243, 236, 236));
+        jTextField_Search.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jTextField_Search.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_SearchActionPerformed(evt);
             }
         });
-
-        jButton_SearchByNameOrDescription.setText("search");
-        jButton_SearchByNameOrDescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SearchByNameOrDescriptionActionPerformed(evt);
+        jTextField_Search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_SearchKeyTyped(evt);
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel1.setText("Search by book name or description ");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_SearchByNameOrDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton_SearchByNameOrDescription))
-                .addContainerGap())
-        );
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel7.setText("Date Received between: ");
-
-        jButton_SearchBetweenTwoDates.setText("search");
-        jButton_SearchBetweenTwoDates.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SearchBetweenTwoDatesActionPerformed(evt);
+        Title_Search.setBackground(new java.awt.Color(0, 117, 98));
+        Title_Search.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        Title_Search.setForeground(new java.awt.Color(243, 236, 236));
+        Title_Search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title_Search.setText("Search by Title");
+        Title_Search.setOpaque(true);
+        Title_Search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Title_SearchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Title_SearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Title_SearchMouseExited(evt);
             }
         });
 
-        jLabel8.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel8.setText("Search Between two Book");
+        Author_Search.setBackground(new java.awt.Color(0, 117, 98));
+        Author_Search.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        Author_Search.setForeground(new java.awt.Color(243, 236, 236));
+        Author_Search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Author_Search.setText("Search by Author ID");
+        Author_Search.setOpaque(true);
+        Author_Search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Author_SearchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Author_SearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Author_SearchMouseExited(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel9.setText("and:");
+        Genre_Search.setBackground(new java.awt.Color(0, 117, 98));
+        Genre_Search.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        Genre_Search.setForeground(new java.awt.Color(243, 236, 236));
+        Genre_Search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Genre_Search.setText("Search by Genre ID");
+        Genre_Search.setOpaque(true);
+        Genre_Search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Genre_SearchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Genre_SearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Genre_SearchMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
-                        .addGap(12, 12, 12)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jButton_SearchBetweenTwoDates, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton_SearchBetweenTwoDates))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
+        JLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel1.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel1.setText("Book ID:");
+
+        JLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel2.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel2.setText("ISBN:");
+
+        JLabel3.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel3.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel3.setText("Title:");
+
+        JLabel4.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel4.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel4.setText("Author:");
+
+        JLabel5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel5.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel5.setText("Genre:");
+
+        JLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel6.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel6.setText("Publisher:");
+
+        JLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel7.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel7.setText("Price:");
+
+        Book_ID.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        Book_ID.setForeground(new java.awt.Color(6, 4, 6));
+        Book_ID.setText(" ");
+
+        JLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        JLabel8.setForeground(new java.awt.Color(47, 72, 88));
+        JLabel8.setText("Description:");
+
+        Book_Description.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        Book_Description.setForeground(new java.awt.Color(6, 4, 6));
+        Book_Description.setText(" ");
+        Book_Description.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout genrePanelLayout = new javax.swing.GroupLayout(genrePanel);
         genrePanel.setLayout(genrePanelLayout);
@@ -326,28 +318,64 @@ public class BookListForm extends javax.swing.JFrame {
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
                 .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(20, 20, 20)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_Search)
                         .addGap(18, 18, 18)
-                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Author, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Genre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Publisher, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(jLabel_Price, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(jLabel_ISBN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(42, 42, 42))
+                        .addComponent(Title_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Author_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Genre_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
+                                .addComponent(JLabel1)
+                                .addGap(5, 5, 5)
+                                .addComponent(Book_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(230, 230, 230)
+                                .addComponent(JLabel8)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, genrePanelLayout.createSequentialGroup()
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(JLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_Name))
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(JLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_Author))
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(JLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_Genre))
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(JLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(JLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_Publisher, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(genrePanelLayout.createSequentialGroup()
+                                        .addComponent(JLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Book_Description, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,29 +383,53 @@ public class BookListForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
-                        .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel_ISBN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Author)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Genre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Publisher)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_Price)
-                        .addGap(20, 20, 20)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(Title_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Author_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Genre_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(genrePanelLayout.createSequentialGroup()
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JLabel1)
+                            .addComponent(Book_ID)
+                            .addComponent(JLabel8))
+                        .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(genrePanelLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JLabel2)
+                                    .addComponent(jLabel_ISBN))
+                                .addGap(12, 12, 12)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JLabel3)
+                                    .addComponent(jLabel_Name))
+                                .addGap(12, 12, 12)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JLabel4)
+                                    .addComponent(jLabel_Author))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JLabel5)
+                                    .addComponent(jLabel_Genre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JLabel7)
+                                    .addComponent(jLabel_Price))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JLabel6)
+                                    .addComponent(jLabel_Publisher)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(Book_Description, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -390,7 +442,7 @@ public class BookListForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(genrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -428,16 +480,32 @@ public class BookListForm extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel (rows,colNames);
         jTable_Books.setModel(model);
         
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < jTable_Books.getColumnCount(); i++) {
+            jTable_Books.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
+        jTable_Books.getColumnModel().getColumn(0).setMinWidth(40);
+        jTable_Books.getColumnModel().getColumn(0).setMaxWidth(40);
+        jTable_Books.getColumnModel().getColumn(1).setMinWidth(150);
+        jTable_Books.getColumnModel().getColumn(1).setMaxWidth(150);
+        jTable_Books.getColumnModel().getColumn(3).setMinWidth(175);
+        jTable_Books.getColumnModel().getColumn(3).setMaxWidth(175);
+        jTable_Books.getColumnModel().getColumn(4).setMinWidth(150);
+        jTable_Books.getColumnModel().getColumn(4).setMaxWidth(150);
+        jTable_Books.getColumnModel().getColumn(5).setMinWidth(100);
+        jTable_Books.getColumnModel().getColumn(5).setMaxWidth(100);
+        jTable_Books.getColumnModel().getColumn(6).setMinWidth(175);
+        jTable_Books.getColumnModel().getColumn(6).setMaxWidth(175);
+        jTable_Books.getColumnModel().getColumn(7).setMinWidth(100);
+        jTable_Books.getColumnModel().getColumn(7).setMaxWidth(100);
+        jTable_Books.getColumnModel().getColumn(8).setMinWidth(0);
+        jTable_Books.getColumnModel().getColumn(8).setMaxWidth(0);
+        
     }
     
-    private void jButton_SearchByNameOrDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SearchByNameOrDescriptionActionPerformed
-        // search and display data in the jtable
-        String value = jTextField_Search.getText();
-        // Search by name, publisher and  description
-        String query = "SELECT * FROM `books` WHERE `name` LIKE '%"+value+"%' OR `publisher` LIKE '%"+value+"%' or `description` LIKE '%"+value+"%'";
-        populateJtableWithBooks(query);
-    }//GEN-LAST:event_jButton_SearchByNameOrDescriptionActionPerformed
-
     private void jTable_BooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_BooksMouseClicked
         // Display the selected book data 
         
@@ -451,6 +519,7 @@ public class BookListForm extends javax.swing.JFrame {
             
             if (SelectedBook != null)
             {
+                Book_ID.setText(id.toString());
                 jLabel_ISBN.setText(SelectedBook.getIsbn());
                 jLabel_Name.setText(SelectedBook.getName());
                 
@@ -462,12 +531,12 @@ public class BookListForm extends javax.swing.JFrame {
                 
                 jLabel_Publisher.setText(SelectedBook.getPublisher());
                 jLabel_Price.setText(String.valueOf(SelectedBook.getPrice()));
-                
+                Book_Description.setText(SelectedBook.getDescription());
                 
                 
                 byte[] image = SelectedBook.getCover();
-                func.displayImage(120, 120,  image, "", jLabel_Image);
-                
+                func.displayImage(200, 250,  image, "", jLabel_Image);
+                jLabel_Image.setText("");
             } else {
                 JOptionPane.showMessageDialog(null , "Member not found with the given ID", "Invalid ID", 3);
             }
@@ -479,10 +548,6 @@ public class BookListForm extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jTable_BooksMouseClicked
 
-    private void jTextField_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_SearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_SearchActionPerformed
-
     private void jTextField_Search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Search2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_Search2ActionPerformed
@@ -491,39 +556,87 @@ public class BookListForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_Search2ActionPerformed
 
-    private void jButton_SearchBetweenTwoDatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SearchBetweenTwoDatesActionPerformed
-       // search and display data in the jtable
-       try 
-       {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String date1 = dateFormat.format  (jDateChooser1.getDate()); //get date 1
-            String date2 = dateFormat.format  (jDateChooser2.getDate()); // get date 2
-            // Search book between two date 
-            String query = "SELECT * FROM `books` WHERE `date_received` BETWEEN '"+date1+"' AND '"+date2+"'";
-            populateJtableWithBooks(query); 
-       }
-       catch(Exception ex)
-       {
-            JOptionPane.showMessageDialog(null , "Select The Two Date Before Clicking Search", "No Dates Selected", 2);
-       } 
-    }//GEN-LAST:event_jButton_SearchBetweenTwoDatesActionPerformed
+    private void jTextField_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_SearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_SearchActionPerformed
+
+    private void jTextField_SearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_SearchKeyTyped
+        // search and display data in the jtable
+        String value = jTextField_Search.getText();
+        // Search by name, publisher and  description
+        String query = "SELECT * FROM `books` WHERE `name` LIKE '%"+value+"%' OR `publisher` LIKE '%"+value+"%' or `description` LIKE '%"+value+"%'";
+        populateJtableWithBooks(query);
+    }//GEN-LAST:event_jTextField_SearchKeyTyped
+
+    private void Title_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_SearchMouseClicked
+        // search and display data in the jtable
+        String value = jTextField_Search.getText();
+        // Search by name, publisher and  description
+        String query = "SELECT * FROM `books` WHERE `name` LIKE '%"+value+"%'";
+        populateJtableWithBooks(query);
+    }//GEN-LAST:event_Title_SearchMouseClicked
+
+    private void Title_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_SearchMouseEntered
+        Title_Search.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_Title_SearchMouseEntered
+
+    private void Title_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_SearchMouseExited
+        Title_Search.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_Title_SearchMouseExited
+
+    private void Author_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Author_SearchMouseClicked
+        // search and display data in the jtable
+        String value = jTextField_Search.getText();
+        // Search by name, publisher and  description
+        String query = "SELECT * FROM `books` WHERE `author_id` = '"+ value +"'";
+        populateJtableWithBooks(query);
+    }//GEN-LAST:event_Author_SearchMouseClicked
+
+    private void Author_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Author_SearchMouseEntered
+        Author_Search.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_Author_SearchMouseEntered
+
+    private void Author_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Author_SearchMouseExited
+        Author_Search.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_Author_SearchMouseExited
+
+    private void Genre_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Genre_SearchMouseClicked
+        // search and display data in the jtable
+        String value = jTextField_Search.getText();
+        // Search by name, publisher and  description
+        String query = "SELECT * FROM `books` WHERE `genre_id` = '"+ value +"'";
+        populateJtableWithBooks(query);
+    }//GEN-LAST:event_Genre_SearchMouseClicked
+
+    private void Genre_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Genre_SearchMouseEntered
+        Genre_Search.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_Genre_SearchMouseEntered
+
+    private void Genre_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Genre_SearchMouseExited
+        Genre_Search.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_Genre_SearchMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Author_Search;
+    private javax.swing.JLabel Book_Description;
+    private javax.swing.JLabel Book_ID;
+    private javax.swing.JLabel Genre_Search;
+    private javax.swing.JLabel JLabel1;
+    private javax.swing.JLabel JLabel2;
+    private javax.swing.JLabel JLabel3;
+    private javax.swing.JLabel JLabel4;
+    private javax.swing.JLabel JLabel5;
+    private javax.swing.JLabel JLabel6;
+    private javax.swing.JLabel JLabel7;
+    private javax.swing.JLabel JLabel8;
+    private javax.swing.JLabel Title_Search;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
     private javax.swing.JButton jButton_Search2;
-    private javax.swing.JButton jButton_SearchBetweenTwoDates;
-    private javax.swing.JButton jButton_SearchByNameOrDescription;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Author;
     private javax.swing.JLabel jLabel_Genre;
     private javax.swing.JLabel jLabel_ISBN;
@@ -531,9 +644,7 @@ public class BookListForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Name;
     private javax.swing.JLabel jLabel_Price;
     private javax.swing.JLabel jLabel_Publisher;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable_Books;
     private javax.swing.JTextField jTextField_Search;

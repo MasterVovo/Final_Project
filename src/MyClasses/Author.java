@@ -190,7 +190,7 @@ public class Author {
     // create a function to get author by id
     public Author getAuthorById(Integer id) {
         
-         MyClasses.Functions func = new Functions();
+        MyClasses.Functions func = new Functions();
         
         ResultSet rs = func.getData("SELECT * FROM `author` where id = "+id);
             

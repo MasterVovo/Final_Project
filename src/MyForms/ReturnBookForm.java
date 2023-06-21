@@ -2,10 +2,6 @@
 package MyForms;
 import java.awt.Color;
 import java.awt.HeadlessException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -45,9 +43,6 @@ public class ReturnBookForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        //add boarder to the panel
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(250, 130, 49));
-        genrePanel.setBorder(genreFormBorder);
        
         func.displayImage(45, 45, null, "/MyImages/organizer.png", genreLabel);
         
@@ -147,6 +142,7 @@ public class ReturnBookForm extends javax.swing.JFrame {
         setUndecorated(true);
 
         genrePanel.setBackground(new java.awt.Color(218, 186, 151));
+        genrePanel.setBorder(BorderFactory.createMatteBorder(3,3,3,3, new Color(164,106,106)));
         genrePanel.setEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -232,14 +228,14 @@ public class ReturnBookForm extends javax.swing.JFrame {
         jTextArea_Note.setRows(5);
         jScrollPane1.setViewportView(jTextArea_Note);
 
-        genreLabel.setBackground(new java.awt.Color(253, 150, 68));
+        genreLabel.setBackground(new java.awt.Color(164, 106, 106));
         genreLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         genreLabel.setForeground(new java.awt.Color(243, 236, 236));
         genreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         genreLabel.setText(" Return Book");
         genreLabel.setOpaque(true);
 
-        genreExit.setBackground(new java.awt.Color(253, 150, 68));
+        genreExit.setBackground(new java.awt.Color(164, 106, 106));
         genreExit.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         genreExit.setForeground(new java.awt.Color(243, 236, 236));
         genreExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -662,6 +658,13 @@ public class ReturnBookForm extends javax.swing.JFrame {
         
         DefaultTableModel model = new DefaultTableModel (rows,colNames);
         jTable_Books.setModel(model);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < jTable_Books.getColumnCount(); i++) {
+            jTable_Books.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
         
     }
 

@@ -713,7 +713,8 @@ public class EditBookForm extends javax.swing.JFrame {
                 jDateChooser_Date.setDate(date_receive);
                 
                 byte[] image = selectedBook.getCover();
-                func.displayImage(175, 150, image, "", jLabel_Image);
+                func.displayImage(120, 150, image, "", jLabel_Image);
+                jLabel_Image.setText("");
                 
                 jTextField_ID.setEnabled(false);
                 jTextField_ISBN.setEnabled(false);

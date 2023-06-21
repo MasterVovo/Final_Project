@@ -73,6 +73,15 @@ public final class DashboardForm extends javax.swing.JFrame {
                 jButton_ReturnBook.setVisible(false);
                 jLabel_Circulation.setVisible(false);
                 jLabel_Welcome.setText("Good day, " + username);
+                jButton_ManageGenre.setEnabled(false);
+                jButton_ManageAuthors.setEnabled(false);
+                jButton_AddMember.setEnabled(false);
+                jButton_EditMember.setEnabled(false);
+                jButton_DeleteMember.setEnabled(false);
+                jButton_MembersList.setEnabled(false);
+                jButton_AddBook.setEnabled(false);
+                jButton_EditBook.setEnabled(false);
+                jButton_DeleteBook.setEnabled(false);
             }
             
         } catch (IOException e) {

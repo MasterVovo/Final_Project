@@ -701,7 +701,8 @@ public class AddBookForm extends javax.swing.JFrame {
     // create a function to verify the required fields
     public boolean verif() {
         return !(jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("") || 
-                jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("") || jLabel_Genre_ID.getText().equals("ID"));
+                jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("") || 
+                jComboBox_Genre.getSelectedItem().equals("-----"));
     }
     
      // create a function to populate the jcombox with genre name and user id using hashmap 

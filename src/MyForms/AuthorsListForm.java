@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class AuthorsListForm extends javax.swing.JFrame {
@@ -24,10 +26,6 @@ public class AuthorsListForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        
-        //add boarder to the panel
-        Border genreFormBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(164,106,106));
-        genrePanel.setBorder(genreFormBorder);
         
         func.displayImage(50, 50,null, "/MyImages/notepad.png", genreLabel);
         
@@ -57,7 +55,7 @@ public class AuthorsListForm extends javax.swing.JFrame {
         genreExit = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Authors = new javax.swing.JTable();
-        jButton_SelectAuthor = new javax.swing.JButton();
+        Select_Author = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -99,10 +97,21 @@ public class AuthorsListForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_Authors);
 
-        jButton_SelectAuthor.setText("Select Author");
-        jButton_SelectAuthor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SelectAuthorActionPerformed(evt);
+        Select_Author.setBackground(new java.awt.Color(0, 117, 98));
+        Select_Author.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        Select_Author.setForeground(new java.awt.Color(243, 236, 236));
+        Select_Author.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Select_Author.setText("Select Author");
+        Select_Author.setOpaque(true);
+        Select_Author.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Select_AuthorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Select_AuthorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Select_AuthorMouseExited(evt);
             }
         });
 
@@ -111,20 +120,15 @@ public class AuthorsListForm extends javax.swing.JFrame {
         genrePanelLayout.setHorizontalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genrePanelLayout.createSequentialGroup()
-                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(genrePanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 15, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, genrePanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton_SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
+                .addGap(20, 20, 20)
+                .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Select_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(genrePanelLayout.createSequentialGroup()
+                .addComponent(genreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         genrePanelLayout.setVerticalGroup(
             genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,11 +136,11 @@ public class AuthorsListForm extends javax.swing.JFrame {
                 .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genreExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jButton_SelectAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(Select_Author, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,7 +165,7 @@ public class AuthorsListForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable_AuthorsMouseClicked
 
-    private void jButton_SelectAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectAuthorActionPerformed
+    private void Select_AuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Select_AuthorMouseClicked
         int index = jTable_Authors.getSelectedRow();
         
         //get values
@@ -179,7 +183,15 @@ public class AuthorsListForm extends javax.swing.JFrame {
         AddBookForm.displayAuthor(id, fullName);
         
         this.dispose();
-    }//GEN-LAST:event_jButton_SelectAuthorActionPerformed
+    }//GEN-LAST:event_Select_AuthorMouseClicked
+
+    private void Select_AuthorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Select_AuthorMouseEntered
+        Select_Author.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_Select_AuthorMouseEntered
+
+    private void Select_AuthorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Select_AuthorMouseExited
+        Select_Author.setBackground(new Color(0,117,98));
+    }//GEN-LAST:event_Select_AuthorMouseExited
 
     //create a function to populate the jtable with authors
     public void populateJtableWithAuthors()
@@ -205,13 +217,26 @@ public class AuthorsListForm extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel (rows,colNames);
         jTable_Authors.setModel(model);
         
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < jTable_Authors.getColumnCount(); i++) {
+            jTable_Authors.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
+        jTable_Authors.getColumnModel().getColumn(0).setMinWidth(40);
+        jTable_Authors.getColumnModel().getColumn(0).setMaxWidth(40);
+        jTable_Authors.getColumnModel().getColumn(3).setMinWidth(0);
+        jTable_Authors.getColumnModel().getColumn(3).setMaxWidth(0);
+        jTable_Authors.getColumnModel().getColumn(4).setMinWidth(0);
+        jTable_Authors.getColumnModel().getColumn(4).setMaxWidth(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Select_Author;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
-    private javax.swing.JButton jButton_SelectAuthor;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable_Authors;
     // End of variables declaration//GEN-END:variables

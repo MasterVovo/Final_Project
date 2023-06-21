@@ -318,7 +318,7 @@ public class Book {
             
             if (query.equals(""))// if the user entery empty string make this the default select
                     {
-                        query = "SELECT * FROM `books`";
+                        query = "SELECT * FROM `books` ORDER BY `name`";
                     }
             
             ResultSet rs = func.getData(query);

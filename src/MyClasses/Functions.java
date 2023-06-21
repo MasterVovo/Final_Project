@@ -102,8 +102,8 @@ public class Functions {
             ps = DB.getConnection().prepareStatement(query);
             rs= ps.executeQuery();
             
-            } 
-            catch (SQLException ex) {
+        } 
+        catch (SQLException ex) {
             Logger.getLogger(Functions.class.getName()).log(Level.SEVERE, null, ex);
         }
         
