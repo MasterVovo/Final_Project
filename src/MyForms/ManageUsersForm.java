@@ -463,7 +463,7 @@ public final class ManageUsersForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_AddActionPerformed
 
     private void jTable_UsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_UsersMouseClicked
-        // Display the selected author
+        // Display the selected member
         // get the selected row index
         int index = jTable_Users.getSelectedRow();
 
