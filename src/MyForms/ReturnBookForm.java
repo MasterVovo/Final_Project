@@ -380,8 +380,8 @@ public final class ReturnBookForm extends javax.swing.JFrame {
         // the note
         // and the status to returned 
         // NOTE: if you change a book status from LOST to RETURNED you need to update the quantity
-        // or you can prevent the user from changing the status when it's set tot lost
-        int _book_id = Integer.parseInt(jSpinner_MemberID.getText());
+        // or you can prevent the user from changing the status when it's set to lost
+        int _book_id = Integer.parseInt(jSpinner_BookID.getText());
         int _member_id = Integer.parseInt(jSpinner_MemberID.getText());
         String _note = jTextArea_Note.getText();
 
@@ -402,12 +402,14 @@ public final class ReturnBookForm extends javax.swing.JFrame {
                 // reset fields
 
                 jSpinner_BookID.setText("");
-                jSpinner_BookID.setText("");
+                jSpinner_MemberID.setText("");
                 jLabel_BookName.setText("Book Name");
                 jLabel_MemberName.setText("Member Full-Name");
                 jDateChooser_IssueDate.setDate(new Date());
                 jDateChooser_Return_Date.setDate(new Date());
                 jTextArea_Note.setText("");
+                
+                populateJtableIssuedBooks("");
             }
         } catch (HeadlessException | NullPointerException | ParseException ex) {
             JOptionPane.showMessageDialog(null, "Select A Item From The Table", "Select Date!", 2);
@@ -515,7 +517,7 @@ public final class ReturnBookForm extends javax.swing.JFrame {
         // the new quantity = the quantity - 1
         // even if the book is lost we will not change the return date
 
-        int _book_id = Integer.parseInt(jSpinner_MemberID.getText());
+        int _book_id = Integer.parseInt(jSpinner_BookID.getText());
         int _member_id = Integer.parseInt(jSpinner_MemberID.getText());
         String _note = jTextArea_Note.getText();
 
@@ -541,6 +543,8 @@ public final class ReturnBookForm extends javax.swing.JFrame {
             jDateChooser_IssueDate.setDate(new Date());
             jDateChooser_Return_Date.setDate(new Date());
             jTextArea_Note.setText("");
+            
+            populateJtableIssuedBooks("");
         } catch (HeadlessException | NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Select A Item From The Table", "Select Date!", 2);
         } catch (SQLException ex) {
@@ -569,7 +573,7 @@ public final class ReturnBookForm extends javax.swing.JFrame {
             //get values
             int _book_id = Integer.parseInt(jTable_Books.getValueAt(index, 0).toString());
             int _member_id = Integer.parseInt(jTable_Books.getValueAt(index, 1).toString());
-            String _issued_date = jTable_Books.getValueAt(index, 3).toString();;
+            String _issued_date = jTable_Books.getValueAt(index, 3).toString();
 
             issue.removeFromIssuedTable(_book_id, _member_id, _issued_date);
 
@@ -582,6 +586,7 @@ public final class ReturnBookForm extends javax.swing.JFrame {
             jDateChooser_Return_Date.setDate(new Date());
             jTextArea_Note.setText("");
 
+            populateJtableIssuedBooks("");
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Select the Element You Want To Delete From The Table" + ex.getMessage(), "Delete Error", 2);
         }

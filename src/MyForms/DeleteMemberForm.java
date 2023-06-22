@@ -30,7 +30,7 @@ public class DeleteMemberForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Member_ID = new javax.swing.JTextField();
         jLabel_EmptyID = new javax.swing.JLabel();
-        Add_Member = new javax.swing.JLabel();
+        Delete_Member = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -83,21 +83,21 @@ public class DeleteMemberForm extends javax.swing.JFrame {
         jLabel_EmptyID.setForeground(new java.awt.Color(250, 0, 0));
         jLabel_EmptyID.setText("    ");
 
-        Add_Member.setBackground(new java.awt.Color(0, 117, 98));
-        Add_Member.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        Add_Member.setForeground(new java.awt.Color(243, 236, 236));
-        Add_Member.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Add_Member.setText("Delete Member");
-        Add_Member.setOpaque(true);
-        Add_Member.addMouseListener(new java.awt.event.MouseAdapter() {
+        Delete_Member.setBackground(new java.awt.Color(0, 117, 98));
+        Delete_Member.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        Delete_Member.setForeground(new java.awt.Color(243, 236, 236));
+        Delete_Member.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Delete_Member.setText("Delete Member");
+        Delete_Member.setOpaque(true);
+        Delete_Member.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Add_MemberMouseClicked(evt);
+                Delete_MemberMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Add_MemberMouseEntered(evt);
+                Delete_MemberMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Add_MemberMouseExited(evt);
+                Delete_MemberMouseExited(evt);
             }
         });
 
@@ -114,7 +114,7 @@ public class DeleteMemberForm extends javax.swing.JFrame {
                     .addGroup(genrePanelLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(genrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Add_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Delete_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(genrePanelLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -136,7 +136,7 @@ public class DeleteMemberForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_EmptyID)
                 .addGap(18, 18, 18)
-                .addComponent(Add_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Delete_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -163,7 +163,7 @@ public class DeleteMemberForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
 
-    private void Add_MemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add_MemberMouseClicked
+    private void Delete_MemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Delete_MemberMouseClicked
         // add a new member
         try {
             int id = Integer.parseInt(Member_ID.getText());
@@ -179,15 +179,15 @@ public class DeleteMemberForm extends javax.swing.JFrame {
         } catch (HeadlessException | NumberFormatException e) {
             jLabel_EmptyID.setText("*Enter Member ID");
         }
-    }//GEN-LAST:event_Add_MemberMouseClicked
+    }//GEN-LAST:event_Delete_MemberMouseClicked
 
-    private void Add_MemberMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add_MemberMouseEntered
-        Add_Member.setBackground(new Color(0, 92, 77));
-    }//GEN-LAST:event_Add_MemberMouseEntered
+    private void Delete_MemberMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Delete_MemberMouseEntered
+        Delete_Member.setBackground(new Color(0, 92, 77));
+    }//GEN-LAST:event_Delete_MemberMouseEntered
 
-    private void Add_MemberMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add_MemberMouseExited
-        Add_Member.setBackground(new Color(0, 117, 98));
-    }//GEN-LAST:event_Add_MemberMouseExited
+    private void Delete_MemberMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Delete_MemberMouseExited
+        Delete_Member.setBackground(new Color(0, 117, 98));
+    }//GEN-LAST:event_Delete_MemberMouseExited
 
     private void Member_IDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Member_IDFocusGained
         Member_ID.setBorder(new LineBorder(new Color(86, 76, 62), 2));
@@ -204,7 +204,7 @@ public class DeleteMemberForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Member_IDKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Add_Member;
+    private javax.swing.JLabel Delete_Member;
     private javax.swing.JTextField Member_ID;
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;

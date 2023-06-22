@@ -228,7 +228,4 @@ public class Member {
         
         return mList;
     }
-
-  
-    
 }

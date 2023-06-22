@@ -64,7 +64,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Add_Member" min="-2" pref="218" max="-2" attributes="0"/>
+                              <Component id="Delete_Member" min="-2" pref="218" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel_EmptyID" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Add_Member" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="Delete_Member" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -180,7 +180,7 @@
             <Property name="text" type="java.lang.String" value="    "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Add_Member">
+        <Component class="javax.swing.JLabel" name="Delete_Member">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="62" green="75" red="0" type="rgb"/>
@@ -196,9 +196,9 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Add_MemberMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Add_MemberMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Add_MemberMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Delete_MemberMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Delete_MemberMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Delete_MemberMouseExited"/>
           </Events>
         </Component>
       </SubComponents>

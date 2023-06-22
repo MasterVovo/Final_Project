@@ -96,11 +96,6 @@ public final class MemberListForm extends javax.swing.JFrame {
                 SearchBarFocusLost(evt);
             }
         });
-        SearchBar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchBarActionPerformed(evt);
-            }
-        });
 
         Member_Table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -282,12 +277,7 @@ public final class MemberListForm extends javax.swing.JFrame {
         for (int i = 0; i < Member_Table.getColumnCount(); i++) {
             Member_Table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
-
     }
-
-    private void SearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SearchBarActionPerformed
 
     private void Member_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Member_TableMouseClicked
         // Display the selected member data 

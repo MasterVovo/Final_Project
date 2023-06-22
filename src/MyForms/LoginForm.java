@@ -202,7 +202,7 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public String loadSession() {
-        try ( BufferedReader br = new BufferedReader(new FileReader("session.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("session.txt"))) {
             String sessionInfo = br.readLine();
             String[] parts = sessionInfo.split(",");
             if (parts.length < 3) {
@@ -239,6 +239,7 @@ public class LoginForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Login success", "Logged in", 1);
 
                 func.saveSession(username, password);
+                new DashboardForm(user.getUserType()).pack();
                 new DashboardForm(user.getUserType()).setVisible(true);
                 this.dispose();
             } else {
@@ -306,6 +307,7 @@ public class LoginForm extends javax.swing.JFrame {
             public void run() {
                 String usertype = new LoginForm().loadSession();
                 if (usertype != null) {
+                    new DashboardForm(usertype).pack();
                     new DashboardForm(usertype).setVisible(true);
                 } else {
                     new LoginForm().setVisible(true);

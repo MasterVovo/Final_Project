@@ -182,6 +182,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         jLabel_Image_3 = new javax.swing.JLabel();
         jLabel_Welcome = new javax.swing.JLabel();
         logout = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIbrary Management System");
@@ -721,13 +722,23 @@ public final class DashboardForm extends javax.swing.JFrame {
 
         logout.setFont(new java.awt.Font("Tahoma", 2, 20)); // NOI18N
         logout.setForeground(new java.awt.Color(6, 4, 6));
-        logout.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logout.setText("Logout");
         logout.setBorder(BorderFactory.createMatteBorder(0,0,1,0, new Color(6,4,6)));
         logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutMouseClicked(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 2, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(6, 4, 6));
+        jLabel9.setText("Refresh");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
             }
         });
 
@@ -752,7 +763,10 @@ public final class DashboardForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logout)))
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -761,7 +775,8 @@ public final class DashboardForm extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_Welcome)
-                    .addComponent(logout))
+                    .addComponent(logout)
+                    .addComponent(jLabel9))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dashboardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -865,6 +880,11 @@ public final class DashboardForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutMouseClicked
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        this.setVisible(false);
+        new DashboardForm(userType).setVisible(true);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DashboardLogo;
     private javax.swing.JPanel SideBarHeader;
@@ -898,6 +918,7 @@ public final class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_AuthorsCount;
     private javax.swing.JLabel jLabel_BooksCount;
     public javax.swing.JLabel jLabel_Circulation;

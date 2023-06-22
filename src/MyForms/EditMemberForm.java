@@ -441,7 +441,7 @@ public class EditMemberForm extends javax.swing.JFrame {
                 Member_PhoneNumber.setText(SelectedMember.getPhoneNumber());
                 Member_Email.setText(SelectedMember.getEmail());
                 Member_Gender.setSelectedItem(SelectedMember.getGender());
-
+                
                 byte[] image = SelectedMember.getPicture();
                 func.displayImage(100, 100, image, "", Member_Image);
                 Member_Image.setText("");
