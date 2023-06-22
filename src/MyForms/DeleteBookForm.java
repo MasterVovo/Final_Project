@@ -1,9 +1,8 @@
-
 package MyForms;
 
 import java.awt.Color;
+import java.awt.HeadlessException;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
@@ -14,32 +13,20 @@ public class DeleteBookForm extends javax.swing.JFrame {
     MyClasses.Member member = new MyClasses.Member();
     MyClasses.Functions func = new MyClasses.Functions();
     MyClasses.Genre genre = new MyClasses.Genre();
-    HashMap <String, Integer> genresMap = genre.getGenresMap();
-    
+    HashMap<String, Integer> genresMap = genre.getGenresMap();
+
     String imagePath = "";
-    
+
     public DeleteBookForm() {
         initComponents();
-        
         this.setLocationRelativeTo(null);
-       
         func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
-   
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
-        jTextField_ID2 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField_ID6 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField_ID5 = new javax.swing.JTextField();
-        jButton_Add = new javax.swing.JButton();
         genrePanel = new javax.swing.JPanel();
         genreLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -47,46 +34,6 @@ public class DeleteBookForm extends javax.swing.JFrame {
         Book_Id = new javax.swing.JTextField();
         Remove_Book = new javax.swing.JLabel();
         jLabel_EmptyID = new javax.swing.JLabel();
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel7.setText("ISBN:");
-
-        jTextField_ID2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField_ID2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ID2ActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel11.setText("Publisher:");
-
-        jTextField_ID6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel10.setText("Quantity:");
-
-        jLabel12.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel12.setText("Quantity:");
-
-        jTextField_ID5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField_ID5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ID5ActionPerformed(evt);
-            }
-        });
-
-        jButton_Add.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jButton_Add.setText("Add new member");
-        jButton_Add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AddActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -128,11 +75,6 @@ public class DeleteBookForm extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 Book_IdFocusLost(evt);
-            }
-        });
-        Book_Id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Book_IdActionPerformed(evt);
             }
         });
         Book_Id.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -221,50 +163,31 @@ public class DeleteBookForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
 
-    private void jTextField_ID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ID2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ID2ActionPerformed
-
-    private void jTextField_ID5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ID5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ID5ActionPerformed
-
-    private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
-        
-    }//GEN-LAST:event_jButton_AddActionPerformed
-
     private void Book_IdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Book_IdFocusGained
-        Book_Id.setBorder(new LineBorder(new Color(86,76,62), 2));
+        Book_Id.setBorder(new LineBorder(new Color(86, 76, 62), 2));
     }//GEN-LAST:event_Book_IdFocusGained
 
     private void Book_IdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Book_IdFocusLost
-        Book_Id.setBorder(new LineBorder(new Color(218,186,151), 2));
+        Book_Id.setBorder(new LineBorder(new Color(218, 186, 151), 2));
     }//GEN-LAST:event_Book_IdFocusLost
-
-    private void Book_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Book_IdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Book_IdActionPerformed
 
     private void Remove_BookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Remove_BookMouseClicked
         // delete book
-       
-        MyClasses.Book book  = new MyClasses.Book();
-        try 
-        {
+        MyClasses.Book book = new MyClasses.Book();
+        try {
             Integer id = Integer.parseInt(Book_Id.getText());
-            
+
             //Confirmation message
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this Book?", "Delete Book", JOptionPane.YES_NO_OPTION);
-            
-            if (confirmation == JOptionPane.YES_OPTION){
+
+            if (confirmation == JOptionPane.YES_OPTION) {
                 book.removeBook(id);
                 jLabel_EmptyID.setText(" ");
             }
-            
-        
-        } catch (Exception ex) {
+
+        } catch (HeadlessException | NumberFormatException ex) {
             jLabel_EmptyID.setText("*Enter Book ID");
-        } 
+        }
     }//GEN-LAST:event_Remove_BookMouseClicked
 
     private void Remove_BookMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Remove_BookMouseEntered
@@ -272,12 +195,11 @@ public class DeleteBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Remove_BookMouseEntered
 
     private void Remove_BookMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Remove_BookMouseExited
-        Remove_Book.setBackground(new Color(0,117,98));
+        Remove_Book.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Remove_BookMouseExited
 
     private void Book_IdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Book_IdKeyTyped
-        if(!Character.isDigit(evt.getKeyChar()))
-        {
+        if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_Book_IdKeyTyped
@@ -288,15 +210,7 @@ public class DeleteBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
-    private javax.swing.JButton jButton_Add;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_EmptyID;
-    private javax.swing.JTextField jTextField_ID2;
-    private javax.swing.JTextField jTextField_ID5;
-    private javax.swing.JTextField jTextField_ID6;
     // End of variables declaration//GEN-END:variables
 }

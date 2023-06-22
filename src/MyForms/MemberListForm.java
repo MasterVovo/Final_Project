@@ -1,5 +1,5 @@
-
 package MyForms;
+
 import MyClasses.Member;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -11,32 +11,28 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+public final class MemberListForm extends javax.swing.JFrame {
 
-
-public class MemberListForm extends javax.swing.JFrame {
-
-    
     MyClasses.Member member = new MyClasses.Member();
     MyClasses.Functions func = new MyClasses.Functions();
-    
+
     public MemberListForm() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
-        
+
         func.displayImage(45, 45, null, "/MyImages/add_user.png", MemberList);
-        
+
         //Custom the jtable
         func.customTable(Member_Table);
-        
+
         //Custom the jtable header ROW
         func.customTableHeader(Member_Table);
-        
+
         // display members in the jtable  
         populateJtableWithMembers("");
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -258,39 +254,37 @@ public class MemberListForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_ExitMouseClicked
 
-     //create a function to populate the jtable with members
-    public void populateJtableWithMembers(String query)
-    {
-        ArrayList <MyClasses.Member>  membersList = member.membersList(query);
-        
+    //create a function to populate the jtable with members
+    public void populateJtableWithMembers(String query) {
+        ArrayList<MyClasses.Member> membersList = member.membersList(query);
+
         // jtable columns
         String[] colNames = {"ID", "F-Name", "L-Name", "Phone", "Email", "Gender"};
-        
+
         // Row
-        Object [][] rows = new Object [membersList.size()][colNames.length];
-        
-        for (int i = 0; i < membersList.size(); i++)
-        {
-          rows[i][0] = membersList.get(i).getId();
-          rows[i][1] = membersList.get(i).getFirstName();
-          rows[i][2] = membersList.get(i).getLastName();
-          rows[i][3] = membersList.get(i).getPhoneNumber();
-          rows[i][4] = membersList.get(i).getEmail();
-          rows[i][5] = membersList.get(i).getGender();
+        Object[][] rows = new Object[membersList.size()][colNames.length];
+
+        for (int i = 0; i < membersList.size(); i++) {
+            rows[i][0] = membersList.get(i).getId();
+            rows[i][1] = membersList.get(i).getFirstName();
+            rows[i][2] = membersList.get(i).getLastName();
+            rows[i][3] = membersList.get(i).getPhoneNumber();
+            rows[i][4] = membersList.get(i).getEmail();
+            rows[i][5] = membersList.get(i).getGender();
         }
-        
-        DefaultTableModel model = new DefaultTableModel (rows,colNames);
+
+        DefaultTableModel model = new DefaultTableModel(rows, colNames);
         Member_Table.setModel(model);
-        
+
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
         for (int i = 0; i < Member_Table.getColumnCount(); i++) {
             Member_Table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
-        
+
     }
-    
+
     private void SearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchBarActionPerformed
@@ -301,44 +295,43 @@ public class MemberListForm extends javax.swing.JFrame {
         try {
             Integer rowIndex = Member_Table.getSelectedRow(); // Get the selected jTable row index 
             // get the member id from the Jtable (the id is the fist column [0] )
-            Integer id = Integer.parseInt(Member_Table.getModel().getValueAt(rowIndex, 0).toString());  
+            Integer id = Integer.parseInt(Member_Table.getModel().getValueAt(rowIndex, 0).toString());
 
             SelectedMember = member.getMemberById(id);
-            
-            if (SelectedMember != null)
-            {
+
+            if (SelectedMember != null) {
                 Member_Fullname.setText(SelectedMember.getFirstName() + " " + SelectedMember.getLastName());
                 Member_Phone.setText(SelectedMember.getPhoneNumber());
                 Member_Email.setText(SelectedMember.getEmail() + " ");
                 Member_Gender.setText(SelectedMember.getGender());
-                
+
                 byte[] image = SelectedMember.getPicture();
-                func.displayImage(200, 200,  image, "", Member_Image);
+                func.displayImage(200, 200, image, "", Member_Image);
                 Member_Image.setText("");
-                
+
             } else {
-                JOptionPane.showMessageDialog(null , "Member not found with the given ID", "Invalid ID", 3);
+                JOptionPane.showMessageDialog(null, "Member not found with the given ID", "Invalid ID", 3);
             }
-            
+
         } catch (SQLException | NumberFormatException ex) {
             //Logger.getLogger(EditMemberForm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null , "Enter a valid member ID", "Invalid ID", 3);
+            JOptionPane.showMessageDialog(null, "Enter a valid member ID", "Invalid ID", 3);
         }
     }//GEN-LAST:event_Member_TableMouseClicked
 
     private void SearchBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchBarFocusGained
-        SearchBar.setBorder(new LineBorder(new Color(86,76,62), 2));
+        SearchBar.setBorder(new LineBorder(new Color(86, 76, 62), 2));
     }//GEN-LAST:event_SearchBarFocusGained
 
     private void SearchBarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchBarFocusLost
-        SearchBar.setBorder(new LineBorder(new Color(218,186,151), 2));
+        SearchBar.setBorder(new LineBorder(new Color(218, 186, 151), 2));
     }//GEN-LAST:event_SearchBarFocusLost
 
     private void Member_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Member_SearchMouseClicked
         // search and display data in the jtable
         String value = SearchBar.getText();
         // Search by first and last name
-        String query = "SELECT * FROM `members` WHERE `firstName` LIKE'%"+value+"%' or `lastName` LIKE '%"+value+"%'";
+        String query = "SELECT * FROM `members` WHERE `firstName` LIKE'%" + value + "%' or `lastName` LIKE '%" + value + "%'";
         populateJtableWithMembers(query);
     }//GEN-LAST:event_Member_SearchMouseClicked
 
@@ -347,7 +340,7 @@ public class MemberListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Member_SearchMouseEntered
 
     private void Member_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Member_SearchMouseExited
-        Member_Search.setBackground(new Color(0,117,98));
+        Member_Search.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Member_SearchMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

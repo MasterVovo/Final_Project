@@ -18,36 +18,31 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public final class DashboardForm extends javax.swing.JFrame {
+
     MyClasses.Functions func = new Functions();
     MyClasses.Book books = new Book();
-    private String userType;
-    
+    private final String userType;
+
     // JLabel array to display the lates 5 books
     JLabel[] labels_tab = new JLabel[5];
     
-    /**
-     * Creates new form DashboardForm
-     * @param userType
-     */
     public DashboardForm(String userType) {
         initComponents();
         this.userType = userType;
         handleUsers();
-        
-        //Center the form
         this.setLocationRelativeTo(null);
-        
+
         //Displays the logo
         func.displayImage(DashboardLogo.getWidth(), DashboardLogo.getHeight(), null, "/MyImages/book_dashboard_logo.png", DashboardLogo);
-        
+
         //Function calls
         addHeaderBorders();
         addButtonBorders();
         buttonHoverEffect();
-        
+
         // display the count data 
         displayCount();
-        
+
         // display the latest 5 books cover in the bottom
         labels_tab[0] = jLabel_Image_1;
         labels_tab[1] = jLabel_Image_2;
@@ -56,18 +51,18 @@ public final class DashboardForm extends javax.swing.JFrame {
         labels_tab[4] = jLabel_Image_5;
         books.displayBooksCover(labels_tab);
     }
-    
-    public void handleUsers(){
-        try{
+
+    public void handleUsers() {
+        try {
             BufferedReader br = new BufferedReader(new FileReader("session.txt"));
             String sessionInfo = br.readLine();
             String[] parts = sessionInfo.split(",");
             String username = parts[0];
-            
-            if(userType.equals("admin")){
-                jButton_ManageUsers.setVisible(false);  
+
+            if (userType.equals("admin")) {
+                jButton_ManageUsers.setVisible(false);
                 jLabel_Welcome.setText("Good day, " + username);
-            } else if (userType.equals("user")){
+            } else if (userType.equals("user")) {
                 jButton_ManageUsers.setVisible(false);
                 jButton_IssueBook.setVisible(false);
                 jButton_ReturnBook.setVisible(false);
@@ -83,11 +78,11 @@ public final class DashboardForm extends javax.swing.JFrame {
                 jButton_EditBook.setEnabled(false);
                 jButton_DeleteBook.setEnabled(false);
             }
-            
+
         } catch (IOException e) {
         }
     }
-    
+
     public void addHeaderBorders() { //Add borders to some panel headers
         Border sideBarHeaderBorder = BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(32, 54, 69));
         SideBarHeader.setBorder(sideBarHeaderBorder);
@@ -100,31 +95,29 @@ public final class DashboardForm extends javax.swing.JFrame {
         Border dashboardPanel4HeaderBorder = BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(21, 111, 171));
         dashboardPanel4Header.setBorder(dashboardPanel4HeaderBorder);
     }
-    
-    Border buttonHoverBorder = BorderFactory.createMatteBorder(1,0,1,0, new Color(32, 54, 69));
-    Border buttonInvisibleBorder = BorderFactory.createMatteBorder(1,0,1,0, new Color(164,106,106));
+
+    Border buttonHoverBorder = BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(32, 54, 69));
+    Border buttonInvisibleBorder = BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(164, 106, 106));
 
     public void addButtonBorders() { //Adds invisible border to sidebar buttons so that they won't move
         Component[] comps = jPanel_Menu.getComponents(); //Gets all components in the sidebar
-        for (Component comp: comps){ //Checks if the component is a button
-            if (comp instanceof JButton){
-                JButton button = (JButton) comp;
-                
+        for (Component comp : comps) { //Checks if the component is a button
+            if (comp instanceof JButton button) {
                 button.setBorder(buttonInvisibleBorder);
             }
         }
     }
-    
-    public void buttonHoverEffect(){ //Adds hover effect to sidebar buttons
+
+    public void buttonHoverEffect() { //Adds hover effect to sidebar buttons
         Component[] comps = jPanel_Menu.getComponents(); //Gets all components in sidebar
-        for (Component comp: comps){
-            if (comp instanceof JButton){ //Checks if the component is a button
-                JButton button = (JButton) comp;
+        for (Component comp : comps) {
+            if (comp instanceof JButton button) { //Checks if the component is a button
                 button.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent evt) {
                         button.setBorder(buttonHoverBorder);
                     }
+
                     @Override
                     public void mouseExited(MouseEvent evt) {
                         button.setBorder(buttonInvisibleBorder);
@@ -133,17 +126,13 @@ public final class DashboardForm extends javax.swing.JFrame {
             }
         }
     }
-    
-    public void displayCount()
-    {
-        
-            jLabel_BooksCount.setText(String.valueOf(func.countData("books")));
-            jLabel_MembersCount.setText(String.valueOf(func.countData("members")));
-            jLabel_AuthorsCount.setText(String.valueOf(func.countData("author")));
-            
-       
+
+    public void displayCount() {
+        jLabel_BooksCount.setText(String.valueOf(func.countData("books")));
+        jLabel_MembersCount.setText(String.valueOf(func.countData("members")));
+        jLabel_AuthorsCount.setText(String.valueOf(func.countData("author")));
     }
-            
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -734,6 +723,7 @@ public final class DashboardForm extends javax.swing.JFrame {
         logout.setForeground(new java.awt.Color(6, 4, 6));
         logout.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         logout.setText("Logout");
+        logout.setBorder(BorderFactory.createMatteBorder(0,0,1,0, new Color(6,4,6)));
         logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -865,10 +855,10 @@ public final class DashboardForm extends javax.swing.JFrame {
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out?", "Logout", JOptionPane.YES_NO_OPTION);
-        
-        if(confirmation == JOptionPane.YES_OPTION){
+
+        if (confirmation == JOptionPane.YES_OPTION) {
             File sessionFile = new File("session.txt");
-            if(sessionFile.exists()){
+            if (sessionFile.exists()) {
                 sessionFile.delete();
             }
             System.exit(0);

@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.UUID;
@@ -16,20 +15,18 @@ public class LoginForm extends javax.swing.JFrame {
 
     MyClasses.Functions func = new Functions();
     ImageIcon logo = new ImageIcon("/MyImages/book_login_logo.png");
-    /**
-     * Creates new form LoginForm
-     */
+    
     public LoginForm() {
         initComponents();
-        
+
         //Center the form
         this.setLocationRelativeTo(null);
         loginPassword.setEchoChar('*');
-        
+
         //Displays the image
         func.displayImage(LoginLogo.getWidth(), LoginLogo.getHeight(), null, "/MyImages/book_login_logo.png", LoginLogo);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -205,7 +202,7 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public String loadSession() {
-        try (BufferedReader br = new BufferedReader(new FileReader("session.txt"))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader("session.txt"))) {
             String sessionInfo = br.readLine();
             String[] parts = sessionInfo.split(",");
             if (parts.length < 3) {
@@ -225,11 +222,11 @@ public class LoginForm extends javax.swing.JFrame {
         return null;
     }
 
-    
+
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
         String username = loginUsername.getText();
         String password = String.valueOf(loginPassword.getPassword());
-        
+
         if (username.trim().equals("")) {
             loginNoUsername.setText("*No username entered");
         } else if (password.trim().equals("")) {
@@ -240,7 +237,7 @@ public class LoginForm extends javax.swing.JFrame {
             MyClasses.Users user = new MyClasses.Users().tryLogin(username, password);
             if (user != null) {
                 JOptionPane.showMessageDialog(null, "Login success", "Logged in", 1);
-                
+
                 func.saveSession(username, password);
                 new DashboardForm(user.getUserType()).setVisible(true);
                 this.dispose();
@@ -251,7 +248,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginMouseClicked
 
     private void LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseExited
-        Login.setBackground(new Color(0,117,98));
+        Login.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_LoginMouseExited
 
     private void LoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseEntered
@@ -259,24 +256,24 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginMouseEntered
 
     private void loginUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginUsernameFocusGained
-        loginUsername.setBorder(new LineBorder(new Color(86,76,62), 2));
+        loginUsername.setBorder(new LineBorder(new Color(86, 76, 62), 2));
     }//GEN-LAST:event_loginUsernameFocusGained
 
     private void loginPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswordFocusGained
-        loginPassword.setBorder(new LineBorder(new Color(86,76,62), 2));
+        loginPassword.setBorder(new LineBorder(new Color(86, 76, 62), 2));
     }//GEN-LAST:event_loginPasswordFocusGained
 
     private void loginUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginUsernameFocusLost
-        loginUsername.setBorder(new LineBorder(new Color(218,186,151), 2));
+        loginUsername.setBorder(new LineBorder(new Color(218, 186, 151), 2));
     }//GEN-LAST:event_loginUsernameFocusLost
 
     private void loginPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswordFocusLost
-        loginPassword.setBorder(new LineBorder(new Color(218,186,151), 2));
+        loginPassword.setBorder(new LineBorder(new Color(218, 186, 151), 2));
     }//GEN-LAST:event_loginPasswordFocusLost
 
     private void ShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPassActionPerformed
         if (ShowPass.isSelected()) {
-            loginPassword.setEchoChar((char)0);
+            loginPassword.setEchoChar((char) 0);
         } else {
             loginPassword.setEchoChar('*');
         }
@@ -308,7 +305,7 @@ public class LoginForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 String usertype = new LoginForm().loadSession();
-                if(usertype != null){
+                if (usertype != null) {
                     new DashboardForm(usertype).setVisible(true);
                 } else {
                     new LoginForm().setVisible(true);

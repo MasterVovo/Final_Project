@@ -1,5 +1,5 @@
-
 package MyForms;
+
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,32 +9,27 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+public final class BookListForm extends javax.swing.JFrame {
 
-
-public class BookListForm extends javax.swing.JFrame {
-    
     MyClasses.Book book = new MyClasses.Book();
     MyClasses.Functions func = new MyClasses.Functions();
     MyClasses.Author author = new MyClasses.Author();
     MyClasses.Genre genre = new MyClasses.Genre();
-    
+
     public BookListForm() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
-        
+
         //Custom the jtable
         func.customTable(jTable_Books);
-        
-        //Custom the jtable header ROW
         func.customTableHeader(jTable_Books);
-        
+
         // display members in the jtable  
-        populateJtableWithBooks("");
+        BookList("");
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -77,18 +72,8 @@ public class BookListForm extends javax.swing.JFrame {
         jLabel6.setText("Value to Search:");
 
         jTextField_Search2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField_Search2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Search2ActionPerformed(evt);
-            }
-        });
 
         jButton_Search2.setText("search");
-        jButton_Search2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Search2ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("Search by book name or description ");
@@ -206,11 +191,6 @@ public class BookListForm extends javax.swing.JFrame {
         jTextField_Search.setBackground(new java.awt.Color(243, 236, 236));
         jTextField_Search.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_Search.setForeground(new java.awt.Color(6, 4, 6));
-        jTextField_Search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_SearchActionPerformed(evt);
-            }
-        });
         jTextField_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField_SearchKeyTyped(evt);
@@ -452,41 +432,39 @@ public class BookListForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
 
-     //create a function to populate the jtable with books
-    public void populateJtableWithBooks(String query)
-    {
-        ArrayList <MyClasses.Book>  booksList = book.booksList(query);
-        
+    //create a function to populate the jtable with books
+    public void BookList(String query) {
+        ArrayList<MyClasses.Book> booksList = book.booksList(query);
+
         // jtable columns
         // we will not display the book description and cover
-        String[] colNames = {"ID","ISBN","Title","Author","Genre","Quantity","Publisher","Price","Date-RCV"};
-        
+        String[] colNames = {"ID", "ISBN", "Title", "Author", "Genre", "Quantity", "Publisher", "Price", "Date-RCV"};
+
         // Row
-        Object [][] rows = new Object [booksList.size()][colNames.length];
-        
-        for (int i = 0; i < booksList.size(); i++)
-        {
-          rows[i][0] = booksList.get(i).getId();
-          rows[i][1] = booksList.get(i).getIsbn();
-          rows[i][2] = booksList.get(i).getName();
-          rows[i][3] = booksList.get(i).getAuthor_id();
-          rows[i][4] = booksList.get(i).getGenre_id();
-          rows[i][5] = booksList.get(i).getQuantity();
-          rows[i][6] = booksList.get(i).getPublisher();
-          rows[i][7] = booksList.get(i).getPrice();
-          rows[i][8] = booksList.get(i).getDate_received();
+        Object[][] rows = new Object[booksList.size()][colNames.length];
+
+        for (int i = 0; i < booksList.size(); i++) {
+            rows[i][0] = booksList.get(i).getId();
+            rows[i][1] = booksList.get(i).getIsbn();
+            rows[i][2] = booksList.get(i).getName();
+            rows[i][3] = booksList.get(i).getAuthor_id();
+            rows[i][4] = booksList.get(i).getGenre_id();
+            rows[i][5] = booksList.get(i).getQuantity();
+            rows[i][6] = booksList.get(i).getPublisher();
+            rows[i][7] = booksList.get(i).getPrice();
+            rows[i][8] = booksList.get(i).getDate_received();
         }
-        
-        DefaultTableModel model = new DefaultTableModel (rows,colNames);
+
+        DefaultTableModel model = new DefaultTableModel(rows, colNames);
         jTable_Books.setModel(model);
-        
+
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
         for (int i = 0; i < jTable_Books.getColumnCount(); i++) {
             jTable_Books.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
-        
+
         jTable_Books.getColumnModel().getColumn(0).setMinWidth(40);
         jTable_Books.getColumnModel().getColumn(0).setMaxWidth(40);
         jTable_Books.getColumnModel().getColumn(1).setMinWidth(150);
@@ -503,77 +481,61 @@ public class BookListForm extends javax.swing.JFrame {
         jTable_Books.getColumnModel().getColumn(7).setMaxWidth(100);
         jTable_Books.getColumnModel().getColumn(8).setMinWidth(0);
         jTable_Books.getColumnModel().getColumn(8).setMaxWidth(0);
-        
     }
-    
+
     private void jTable_BooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_BooksMouseClicked
         // Display the selected book data 
-        
-         MyClasses.Book SelectedBook;
+        MyClasses.Book SelectedBook;
         try {
             Integer rowIndex = jTable_Books.getSelectedRow(); // Get the selected jTable row index 
             // get the book id from the Jtable (the id is the fist column [0] )
-            Integer id = Integer.parseInt(jTable_Books.getModel().getValueAt(rowIndex, 0).toString());  
+            Integer id = Integer.parseInt(jTable_Books.getModel().getValueAt(rowIndex, 0).toString());
 
             SelectedBook = book.getBookById(id);
-            
-            if (SelectedBook != null)
-            {
+
+            if (SelectedBook != null) {
                 Book_ID.setText(id.toString());
                 jLabel_ISBN.setText(SelectedBook.getIsbn());
                 jLabel_Name.setText(SelectedBook.getName());
-                
+
                 // we need to display the author name
                 jLabel_Author.setText(author.getAuthorById(SelectedBook.getAuthor_id()).getFirstName() + " " + author.getAuthorById(SelectedBook.getAuthor_id()).getLastName());
-                
+
                 // we need to display the genre name
                 jLabel_Genre.setText(genre.getGenreById(SelectedBook.getGenre_id()).getName());
-                
+
                 jLabel_Publisher.setText(SelectedBook.getPublisher());
                 jLabel_Price.setText(String.valueOf(SelectedBook.getPrice()));
                 Book_Description.setText(SelectedBook.getDescription());
-                
-                
+
                 byte[] image = SelectedBook.getCover();
-                func.displayImage(200, 250,  image, "", jLabel_Image);
+                func.displayImage(200, 250, image, "", jLabel_Image);
                 jLabel_Image.setText("");
             } else {
-                JOptionPane.showMessageDialog(null , "Member not found with the given ID", "Invalid ID", 3);
+                JOptionPane.showMessageDialog(null, "Member not found with the given ID", "Invalid ID", 3);
             }
-            
+
         } catch (SQLException ex) {
             //Logger.getLogger(EditMemberForm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null , "Enter a valid member ID", "Invalid ID", 3);
+            JOptionPane.showMessageDialog(null, "Enter a valid member ID", "Invalid ID", 3);
         }
-    
+
     }//GEN-LAST:event_jTable_BooksMouseClicked
-
-    private void jTextField_Search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Search2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Search2ActionPerformed
-
-    private void jButton_Search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Search2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Search2ActionPerformed
-
-    private void jTextField_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_SearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_SearchActionPerformed
 
     private void jTextField_SearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_SearchKeyTyped
         // search and display data in the jtable
         String value = jTextField_Search.getText();
         // Search by name, publisher and  description
-        String query = "SELECT * FROM `books` WHERE `name` LIKE '%"+value+"%' OR `publisher` LIKE '%"+value+"%' or `description` LIKE '%"+value+"%'";
-        populateJtableWithBooks(query);
+        String query = "SELECT * FROM `books` WHERE `name` LIKE '%" + value + "%' OR `publisher` LIKE '%" + value + "%' or `description` LIKE '%" + value + "%'";
+        BookList(query);
     }//GEN-LAST:event_jTextField_SearchKeyTyped
 
     private void Title_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_SearchMouseClicked
         // search and display data in the jtable
         String value = jTextField_Search.getText();
         // Search by name, publisher and  description
-        String query = "SELECT * FROM `books` WHERE `name` LIKE '%"+value+"%'";
-        populateJtableWithBooks(query);
+        String query = "SELECT * FROM `books` WHERE `name` LIKE '%" + value + "%'";
+        BookList(query);
     }//GEN-LAST:event_Title_SearchMouseClicked
 
     private void Title_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_SearchMouseEntered
@@ -581,15 +543,15 @@ public class BookListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Title_SearchMouseEntered
 
     private void Title_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Title_SearchMouseExited
-        Title_Search.setBackground(new Color(0,117,98));
+        Title_Search.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Title_SearchMouseExited
 
     private void Author_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Author_SearchMouseClicked
         // search and display data in the jtable
         String value = jTextField_Search.getText();
         // Search by name, publisher and  description
-        String query = "SELECT * FROM `books` WHERE `author_id` = '"+ value +"'";
-        populateJtableWithBooks(query);
+        String query = "SELECT * FROM `books` WHERE `author_id` = '" + value + "'";
+        BookList(query);
     }//GEN-LAST:event_Author_SearchMouseClicked
 
     private void Author_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Author_SearchMouseEntered
@@ -597,15 +559,15 @@ public class BookListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Author_SearchMouseEntered
 
     private void Author_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Author_SearchMouseExited
-        Author_Search.setBackground(new Color(0,117,98));
+        Author_Search.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Author_SearchMouseExited
 
     private void Genre_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Genre_SearchMouseClicked
         // search and display data in the jtable
         String value = jTextField_Search.getText();
         // Search by name, publisher and  description
-        String query = "SELECT * FROM `books` WHERE `genre_id` = '"+ value +"'";
-        populateJtableWithBooks(query);
+        String query = "SELECT * FROM `books` WHERE `genre_id` = '" + value + "'";
+        BookList(query);
     }//GEN-LAST:event_Genre_SearchMouseClicked
 
     private void Genre_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Genre_SearchMouseEntered
@@ -613,7 +575,7 @@ public class BookListForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Genre_SearchMouseEntered
 
     private void Genre_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Genre_SearchMouseExited
-        Genre_Search.setBackground(new Color(0,117,98));
+        Genre_Search.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Genre_SearchMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

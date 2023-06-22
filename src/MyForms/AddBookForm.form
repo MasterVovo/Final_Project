@@ -1,90 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.JLabel" name="jLabel7">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="18" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6" green="4" red="6" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="ISBN:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField_ID2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="14" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ID2ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="18" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6" green="4" red="6" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Publisher:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField_ID6">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="14" style="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="18" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6" green="4" red="6" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Quantity:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel12">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="18" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6" green="4" red="6" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Quantity:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField_ID5">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="14" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_ID5ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton_Add">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="15" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Add new member"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_AddActionPerformed"/>
-      </Events>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
@@ -156,19 +72,19 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField_ISBN" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="jTextField_Name" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                      <Component id="Book_ISBN" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="Book_Title" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jComboBox_Genre" min="-2" pref="163" max="-2" attributes="0"/>
+                                                  <Component id="Book_Genre" min="-2" pref="163" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jLabel_Genre_ID" max="32767" attributes="0"/>
+                                                  <Component id="Book_Genre_ID" max="32767" attributes="0"/>
                                               </Group>
-                                              <Component id="jTextField_Author" min="-2" pref="200" max="-2" attributes="0"/>
+                                              <Component id="Book_Author" min="-2" pref="200" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel_Author_ID" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="Book_Author_ID" min="-2" pref="30" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="SelectAuthor" min="-2" pref="103" max="-2" attributes="0"/>
                                       </Group>
@@ -185,14 +101,14 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel_Image" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="Book_Cover" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="SelectPicture" min="-2" pref="87" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jDateChooser_Date" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
-                              <Component id="jTextField_Price" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                              <Component id="jLabel_ImagePath" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="jTextField_Publisher" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="Book_Date" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
+                              <Component id="Book_Price" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                              <Component id="Book_Cover_Path" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="Book_Publisher" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
                               <Component id="Book_Quantity" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -221,25 +137,25 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel5" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField_ISBN" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_ISBN" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel6" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField_Name" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_Title" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel8" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField_Author" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jLabel_Author_ID" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="Book_Author" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_Author_ID" alignment="2" min="-2" max="-2" attributes="0"/>
                               <Component id="SelectAuthor" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel16" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jComboBox_Genre" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jLabel_Genre_ID" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="Book_Genre" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_Genre_ID" alignment="2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -250,16 +166,16 @@
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel13" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField_Publisher" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_Publisher" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel14" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTextField_Price" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_Price" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="jDateChooser_Date" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="Book_Date" alignment="2" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel15" alignment="2" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -276,11 +192,11 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_Image" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="Book_Cover" min="-2" pref="150" max="-2" attributes="0"/>
                               <Component id="SelectPicture" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel_ImagePath" min="-2" max="-2" attributes="0"/>
+                          <Component id="Book_Cover_Path" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
@@ -332,7 +248,7 @@
             <Property name="text" type="java.lang.String" value="Title:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Name">
+        <Component class="javax.swing.JTextField" name="Book_Title">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -344,9 +260,6 @@
               <Color blue="6" green="4" red="6" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_NameActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -359,7 +272,7 @@
             <Property name="text" type="java.lang.String" value="Author:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Author">
+        <Component class="javax.swing.JTextField" name="Book_Author">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -398,7 +311,7 @@
             <Property name="text" type="java.lang.String" value="Publisher:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Publisher">
+        <Component class="javax.swing.JTextField" name="Book_Publisher">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -422,7 +335,7 @@
             <Property name="text" type="java.lang.String" value="Price:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_Price">
+        <Component class="javax.swing.JTextField" name="Book_Price">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -435,7 +348,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_PriceKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Book_PriceKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
@@ -460,7 +373,7 @@
             <Property name="text" type="java.lang.String" value="Genre:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_ISBN">
+        <Component class="javax.swing.JTextField" name="Book_ISBN">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -491,7 +404,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea_Description">
+            <Component class="javax.swing.JTextArea" name="Book_Description">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -519,7 +432,7 @@
             <Property name="text" type="java.lang.String" value="Book Description:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Image">
+        <Component class="javax.swing.JLabel" name="Book_Cover">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="97" green="ba" red="da" type="rgb"/>
@@ -538,7 +451,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_Genre">
+        <Component class="javax.swing.JComboBox" name="Book_Genre">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -556,7 +469,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox_GenreActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Book_GenreActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -584,7 +497,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="genreExitMouseClicked"/>
           </Events>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser_Date">
+        <Component class="com.toedter.calendar.JDateChooser" name="Book_Date">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ec" green="ec" red="f3" type="rgb"/>
@@ -597,7 +510,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_ImagePath">
+        <Component class="javax.swing.JLabel" name="Book_Cover_Path">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="13" style="2"/>
@@ -608,7 +521,7 @@
             <Property name="text" type="java.lang.String" value="*Image Path"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Author_ID">
+        <Component class="javax.swing.JLabel" name="Book_Author_ID">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="14" style="0"/>
@@ -622,7 +535,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_Genre_ID">
+        <Component class="javax.swing.JLabel" name="Book_Genre_ID">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="14" style="0"/>

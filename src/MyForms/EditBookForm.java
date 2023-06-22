@@ -1,5 +1,5 @@
-
 package MyForms;
+
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.io.IOException;
@@ -9,19 +9,13 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
-
-
-
-
-
-public class EditBookForm extends javax.swing.JFrame {
+public final class EditBookForm extends javax.swing.JFrame {
 
     MyClasses.Book book = new MyClasses.Book();
     AuthorsListForm authors = new AuthorsListForm();
@@ -29,35 +23,25 @@ public class EditBookForm extends javax.swing.JFrame {
     MyClasses.Author author = new MyClasses.Author();
     MyClasses.Functions func = new MyClasses.Functions();
     MyClasses.Genre genre = new MyClasses.Genre();
-    HashMap <String, Integer> genresMap = genre.getGenresMap();
-    
+    HashMap<String, Integer> genresMap = genre.getGenresMap();
+
     String imagePath = "";
-    
+
     public EditBookForm() {
         initComponents();
         SelectPicture.setVisible(false);
-        
         this.setLocationRelativeTo(null);
-       
+
         func.displayImage(45, 45, null, "/MyImages/Book_Add.png", genreLabel);
-        
+
         // Populate jcombobox with Genres
-        fillJcomboboxWithGenres();
+        BookGenres();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
-        jTextField_ID2 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField_ID6 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField_ID5 = new javax.swing.JTextField();
-        jButton_Add = new javax.swing.JButton();
         genrePanel = new javax.swing.JPanel();
         genreLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -92,46 +76,6 @@ public class EditBookForm extends javax.swing.JFrame {
         SearchIDorISBN = new javax.swing.JLabel();
         Clear_Fields = new javax.swing.JLabel();
         Edit_Book = new javax.swing.JLabel();
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel7.setText("ISBN:");
-
-        jTextField_ID2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField_ID2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ID2ActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel11.setText("Publisher:");
-
-        jTextField_ID6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel10.setText("Quantity:");
-
-        jLabel12.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(6, 4, 6));
-        jLabel12.setText("Quantity:");
-
-        jTextField_ID5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField_ID5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ID5ActionPerformed(evt);
-            }
-        });
-
-        jButton_Add.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jButton_Add.setText("Add new member");
-        jButton_Add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AddActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -177,11 +121,6 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_Name.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_Name.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_Name.setEnabled(false);
-        jTextField_Name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_NameActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(6, 4, 6));
@@ -191,11 +130,6 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_Author.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_Author.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_Author.setEnabled(false);
-        jTextField_Author.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_AuthorActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(6, 4, 6));
@@ -209,11 +143,6 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_Publisher.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_Publisher.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_Publisher.setEnabled(false);
-        jTextField_Publisher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_PublisherActionPerformed(evt);
-            }
-        });
 
         jLabel14.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(6, 4, 6));
@@ -223,11 +152,6 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_Price.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_Price.setForeground(new java.awt.Color(6, 4, 6));
         jTextField_Price.setEnabled(false);
-        jTextField_Price.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_PriceActionPerformed(evt);
-            }
-        });
         jTextField_Price.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField_PriceKeyTyped(evt);
@@ -245,11 +169,6 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_ISBN.setBackground(new java.awt.Color(243, 236, 236));
         jTextField_ISBN.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_ISBN.setForeground(new java.awt.Color(6, 4, 6));
-        jTextField_ISBN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ISBNActionPerformed(evt);
-            }
-        });
 
         jLabel17.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(6, 4, 6));
@@ -322,11 +241,6 @@ public class EditBookForm extends javax.swing.JFrame {
         jTextField_ID.setBackground(new java.awt.Color(243, 236, 236));
         jTextField_ID.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jTextField_ID.setForeground(new java.awt.Color(6, 4, 6));
-        jTextField_ID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_IDActionPerformed(evt);
-            }
-        });
 
         SelectPicture.setBackground(new java.awt.Color(0, 117, 98));
         SelectPicture.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -574,59 +488,21 @@ public class EditBookForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_genreExitMouseClicked
 
-    private void jTextField_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_NameActionPerformed
-
-    private void jTextField_ID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ID2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ID2ActionPerformed
-
-    private void jTextField_AuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AuthorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_AuthorActionPerformed
-
-    private void jTextField_ID5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ID5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ID5ActionPerformed
-
-    private void jTextField_PublisherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PublisherActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PublisherActionPerformed
-
-    private void jTextField_PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PriceActionPerformed
-
-    private void jTextField_ISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ISBNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ISBNActionPerformed
-
-    private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
-        
-    }//GEN-LAST:event_jButton_AddActionPerformed
-
     private void jComboBox_GenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_GenreActionPerformed
         // display the selected genre id
         // if the jcombobox is empty an error will be thrown
-        // so to avoid that we will add an empty try catch just an case
+        // so to avoid that we will add an empty try catch just in case
         try {
             int genreId = genresMap.get(jComboBox_Genre.getSelectedItem().toString());
             jLabel_Genre_ID.setText(String.valueOf(genreId));
-        }catch(Exception ex) {
+        } catch (Exception ex) {
         }
-        
     }//GEN-LAST:event_jComboBox_GenreActionPerformed
-
-    private void jTextField_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_IDActionPerformed
 
     private void SelectPictureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectPictureMouseClicked
         String path = func.selectPicture();
         jLabel_ImagePath.setText(path + " ");
         imagePath = path;
-      
         func.displayImage(120, 150, null, path, jLabel_Image);
         jLabel_Image.setText("");
     }//GEN-LAST:event_SelectPictureMouseClicked
@@ -636,19 +512,17 @@ public class EditBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectPictureMouseEntered
 
     private void SelectPictureMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectPictureMouseExited
-        SelectPicture.setBackground(new Color(0,117,98));
+        SelectPicture.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_SelectPictureMouseExited
 
     private void Book_QuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Book_QuantityKeyTyped
-        if(!Character.isDigit(evt.getKeyChar()))
-        {
+        if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_Book_QuantityKeyTyped
 
     private void jTextField_PriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_PriceKeyTyped
-        if(!Character.isDigit(evt.getKeyChar()))
-        {
+        if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField_PriceKeyTyped
@@ -663,28 +537,26 @@ public class EditBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectAuthorMouseEntered
 
     private void SelectAuthorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectAuthorMouseExited
-        SelectAuthor.setBackground(new Color(0,117,98));
+        SelectAuthor.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_SelectAuthorMouseExited
 
     private void SearchIDorISBNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchIDorISBNMouseClicked
         // Search book by ID or ISNB 
         // check if the id fields or the isbn are empty
         if (jTextField_ID.getText().equals("") && jTextField_ISBN.getText().equals("")) {
-            JOptionPane.showMessageDialog(null , "You Need To Enter The ID or The ISBN To Complete The Search", "Empty ID & ISBN", 2);
-        }
-        else {
-            try{
+            JOptionPane.showMessageDialog(null, "You Need To Enter The ID or The ISBN To Complete The Search", "Empty ID & ISBN", 2);
+        } else {
+            try {
                 int id = 0;
                 String isbn = jTextField_ISBN.getText();
                 MyClasses.Book selectedBook = null;
                 try {
                     id = Integer.parseInt(jTextField_ID.getText());
                     selectedBook = book.searchBookbyId_Isnb(id, isbn);
-                }     
-                catch(NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null , "Invalid ID/ISBN, check your input and try again", "Invalid input", 2);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Invalid ID/ISBN, check your input and try again", "Invalid input", 2);
                 }
-                jTextField_ID.setText(String.valueOf(selectedBook.getId()));
+                jTextField_ID.setText(Integer.toString(selectedBook.getId()));
                 jTextField_ISBN.setText(selectedBook.getIsbn());
                 jTextField_Name.setText(selectedBook.getName());
                 jTextField_Publisher.setText(selectedBook.getPublisher());
@@ -692,30 +564,30 @@ public class EditBookForm extends javax.swing.JFrame {
                 jTextArea_Description.setText(selectedBook.getDescription());
                 Book_Quantity.setText(Integer.toString(selectedBook.getQuantity()));
                 jLabel_Author_ID.setText(String.valueOf(selectedBook.getAuthor_id()));
-                
+
                 // display the author full name
                 // you can use the "displayAuthorData" if you want
-                String fullName = (author.getAuthorById(selectedBook.getAuthor_id())).getFirstName() + " " +
-                                  (author.getAuthorById(selectedBook.getAuthor_id())).getLastName();
+                String fullName = (author.getAuthorById(selectedBook.getAuthor_id())).getFirstName() + " "
+                        + (author.getAuthorById(selectedBook.getAuthor_id())).getLastName();
                 jTextField_Author.setText(fullName);
-                
+
                 jLabel_Genre_ID.setText(String.valueOf(selectedBook.getGenre_id()));
-                
+
                 // display the selected book genre in the jcombobox
-                for(Map.Entry<String,Integer> entry : genresMap.entrySet()) {
+                for (Map.Entry<String, Integer> entry : genresMap.entrySet()) {
                     if (Objects.equals(selectedBook.getGenre_id(), entry.getValue())) {
                         jComboBox_Genre.setSelectedItem(entry.getKey());
                     }
                 }
-                
+
                 // display the date
                 Date date_receive = new SimpleDateFormat("yyyy-MM-dd").parse(selectedBook.getDate_received());
                 jDateChooser_Date.setDate(date_receive);
-                
+
                 byte[] image = selectedBook.getCover();
                 func.displayImage(120, 150, image, "", jLabel_Image);
                 jLabel_Image.setText("");
-                
+
                 jTextField_ID.setEnabled(false);
                 jTextField_ISBN.setEnabled(false);
                 jTextField_Name.setEnabled(true);
@@ -727,8 +599,8 @@ public class EditBookForm extends javax.swing.JFrame {
                 SelectPicture.setVisible(true);
                 Book_Quantity.setEnabled(true);
                 jDateChooser_Date.setEnabled(true);
-            } catch(Exception ex) {
-                JOptionPane.showMessageDialog(null , "This book doesn't exist", "Book Not Found", 2); // Have an error on ex.getMessage
+            } catch (HeadlessException | ParseException ex) {
+                JOptionPane.showMessageDialog(null, "This book doesn't exist", "Book Not Found", 2); // Have an error on ex.getMessage
             }
         }
     }//GEN-LAST:event_SearchIDorISBNMouseClicked
@@ -738,7 +610,7 @@ public class EditBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchIDorISBNMouseEntered
 
     private void SearchIDorISBNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchIDorISBNMouseExited
-        SearchIDorISBN.setBackground(new Color(0,117,98));
+        SearchIDorISBN.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_SearchIDorISBNMouseExited
 
     private void Clear_FieldsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Clear_FieldsMouseClicked
@@ -775,63 +647,57 @@ public class EditBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Clear_FieldsMouseEntered
 
     private void Clear_FieldsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Clear_FieldsMouseExited
-        Clear_Fields.setBackground(new Color(0,117,98));
+        Clear_Fields.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Clear_FieldsMouseExited
 
     private void Edit_BookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Edit_BookMouseClicked
         // edit the selected book
         // we will not edit the isbn
-       
-        MyClasses.Book book  = new MyClasses.Book();
+
+        MyClasses.Book book = new MyClasses.Book();
         String isbn = jTextField_ISBN.getText();
-        
+
         if (!verif()) {
-            JOptionPane.showMessageDialog(null , "one or more fields are empty", "Empty Data", 2);
-            
-        }
-        else
-        {
-       
-             // get the image bytes  
-        try {
-            
-        // get values
-        int id = Integer.parseInt(jTextField_ID.getText());
-        String name = jTextField_Name.getText();
-        String publisher = jTextField_Publisher.getText();
-        String description = jTextArea_Description.getText();
-        
-        Integer author_id = Integer.parseInt(jLabel_Author_ID.getText());// get author id
-        Integer genre_id = Integer.parseInt(jLabel_Genre_ID.getText());// get the  genre id 
-        Integer quantity = Integer.parseInt(Book_Quantity.getText());
-        
-        
-        Double price = Double.parseDouble(jTextField_Price.getText());
-            
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String received_date = dateFormat.format (jDateChooser_Date.getDate());
-            Path path = Paths.get(imagePath);
-            
+            JOptionPane.showMessageDialog(null, "one or more fields are empty", "Empty Data", 2);
+
+        } else {
+
+            // get the image bytes  
             try {
-                // if the user want to update the cover image to 
-                // get the image bytes
-                byte[] img = Files.readAllBytes(path);
-                book.editBook(id, isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, img);   
+
+                // get values
+                int id = Integer.parseInt(jTextField_ID.getText());
+                String name = jTextField_Name.getText();
+                String publisher = jTextField_Publisher.getText();
+                String description = jTextArea_Description.getText();
+
+                Integer author_id = Integer.parseInt(jLabel_Author_ID.getText());// get author id
+                Integer genre_id = Integer.parseInt(jLabel_Genre_ID.getText());// get the  genre id 
+                Integer quantity = Integer.parseInt(Book_Quantity.getText());
+
+                Double price = Double.parseDouble(jTextField_Price.getText());
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String received_date = dateFormat.format(jDateChooser_Date.getDate());
+                Path path = Paths.get(imagePath);
+
+                try {
+                    // if the user want to update the cover image to 
+                    // get the image bytes
+                    byte[] img = Files.readAllBytes(path);
+                    book.editBook(id, isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, img);
+                } catch (IOException ex)// if not 
+                {
+                    book.editBook(id, isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, null);
+
+                }
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "You Entered Wrong Data in a Number Field", "Wrong Data", 2);
+            } catch (NullPointerException ex) {
+                JOptionPane.showMessageDialog(null, "You Need To Select a Date", "Select Date", 2);
             }
-            catch (IOException ex)// if not 
-            {
-                book.editBook(id, isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, null );
-            
-            }
-            
-             
-        
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null , "You Entered Wrong Data in a Number Field", "Wrong Data", 2);
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null , "You Need To Select a Date", "Select Date", 2);
-        } 
-      }
+        }
     }//GEN-LAST:event_Edit_BookMouseClicked
 
     private void Edit_BookMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Edit_BookMouseEntered
@@ -839,31 +705,24 @@ public class EditBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Edit_BookMouseEntered
 
     private void Edit_BookMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Edit_BookMouseExited
-        Edit_Book.setBackground(new Color(0,117,98));
+        Edit_Book.setBackground(new Color(0, 117, 98));
     }//GEN-LAST:event_Edit_BookMouseExited
     // display the selected author data
-    public static void displayAuthor(int id, String fullName){
+    public static void displayAuthor(int id, String fullName) {
         jTextField_Author.setText(fullName);
         jLabel_Author_ID.setText(String.valueOf(id));
     }
-    
+
     // create a function to verify the required fields
     public boolean verif() {
-        
-        if (jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("") || 
-                jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("") || jLabel_Genre_ID.getText().equals("ID")) {
-            return false;
-        }
-        else{
-            return true;
-        }
+
+        return !(jTextField_ISBN.getText().equals("") || jTextField_Author.getText().equals("")
+                || jTextField_Price.getText().equals("") || jTextField_Name.getText().equals("") || jLabel_Genre_ID.getText().equals("ID"));
     }
-    
-     // create a function to populate the jcombox with genre name and user id using hashmap 
-    public void fillJcomboboxWithGenres()
-    {
-        for (String genreName : genresMap.keySet())
-        {
+
+    // create a function to populate the jcombox with genre name and user id using hashmap 
+    public void BookGenres() {
+        for (String genreName : genresMap.keySet()) {
             jComboBox_Genre.addItem(genreName);
         }
     }
@@ -878,12 +737,8 @@ public class EditBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel genreExit;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JPanel genrePanel;
-    private javax.swing.JButton jButton_Add;
     private javax.swing.JComboBox<String> jComboBox_Genre;
     private com.toedter.calendar.JDateChooser jDateChooser_Date;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -893,7 +748,6 @@ public class EditBookForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private static javax.swing.JLabel jLabel_Author_ID;
@@ -904,9 +758,6 @@ public class EditBookForm extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea_Description;
     private static javax.swing.JTextField jTextField_Author;
     private javax.swing.JTextField jTextField_ID;
-    private javax.swing.JTextField jTextField_ID2;
-    private javax.swing.JTextField jTextField_ID5;
-    private javax.swing.JTextField jTextField_ID6;
     private javax.swing.JTextField jTextField_ISBN;
     private javax.swing.JTextField jTextField_Name;
     private javax.swing.JTextField jTextField_Price;
